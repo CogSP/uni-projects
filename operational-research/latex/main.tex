@@ -1,0 +1,167 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{eurosym} % per il simbolo dell'euro
+
+\usepackage{array} % questo pacchetto serve per poter modificare le dimensioni delle colonne nella tabella così: m{numero em}.
+
+\usepackage{graphicx} % per gli ambienti figure
+
+
+\usepackage{amsmath} %per equation*
+
+
+\usepackage{amssymb} %per mathbb
+
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+
+
+
+\title{Ricerca Operativa}
+\author{Simone Palumbo}
+\date{September 2021}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section{Introduzione}
+Il professore fa ricevimento quando volete. Sulle dispense c'è tutto e di più di quello che serve per preparare l'esame, oltre che tanti esercizi. Oltre a quello c'è anche un pdf con degli esercizi svolti.
+
+\subsection{Perchè si chiama Ricerca Operativa?} 
+Deriva dalla traduzione fatta male di un termine inglese "ricerca sulle operazioni" Operational Reseatch. In realtà si tratta di un corso di matematica applicata, una volta c'era un corso chiamato analisi numerica: questo è un corso di analisi numerica + qualcos'altro. Abbiamo detto che parleremo di matematica applicata: Analisi e Geometria, per esempio, sono effettivamente astratte, mentre R.O. applica queste due per risolvere problemi di decisione. Cioè problemi che riguardano una scelta. Entriamo subito nel vivo della materia con degli esempi.
+
+\section{Problema di Produzione} 
+Ovviamente semplificato rispetto alla realtà. Un colorificio produce 2 tipi di coloranti C1 C2 utilizzando 3 preparati P1 P2 P3. Sia C1 sia C2 usano P1 P2 P3 con diverse quantità quindi. La tabella seguente:
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|m{5em}|m{2em}|m{2em}|m{6.5em}|}
+    \hline
+    hg/$\ell$ & C1 & C2 & q. max (hg/m)\\
+    \hline
+    P1 & 1 & 1 & 750\\
+    \hline
+    P2 & 1 & 2 & 1000\\
+    \hline
+    P3 & - & 1 & 400\\
+    \hline
+    \end{tabular}
+    \vskip 0 pt
+    \raggedright
+    \hspace{2.345cm}
+    \begin{tabular}{|m{5em}|m{2em}|m{2em}|}
+    \hline
+    Prezzo \euro/$\ell$ & 7 & 10\\
+    \hline
+    \end{tabular}
+\end{table}
+Riporta:
+\begin{itemize}
+    \item Le quantità (in ettogrammi\footnote{Questa cosa va ricordata per l'esame: \textit{le unità di misura contano!}}) di preparati base $P_i$ necessari per produrre un litro di colorante $C_i$
+    \item Le disponibilità massime\footnote{In effetti la R.O. affronta il problema della limitatezza delle risorse.} (in ettogrammi al mese) di preparati base $P_i$
+    \item Il prezzo di vendita (in euro al litro) dei due coloranti. Quindi da C2 guadagno di più ma consumo più risorse
+\end{itemize}
+Determinare la strategia ottima di produzione mensile.
+
+\subparagraph{Risposta:} Dobbiamo scegliere quanto produrre di C1 e C2, almeno diverso da 0 perché devo fare soldi, voglio massimizzare quanto ricavo. Non posso scegliere arbitrariamente quanto produrre perché ho delle quantità limitate di risorse. Per prima cosa, essendo che siamo ingegneri, cerchiamo di scrivere in forma matematica la tabella, utilizzando delle incognite e usando disuguaglianze. Le incognite già ci immaginiamo quali possono essere: le quantità che dobbiamo produrre sono le incognite, e il profitto sarà incognite per costo. Ecco le due incognite:
+\begin{itemize}
+    \item $x_1$ indica la quantità di colori C1 in litri prodotta ogni mese. $x_1$ $\equiv q.$ tà in $\ell$/m di C1
+    \item $x_2$ indica la quantità di colori C2 in litri prodotta ogni mese. $x_2$ $\equiv$ q. tà in $\ell$/m di C2
+\end{itemize}
+Quanto ricaviamo dalla vendita di C1 e C2 è quindi una funzione di $x_1$ e $x_2$:
+\begin{itemize}
+    \item dalla vendita di $x_1$ ricavo 7$x_1$ euro/m
+    \item dalla vendita di $x_2$ ricavo 10$x_2$ euro/m
+\end{itemize}
+Quindi la funzione di ricavo totale:
+\begin{equation*}
+    p(x_1, x_2) = 7x_1 + 10x_2
+\end{equation*}
+Tra l'altro stiamo immaginando che tutto ciò che produciamo riusciamo a venderlo (ma è un'altra idealizzazione). Bene, il nostro obiettivo è determinare la strategia ottima di produzione, cioè vogliamo massimizzare i ricavi e cioè vogliamo massimizzare questa funzione, ricordandoci però che si hanno risorse limitate, cioè $x_1$ e $x_2$ possono prendere dei valori solo da 0 a una quantità che coincide con il totale dei preparati in magazzino utilizzati. Andiamo allora a vedere che quantità ci servono di questi preparati che abbiamo in magazzino:
+\begin{itemize}
+    \item P1: del primo preparato ne usiamo 1 etto per un litro di C1 e 1 etto per un litro di C2. Inoltre in magazzino ne abbiamo massimo 750 hg al mese. Quindi:
+    \begin{equation*}
+        P1_{usato} = 1 \cdot x_1 + 1 \cdot x_2 \leq 750
+    \end{equation*}
+    \item P2: del secondo preparato ne usiamo 1 etto per un litro di C1 e 2 etti per un litro di C2. Inoltre in magazzino ne abbiamo massimo 1000 hg al mese. Quindi:
+    \begin{equation*}
+        P2_{usato} = 1 \cdot x_1 + 2 \cdot x_2 \leq 1000
+    \end{equation*}
+    \item P3: del terzo preparato ne usiamo 1 etto per un litro di C2. Inoltre in magazzino ne abbiamo massimo 400 hg al mese. Quindi:
+    \begin{equation*}
+        P3_{usato} = 1 \cdot x_2 \leq 400
+    \end{equation*}
+\end{itemize}
+Altra disuguaglianza importante, che potrebbe sembrare scontata ma ai fini degli esercizi è fondamentale, è che le quantità non possono essere negative, cioè:
+\begin{equation*}
+    x_1 \geq 0 \hspace{2cm} x_2 \geq 0
+\end{equation*}
+Bene, quindi abbiamo tradotto la tabella in un problema matematico di decisione, formato da incognite e disequazioni. Ora il nostro obiettivo è massimizzare i guadagni, cioè dobbiamo determinare $x_1$ e $x_1$ in modo che sia massimo il valore della funzione ricavo p($x_1,x_2$) = 7$x_1$ + 10$x_2$, rispettando però le disuguaglianze che abbiamo, che derivano dal fatto che le risorse sono limitate. Ora entriamo nel campo della geometria analitica: le produzioni $x_1$ e $x_1$ sono punti nel piano cartesiano, ma alcune di queste coppie di punti non sono ammissibili, perché non rispettano le disuguaglianze di sopra. Ora, per risolvere il problema, vogliamo disegnare sul piano cartesiano la regione dei punti che soddisfa queste disuguaglianze. Considerando già che $x_1 \geq 0$ e $x_2 \geq 0$, iniziamo con la disuguaglianza $x_1 + x_2 \leq 750$:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.3]{retta1.jpeg}
+\end{figure}
+Quindi prima si trova la retta, dopodiché si trova la regione di spazio, tra le due sezionate dalla retta, i cui punti rispettano la disuguaglianza, e la si colora. Per fare quest'ultima cosa ci sono due modi:
+\begin{itemize}
+    \item Si prende un punto qualsiasi in una delle due regioni e si vede se la disuguaglianza, calcolata nei valori di quel punto, è rispettata, in tal caso la regione ammissibile è proprio quella a cui appartiene il punto, al contrario se la disuguaglianza non è rispettata la regione ammissibile è l'altra
+    \item Valido solo se c'è vincolo di maggiore uguale. Si prendono i coeffficienti che moltiplicano le incognite, nel nostro caso 1 e 1 che moltiplicano rispettivamente $x_1$ e $x_2$. Si disegna il vettore che ha come componenti questi coefficienti, questo vettore punta alla regione ammissibile. Questo perché i vettori costruiti così sono ortogonali rispetto alla retta da cui sono stati costruiti, quindi possono assumere solo due versi. Il vettore quindi ha solo due zone a cui puntare, e quella a cui effettivamente punta è la zona ammissibile. Nota che se i coefficienti che fanno da componenti del vettore sono troppo grandi o troppo piccoli, puoi moltiplicare o dividere entrambe le componenti per lo stesso scalare positivo, in modo da preservare il verso del vettore e averne uno più comodo. Se c'è vincolo di minore uguale allora devi prendere la zona NON puntata dal vettore come zona ammissibile.
+\end{itemize}
+Ripetiamo lo stesso procedimento per le due disuguaglianze rimaste:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.3]{retta2}
+\end{figure}
+Adesso sappiamo la porzione di piano dei punti ammissibili, ma ci manca ancora un passaggio importante: calcolare le intersezioni tra le rette. Ovviamente consideriamo i punti di intersezione che cadono nella zona ammissibile, poichè le intersezioni in una zona non ammissibile non ci interessano. Quindi, calcolando tutte le possibili intersezioni tramite tutti i sistemi di equazioni necessari troviamo:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.3]{retta3.jpeg}
+\end{figure}
+Vediamo che il punto di intersezione $\binom{350}{400}$ non ci interessa, perché è fuori dalla zona ammissibile. Bene ora abbiamo tutto ciò che ci serve per far entrare in campo la funzione ricavo. In effetti per ora abbiamo soltanto trovato infiniti punti che sono ammissibili, ma noi vogliamo trovare il/i migliore/i, quello/i che ci fa/fanno massimizzare il guadagno. La funzione ricavo serve proprio a questo: ordina questi infiniti punti, permettendoci di prendere il più grande tra loro. Ora il discorso è semplice, prendiamo  $7x_1 + 10x_2$ indica infinite rette, e fissando un valore che questa funzione deve assumere fissiamo una retta. Più alto il valore che fissiamo, più guadagno abbiamo. Dobbiamo quindi trovare il valore più alto che possiamo far assumere alla funzione t.c. rientri nella zona ammissibile; $x_1$ e $x_2$ che realizzeranno questo valore fissato della funzione sono le nostre migliori scelte per la produzione. Iniziamo provando a fissare $7x_1 + 10x_2$ = 0:
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.3]{rettaricavotot.jpeg}
+\end{figure}
+
+Vediamo che l'unico punto della retta che ricade in zona ammissibile è (0,0), ma non ci va bene perché non spendiamo nulla e non guadagniamo nulla. Quindi, sappiamo che alzando i valori che $7x_1 + 10x_2$ assume otteniamo sempre un guadagno maggiore, proviamo a trovare quel suo valore più alto per cui c'è almeno un punto nella zona ammissibile. Dato che abbiamo dei punti di intersezione lontani dall'origine, il ché significa che ci fa guadagnare di più, proviamo a calcolare il valore di $7x_1 + 10x_2$ in quei valori. Si vede, provandoli tutti, che nel punto di intersezione $\binom{500}{250}$ si ha il valore più alto di tutti, poiché ci fa guadagnare $7\cdot500 + 10\cdot250 = 6000$.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.3]{rettaricavototfinale.jpeg}
+\end{figure}
+Quindi questo è il ricavo totale più alto che posso avere, prima di uscire dalla zona non ammissibile. Questo perché appena provo a mettere un termine noto appena appena più alto di 6000 la retta non ha più intersezioni con la zona ammissibile. Quindi con $x_1 = 500$ e $x_2 = 250$ ho massimizzato il profitto. Notare infine che il fatto che questa retta, di cui TUTTI i punti fanno guadagnare 6000, ha solo questo punto nella zona ammissibile, vuol dire che $x_1$ e $x_2$ che ci fanno guadagnare il massimo sono unici, non ci sono più possibilità per guadagnare il massimo. Quindi per risolvere i problemi: scriviamo il problema matematicamente (con incognite e disuguaglianze), poi, avendo due variabili, ho disegnato la zona ammissibile nel piano con le disuguaglianze e ho trovato il termine noto massimo che fa intersecare la funzione ricavo totale con la zona ammissibile.
+ 
+\vspace{1cm}
+
+\begin{tikzpicture}
+  \begin{axis}[
+    axis lines=middle,
+    xmin=0, xmax=1000,ymin=0,ymax=800
+  ]
+  \addplot[very thick,green, samples=300, domain=0:1000, name path=A] {0}; 
+  \addplot[very thick,yellow!70!red, samples=300, domain=0:1000, name path=B] {(1000-x)/2}; 
+  \addplot[very thick,red!90!teal, samples=300, domain=0:1000, name path=C] {400}; 
+  \addplot[very thick,blue!90!teal, samples=300, domain=0:1000, name path=D] {750-x}; 
+  \addplot[gray!30] fill between[of=A and C,soft clip={domain=0:200}];
+  \addplot[gray!30] fill between[of=A and B,soft clip={domain=199:500}];
+  \addplot[gray!30] fill between[of=A and D,soft clip={domain=499:750}];
+  \end{axis}
+\end{tikzpicture}
+
+
+%PUOI PROVARE A USARE QUESTO TRICK DI SOFT CLIP PER COLLEGARE TRA LORO LE AREE https://tex.stackexchange.com/questions/344021/pgfplots-fillbetween-with-multiple-curves
+
+\vspace{1cm}
+
+
+\section{Sette Lunedì:}
+La ricerca operativa entra in una storia di montalbano. C'è un episodio che si chiama sette lunedì. Nell'episodio montalbano pretende di risolvere uno dei problemi più difficili della ricerca operativa. Lui traccia su uno stradario tutti i punti in cui c'è una casa dove devono andare, e chiede al suo aiutante di tracciare il percorso più breve che contempli tutti questi punti così da avvisare tutti nel minor tempo possibile. Si chiama problema del commesso viaggiatore. 
+
+\include{ProblemiDiOttimizzazione}
+
+
+\include{PoliedriePolitopi}
+
+\end{document}
