@@ -1,6 +1,6 @@
 ![logo](sapienza.jpg)
 # uni-projects
-This repo contains almost all the university project I have done until now. 
+This repo contains almost all the university projects I have done until now. 
 
 
 * **psico-dama**: made for the "Linguaggi e Tecnologie per il Web" exam, PsicoDAMA is a game of checkers with special psychedelic effects.
