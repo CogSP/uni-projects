@@ -1,5 +1,5 @@
 ![logo](sapienza.jpg)
-# uni-project
+# uni-projects
 This repo contains almost all the university project I have done until now. 
 
 
