@@ -5,6 +5,8 @@ This repo contains almost all the university projects I have done until now.
 
 ## Bachelor's degree in Computer and Control Engineering ("Ingegneria informatica ed Automatica"), Sapienza, 2020-2023
 
+- **Thesis**: I am currently writing my thesis "Analisi del Traffico delle Reti Wireless con Grafana: Implementazione e Tecniche di Monitoraggio in Tempo Reale"
+
 - **psico-dama**: made for the "Linguaggi e Tecnologie per il Web" exam, _PsicoDAMA_ is a game of checkers with special psychedelic effects.
 
 - **models-of-ML**: made for the "Fondamenti di Intelligenza Artificiale" exam, consists of two parts:
