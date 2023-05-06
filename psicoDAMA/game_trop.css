@@ -1,0 +1,1278 @@
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap');
+
+* {
+	font-family:"Luckiest Guy";
+	margin: 0;
+    padding: 0;
+	
+}
+
+.white-piece.turno:hover {
+	background-color: orange;
+	animation-name: become_white_king;
+	animation-iteration-count: infinite;
+	animation-duration: 1s;
+}
+
+.black-piece.turno:hover {
+	background-color: purple;
+	animation-name: become_black_king;
+	animation-iteration-count: infinite;
+	animation-duration: 1s;
+}
+
+
+@media (((min-height: 700px) ) and (min-width: 700px)) {
+
+
+	/* body {
+		background-size: 300% 300%;
+		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
+		-webkit-animation: AnimateBG 5s ease infinite;
+		animation: AnimateBG 5s ease infinite;
+	} */
+
+	.modal-container {
+		background-color: rgba(0, 0, 0, 0.3);
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		opacity: 0;
+		width: 100%;
+		transition: opacity 0.3s ease;
+	}
+
+
+	.modal-container.show {
+		pointer-events: auto;
+		opacity: 1;
+	}
+	
+
+	form .input-box span.details {
+		display: block;
+		font-weight: 500;
+		margin-bottom: 5px;
+	}
+
+	.modal form .user-details {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 20px 0 12px 0;
+	}
+
+
+	form .user-details .input-box {
+		margin-bottom: 15px;
+		width: calc(100% / 2 - 20px);
+	}
+
+	form .input-box span.details {
+		display: block;
+		font-weight: 500;
+		margin-bottom: 5px;
+	}
+
+	.user-details .input-box input {
+		height: 45px;
+		width: 100%;
+		outline: none;
+		font-size: 16px;
+		border-radius: 5px;
+		padding-left: 15px;
+		border: 1px solid #ccc;
+		border-bottom-width: 2px;
+		transition: all 0.3s ease;
+	}
+
+	.user-details .input-box input:focus,
+	.user-details .input-box input:valid {
+		border-color: #b40000;
+	}
+
+	form .bottone {
+		height: 45px;
+		margin: 35px 0
+	}
+
+	form .bottone button {
+		height: 100%;
+		width: 100%;
+		border-radius: 5px;
+		border: none;
+		color: #fff;
+		font-size: 18px;
+		font-weight: 500;
+		letter-spacing: 1px;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
+	}
+
+	form .bottone button:hover {
+		background-image: linear-gradient(-90deg, rgb(49, 49, 49) 0%, rgb(10, 10, 10) 25%, rgb(182, 182, 182) 51%, #c3084d 100%);
+	}
+
+	/* nuovo */
+
+	.placeholder-for-win-message .modal-container {
+		background-color: rgba(0, 0, 0, 0.3);
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100vh;
+		opacity: 0;
+		width: 100vw;
+		transition: opacity 0.3s ease;
+	}
+
+	.placeholder-for-win-message .modal-container.show {
+		pointer-events: auto;
+		opacity: 1;
+	}
+
+	.placeholder-for-win-message .modal {
+		background-color: #fff;
+		border-radius: 5px;
+		padding: 30px 50px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		width: 600px;
+		max-width: 100%;
+		text-align: center;
+	}
+
+
+	.placeholder-for-win-message form .input-box span.details {
+		display: block;
+		font-weight: 500;
+		margin-bottom: 5px;
+	}
+
+	.placeholder-for-win-message .modal form .user-details {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 20px 0 12px 0;
+	}
+
+
+	.placeholder-for-win-message form .user-details .input-box {
+		margin-bottom: 15px;
+		width: calc(100% / 2 - 20px);
+	}
+
+	.placeholder-for-win-message form .input-box span.details {
+		display: block;
+		font-weight: 500;
+		margin-bottom: 5px;
+	}
+
+	.placeholder-for-win-message .user-details .input-box input {
+		height: 45px;
+		width: 100%;
+		outline: none;
+		font-size: 16px;
+		border-radius: 5px;
+		padding-left: 15px;
+		border: 1px solid #ccc;
+		border-bottom-width: 2px;
+		transition: all 0.3s ease;
+	}
+
+	.placeholder-for-win-message .user-details .input-box input:focus,
+	.placeholder-for-win-message .user-details .input-box input:valid {
+		border-color: #b40000;
+	}
+
+	.placeholder-for-win-message form .bottone {
+		height: 45px;
+		margin: 35px 0
+	}
+
+	.placeholder-for-win-message form .bottone button {
+		height: 100%;
+		width: 100%;
+		border-radius: 5px;
+		border: none;
+		color: #fff;
+		font-size: 18px;
+		font-weight: 500;
+		letter-spacing: 1px;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
+	}
+
+	.placeholder-for-win-message form .bottone button:hover {
+		background-image: linear-gradient(-90deg, rgb(49, 49, 49) 0%, rgb(10, 10, 10) 25%, rgb(182, 182, 182) 51%, #c3084d 100%);
+	}
+
+	/* fine nuovo */
+
+	/* @-webkit-keyframes AnimateBG {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+
+	@keyframes AnimateBG {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	} */
+
+
+	* {
+		margin: auto;
+	}
+
+	.desktop {
+		margin: 0;
+		width: 100%;
+		display: flex;
+	}
+
+	.desktop div {
+		border: 2px lightgrey solid;
+		border-bottom-left-radius: 3px;
+		border-bottom-right-radius: 3px;
+		background-color: white;
+		font-size: 20px;
+	}
+
+
+	.white-turn-text {
+		text-align: center;
+		color: black;
+		font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+		padding: 0;
+		border: 0;
+		margin: 0;
+		width: 50%;
+		font-size: 25px;
+	}
+
+	.black-turn-text {
+		text-align: center;
+		font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+		font-size: 25px;
+		padding: 0;
+		border: 0;
+		margin: 0;
+		width: 50%;
+		color: lightgray;
+	}
+
+
+	.white {
+		background-color: #f1f1f1;
+		border: 1px solid lightgrey;
+	}
+
+	.black {
+		background-color: #c4128e;
+		/* we consider this color as black */
+		border: 1px solid lightgrey;
+
+	}
+
+	@keyframes become_black_king {
+
+		/* Animazioni matte per quando un pezzo diventa Re, colori da decidere*/
+		0% {
+			background-color: rgb(0, 0, 0);
+		}
+
+		50% {
+			background-color: rgb(53, 179, 37);
+		}
+
+		100% {
+			background-color: black;
+		}
+
+		/* Sarebbe figo aggiungere il simbolino di una corona dentro alla pedina quando diventa re, non dovrebbe essere troppo difficile in teoria*/
+	}
+
+	@keyframes become_white_king {
+		0% {
+			background-color: white;
+		}
+
+		50% {
+			background-color: rgb(188, 199, 32);
+		}
+
+		100% {
+			background-color: white;
+		}
+
+	}
+
+	.black-piece.king {
+		background-color: purple;
+		animation-name: become_black_king;
+		animation-iteration-count: infinite;
+		animation-duration: 1s;
+	}
+
+	.white-piece.king {
+		background-color: orange;
+		animation-name: become_white_king;
+		animation-iteration-count: infinite;
+		animation-duration: 1s;
+	}
+
+	p {
+		display: inline-block;
+	}
+
+	#divider {
+		font-size: 1rem;
+		color: rgb(185, 139, 21);
+		text-align: center;
+		background-color: black;
+		margin: 0;
+		width: 5%;
+		border: 0.2rem;
+		border-style: solid; 
+		border-color: rgb(185, 139, 21);
+	}
+
+
+	.modal {
+		background-color: #fff;
+		border-radius: 5px;
+		padding: 30px 50px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		width: 600px;
+		max-width: 100%;
+		text-align: center;
+	}
+
+	main {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		/*height: 100vh;*/
+		min-height: 100%;
+
+	}
+
+	td {
+		/* these attributes apply both to black and white cells */
+		width: 4.063rem;
+		height: 4.063rem;
+		text-align: center;
+	}
+
+
+	.black-piece {
+		width: 20px;
+		height: 20px;
+		padding: 12px;
+		background-color: rgb(53, 179, 37);
+		border: 0.1em solid #808080;
+		border-radius: 50px;
+
+	}
+
+
+	.white-piece {
+		width: 20px;
+		height: 20px;
+		padding: 12px;
+		background-color: rgb(188, 199, 32);
+		border: 0.1em solid #808080;
+		border-radius: 50px;
+	}
+
+
+	table {
+		margin-top:5%;
+		border-style: solid;
+		border-width: 0.75rem;
+		border-color: rgb(70, 69, 69);
+		border-radius: 0.313rem;
+		background-color: white;
+	}
+}
+
+
+/*HARDCODATO PER NEST HUB E TUTTI QUEI DISPOSITIVI BASSI E LARGHI (ES. 1000 X 600)*/
+@media ((max-height: 700px) and (min-width: 700px)){
+
+	/* CSS RESET */
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box; /*quando mettiamo width = x, se abbiamo margin = y e padding = z, il width totale sarà x + y + z, con border-box invece margin e padding vengono già calcolate nel width in modo che tu alla fine abbia width = x*/
+		margin: auto;
+	}
+
+
+	html {
+		font-size: 16px;
+		height: 100%;
+	}
+
+	body {
+		width: 100%;
+		height: 100%;
+		/* background-size: 300% 300%;
+		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
+			-webkit-animation: AnimateBG 5s ease infinite;
+		animation: AnimateBG 5s ease infinite; */
+	}
+
+
+	/* @-webkit-keyframes AnimateBG {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 90%;
+		}
+	}
+
+	@keyframes AnimateBG {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	} */
+
+
+
+	main {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	table {
+		width: 50%;
+		height: 65%; 
+		border-style: solid;
+		border-width: 0.75rem;
+		border-color: rgb(70, 69, 69);
+		border-radius: 0.313rem;
+		background-color: white;
+	}
+
+	tr {
+		width: 12.5%;
+		height: 12.5%; 
+	}
+
+	td {
+		width: 12.5%;
+		height: 12.5%; 
+		text-align: center;
+	}
+
+	.white {
+		background-color: #f1f1f1;
+		border: 0.0625em solid lightgrey
+	}
+
+	.black {
+		background-color: #c4128e;;
+		border: 0.0625em solid lightgrey;
+
+	}
+
+	/*ho dovuto levare il bordo altrimenti dava problemi con le dimensioni*/
+	.white-piece {
+		width: 50%;
+		height: 50%;
+		padding: 0px;
+		background-color: rgb(188, 199, 32);
+		margin: 25%;
+		border: 0.1em solid #808080;
+		border-radius: 50%;
+	}
+
+	.black-piece {
+		width: 50%;
+		height: 50%;
+		padding: 0px;
+		background-color: rgb(53, 179, 37);
+		/* border: 0.1em solid #808080; */
+		margin: 25%;
+		border: 0.1em solid #808080;
+		border-radius: 50%;
+	}
+
+	@keyframes become_black_king {
+
+		0% {
+			background-color: rgb(0, 0, 0);
+		}
+
+		50% {
+			background-color: rgb(53, 179, 37);
+		}
+
+		100% {
+			background-color: black;
+		}
+	}
+
+	@keyframes become_white_king {
+		0% {
+			background-color: white;
+		}
+
+		50% {
+			background-color: rgb(188, 199, 32);
+		}
+
+		100% {
+			background-color: white;
+		}
+	} 
+
+
+	.black-piece.king {
+		background-color: purple;
+		animation-name: become_black_king;
+		animation-iteration-count: infinite;
+		animation-duration: 1s;
+		/* width: 82%;
+		height: 75%;
+		margin: 10%; */
+	}
+
+	.white-piece.king {
+		background-color: orange;
+		animation-name: become_white_king;
+		animation-iteration-count: infinite;
+		animation-duration: 1s;
+		/* width: 82%;
+		height: 75%;
+		margin: 10%; */
+	}
+
+
+	.desktop {
+		margin: 0;
+		width: 100%;
+		display: flex;
+	}
+
+	.desktop div {
+		border: 0.125em lightgrey solid;
+		border-bottom-left-radius: 0.1875em;
+		border-bottom-right-radius: 0.1875em;
+		background-color: white;
+		font-size: 1.5625em;
+	}
+
+	.white-turn-text {
+		text-align: center;
+		color: black;
+		font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+		padding: 0;
+		border: 0;
+		margin: 0;
+		font-size: 1.5625em;
+		width: 50%;
+	}
+
+	.black-turn-text {
+		text-align: center;
+		font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+		font-size: 1.5625em;
+		padding: 0;
+		border: 0;
+		margin: 0;
+		color: lightgray;
+		width: 50%;
+	}
+
+	#divider {
+		font-size: 1rem;
+		color: rgb(185, 139, 21);
+		text-align: center;
+		background-color: black;
+		margin: 0;
+		width: 5%;
+		border: 0.2rem;
+		border-style: solid; 
+		border-color: rgb(185, 139, 21);
+	}
+
+
+	.modal-container {
+		background-color: rgba(0, 0, 0, 0.3);
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		opacity: 0;
+		width: 100%;
+		transition: opacity 0.3s ease;
+	}
+
+
+	.modal-container.show {
+		pointer-events: auto;
+		opacity: 1;
+	}
+
+
+	.modal {
+		background-color: #fff;
+		border-radius: 0.3125rem;
+		padding: 1.875rem 3.125rem;
+		box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+		width: 60%;
+		max-width: 100%;
+		text-align: center;
+	}
+
+	form .input-box span.details {
+		display: block;
+		font-weight: 500;
+		margin-bottom: 0.313rem;
+	}
+
+	.modal form .user-details {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 1.25rem 0 0.75rem 0;
+	}
+
+
+	form .user-details .input-box {
+		margin-bottom: 0.938rem;
+		width: calc(100% / 2 - 1.25rem);
+	}
+
+	.user-details .input-box input {
+		height: 2.813rem;
+		width: 100%;
+		outline: none;
+		font-size: 1rem;
+		border-radius: 0.313rem;
+		padding-left: 0.938rem;
+		border: 0.063rem solid #ccc;
+		border-bottom-width: 0.125rem;
+		transition: all 0.3s ease;
+	}
+
+	.user-details .input-box input:focus,
+	.user-details .input-box input:valid {
+		border-color: #b40000;
+	}
+
+	form .bottone {
+		height: 2.813rem;
+		margin: 2.188rem 0
+	}
+
+	form .bottone button {
+		height: 100%;
+		width: 100%;
+		border-radius: 0.313rem;
+		border: none;
+		color: #fff;
+		font-size: 1.125rem;
+		font-weight: 500;
+		letter-spacing: 0.063rem;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
+	}
+
+	form .bottone button:hover {
+		background-image: linear-gradient(-90deg, rgb(49, 49, 49) 0%, rgb(10, 10, 10) 25%, rgb(182, 182, 182) 51%, #c3084d 100%);
+	}
+
+
+	.placeholder-for-win-message .modal-container {
+		background-color: rgba(0, 0, 0, 0.3);
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		opacity: 0;
+		width: 100%;
+		transition: opacity 0.3s ease;
+	}
+
+	.placeholder-for-win-message .modal-container.show {
+		pointer-events: auto;
+		opacity: 1;
+	}
+
+	.placeholder-for-win-message .modal {
+		background-color: #fff;
+		border-radius: 0.3125rem;
+		padding: 1.875rem 3.125rem;
+		box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+		max-width: 100%;
+		text-align: center;
+	}
+
+
+	.placeholder-for-win-message form .input-box span.details {
+		display: block;
+		font-weight: 500;
+		margin-bottom: 0.3125rem
+	}
+
+	.placeholder-for-win-message .modal form .user-details {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 1.25rem 0 0.75rem 0;
+	}
+
+
+	.placeholder-for-win-message form .user-details .input-box {
+		margin-bottom: 0.9375rem;
+		width: calc(100% / 2 - 1.25rem);
+	}
+
+	.placeholder-for-win-message form .input-box span.details {
+		display: block;
+		font-weight: 500;
+		margin-bottom: 0.3125rem;
+	}
+
+	.placeholder-for-win-message .user-details .input-box input {
+		height: 2.8125rem;
+		width: 100%;
+		outline: none;
+		font-size: 1rem;
+		border-radius: 0.3125rem;
+		padding-left: 0.9375rem;
+		border: 0.0625rem solid #ccc;
+		border-bottom-width: 0.125rem;
+		transition: all 0.3s ease;
+	}
+
+	.placeholder-for-win-message .user-details .input-box input:focus,
+	.placeholder-for-win-message .user-details .input-box input:valid {
+		border-color: #b40000;
+	}
+
+	.placeholder-for-win-message form .bottone {
+		height: 2.8125rem;
+		margin: 2.1875rem 0;
+	}
+
+	.placeholder-for-win-message form .bottone button {
+		height: 100%;
+		width: 100%;
+		border-radius: 0.3125rem;
+		border: none;
+		color: #fff;
+		font-size: 1.125rem;
+		font-weight: 500;
+		letter-spacing: 0.0625rem;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
+	}
+
+	.placeholder-for-win-message form .bottone button:hover {
+		background-image: linear-gradient(-90deg, rgb(49, 49, 49) 0%, rgb(10, 10, 10) 25%, rgb(182, 182, 182) 51%, #c3084d 100%);
+	}
+
+
+}
+
+
+
+
+@media (max-width: 700px) {
+
+	/* CSS RESET */
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box; /*quando mettiamo width = x, se abbiamo margin = y e padding = z, il width totale sarà x + y + z, con border-box invece margin e padding vengono già calcolate nel width in modo che tu alla fine abbia width = x*/
+		margin: auto;
+	}
+
+
+	html {
+		font-size: 16px;
+		height: 100%;
+	}
+
+	body {
+		width: 100%;
+		height: 100%;
+		/* background-size: 300% 300%;
+		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
+			-webkit-animation: AnimateBG 5s ease infinite;
+		animation: AnimateBG 5s ease infinite; */
+	}
+
+
+	/* @-webkit-keyframes AnimateBG {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 90%;
+		}
+	}
+
+	@keyframes AnimateBG {
+		0% {
+			background-position: 0% 50%;
+		}
+
+		50% {
+			background-position: 100% 50%;
+		}
+
+		100% {
+			background-position: 0% 50%;
+		}
+	} */
+
+
+
+	main {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	table {
+		width: 80%;
+		height: 65%; 
+		border-style: solid;
+		border-width: 0.75rem;
+		border-color: rgb(70, 69, 69);
+		border-radius: 0.313rem;
+		background-color: white;
+	}
+
+	tr {
+		width: 12.5%;
+		height: 12.5%; 
+	}
+
+	td {
+		width: 12.5%;
+		height: 12.5%; 
+		text-align: center;
+	}
+
+	.white {
+		background-color: #f1f1f1;
+		border: 0.0625em solid lightgrey
+	}
+
+	.black {
+		background-color:  #c4128e;
+		border: 0.0625em solid lightgrey;
+
+	}
+
+	/*ho dovuto levare il bordo altrimenti dava problemi con le dimensioni*/
+	.white-piece {
+		width: 50%;
+		height: 50%;
+		padding: 0px;
+		background-color: rgb(188, 199, 32);
+		margin: 25%;
+		border: 0.1em solid #808080;
+		border-radius: 50%;
+	}
+
+	.black-piece {
+		width: 50%;
+		height: 50%;
+		padding: 0px;
+		background-color: rgb(53, 179, 37);
+		/* border: 0.1em solid #808080; */
+		margin: 25%;
+		border: 0.1em solid #808080;
+		border-radius: 50%;
+	}
+
+	/* qua ci sandrebbero white-piece e black-piece ma li abbiamo modificati */
+
+	@keyframes become_black_king {
+
+		0% {
+			background-color: rgb(0, 0, 0);
+		}
+
+		50% {
+			background-color: rgb(53, 179, 37);
+		}
+
+		100% {
+			background-color: black;
+		}
+	}
+
+
+	/*Abbiamo invertito become_white_king e become_black_king in qualche modo*/
+
+	@keyframes become_white_king {
+		0% {
+			background-color: white;
+		}
+
+		50% {
+			background-color: rgb(188, 199, 32);
+		}
+
+		100% {
+			background-color: white;
+		}
+	} 
+
+	.black-piece.king {
+		background-color:  rgb(188, 199, 32);
+		animation-name: become_black_king;
+		animation-iteration-count: infinite;
+		animation-duration: 1s;
+		/* width: 82%;
+		height: 75%;
+		margin: 10%; */
+	}
+
+	.white-piece.king {
+		background-color: rgb(53, 179, 37);
+		animation-name: become_white_king;
+		animation-iteration-count: infinite;
+		animation-duration: 1s;
+		/* width: 82%;
+		height: 75%;
+		margin: 10%; */
+	}
+
+
+	.desktop {
+		margin: 0;
+		width: 100%;
+		display: flex;
+	}
+
+	.desktop div {
+		border: 0.125em lightgrey solid;
+		border-bottom-left-radius: 0.1875em;
+		border-bottom-right-radius: 0.1875em;
+		background-color: white;
+		font-size: 1.5625em;
+	}
+
+	.white-turn-text {
+		text-align: center;
+		color: black;
+		font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+		padding: 0;
+		border: 0;
+		margin: 0;
+		font-size: 1.5625em;
+		width: 50%;
+	}
+
+	.black-turn-text {
+		text-align: center;
+		font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+		font-size: 1.5625em;
+		padding: 0;
+		border: 0;
+		margin: 0;
+		color: lightgray;
+		width: 50%;
+	}
+
+	#divider {
+		font-size: 1rem;
+		color: rgb(185, 139, 21);
+		text-align: center;
+		background-color: black;
+		margin: 0;
+		width: 10%;
+		border: 0.2rem;
+		border-style: solid; 
+		border-color: rgb(185, 139, 21);
+	}
+
+
+	.modal-container {
+		background-color: rgba(0, 0, 0, 0.3);
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		opacity: 0;
+		width: 100%;
+		transition: opacity 0.3s ease;
+	}
+
+
+	.modal-container.show {
+		pointer-events: auto;
+		opacity: 1;
+	}
+
+
+	.modal {
+		background-color: #fff;
+		border-radius: 0.3125rem;
+		padding: 1.875rem 3.125rem;
+		box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+		max-width: 100%;
+		text-align: center;
+	}
+
+	form .input-box span.details {
+		display: block;
+		font-weight: 500;
+		margin-bottom: 0.313rem;
+	}
+
+	.modal form .user-details {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 1.25rem 0 0.75rem 0;
+	}
+
+
+	form .user-details .input-box {
+		margin-bottom: 0.938rem;
+		width: calc(100% / 2 - 1.25rem);
+	}
+
+	.user-details .input-box input {
+		height: 2.813rem;
+		width: 100%;
+		outline: none;
+		font-size: 1rem;
+		border-radius: 0.313rem;
+		padding-left: 0.938rem;
+		border: 0.063rem solid #ccc;
+		border-bottom-width: 0.125rem;
+		transition: all 0.3s ease;
+	}
+
+	.user-details .input-box input:focus,
+	.user-details .input-box input:valid {
+		border-color: #b40000;
+	}
+
+	form .bottone {
+		height: 2.813rem;
+		margin: 2.188rem 0
+	}
+
+	form .bottone button {
+		height: 100%;
+		width: 100%;
+		border-radius: 0.313rem;
+		border: none;
+		color: #fff;
+		font-size: 1.125rem;
+		font-weight: 500;
+		letter-spacing: 0.063rem;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
+	}
+
+	form .bottone button:hover {
+		background-image: linear-gradient(-90deg, rgb(49, 49, 49) 0%, rgb(10, 10, 10) 25%, rgb(182, 182, 182) 51%, #c3084d 100%);
+	}
+
+
+	.placeholder-for-win-message .modal-container {
+		background-color: rgba(0, 0, 0, 0.3);
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		opacity: 0;
+		width: 100%;
+		transition: opacity 0.3s ease;
+	}
+
+	.placeholder-for-win-message .modal-container.show {
+		pointer-events: auto;
+		opacity: 1;
+	}
+
+	.placeholder-for-win-message .modal {
+		background-color: #fff;
+		border-radius: 0.3125rem;
+		padding: 1.875rem 3.125rem;
+		box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
+		max-width: 100%;
+		text-align: center;
+	}
+
+
+	.placeholder-for-win-message form .input-box span.details {
+		display: block;
+		font-weight: 500;
+		margin-bottom: 0.3125rem
+	}
+
+	.placeholder-for-win-message .modal form .user-details {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 1.25rem 0 0.75rem 0;
+	}
+
+
+	.placeholder-for-win-message form .user-details .input-box {
+		margin-bottom: 0.9375rem;
+		width: calc(100% / 2 - 1.25rem);
+	}
+
+	.placeholder-for-win-message form .input-box span.details {
+		display: block;
+		font-weight: 500;
+		margin-bottom: 0.3125rem;
+	}
+
+	.placeholder-for-win-message .user-details .input-box input {
+		height: 2.8125rem;
+		width: 100%;
+		outline: none;
+		font-size: 1rem;
+		border-radius: 0.3125rem;
+		padding-left: 0.9375rem;
+		border: 0.0625rem solid #ccc;
+		border-bottom-width: 0.125rem;
+		transition: all 0.3s ease;
+	}
+
+	.placeholder-for-win-message .user-details .input-box input:focus,
+	.placeholder-for-win-message .user-details .input-box input:valid {
+		border-color: #b40000;
+	}
+
+	.placeholder-for-win-message form .bottone {
+		height: 2.8125rem;
+		margin: 2.1875rem 0;
+	}
+
+	.placeholder-for-win-message form .bottone button {
+		height: 100%;
+		width: 100%;
+		border-radius: 0.3125rem;
+		border: none;
+		color: #fff;
+		font-size: 1.125rem;
+		font-weight: 500;
+		letter-spacing: 0.0625rem;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
+	}
+
+	.placeholder-for-win-message form .bottone button:hover {
+		background-image: linear-gradient(-90deg, rgb(49, 49, 49) 0%, rgb(10, 10, 10) 25%, rgb(182, 182, 182) 51%, #c3084d 100%);
+	}
+
+
+}
+
+
+
+@media (max-width: 350px), (max-height: 700px) {
+	
+	i {
+		opacity: 0;
+		font-size: 0;
+	}
+
+	.white-piece {
+		border: 0;
+	}
+
+	.black-piece {
+		border: 0;
+	}
+
+	table {
+		color:red;
+	}
+
+}
+
+@media (orientation: portrait) {
+	table {
+		height: 40%;
+	}
+
+	.desktop {
+		min-width: 400px;
+	}
+}
+
+@media (min-aspect-ratio: 16/5) {
+
+	table {
+		width: 25%;
+	} 
+}
+
+
+
+@media (max-height: 700px)  {
+	table {
+		width: 400px;
+		height: 400px;
+	}
+}
+	
