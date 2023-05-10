@@ -9,9 +9,9 @@ This repo contains almost all the university projects I have done until now.
 
 - **psico-dama**: made for the "Linguaggi e Tecnologie per il Web" exam, _PsicoDAMA_ is a game of checkers with special psychedelic effects.
 
-- **models-of-ML**: made for the "Fondamenti di Intelligenza Artificiale" exam, consists of two parts:
-   - from-scratch implementations of several fundamentals ML models (such as Neural Net, DT, ...) for both classification and regression task on an online news popularity dataset
-   - AI agents (in progress)
+- **ML-models-AI-agents**: made for the "Fondamenti di Intelligenza Artificiale" exam, consists of two parts:
+   - models-of-ML: from-scratch implementations of several fundamentals ML models (such as Neural Net, DT, ...) for both classification and regression task on an online news popularity dataset
+   - AI agents: pathfinding with A* algorithm (in progress)
 
 - **net-simulation**: made for the "Telecomunicazioni" exam, consists of two projects done using *ns3*, *Wireshark* and *NetAnim*: 
    - implement a CSMA + P2P simulation with ns3 and analyze traffic performance with Wireshark 
