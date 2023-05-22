@@ -46,7 +46,7 @@ nav {
     padding: 3vmin 8%;
     display: flex;
     align-items: center;
-    justify-content: flex-end; /*I tried space-between but the 4 options were not in the upper right corner*/
+    justify-content: flex-end; 
 }
 
 nav ul {
@@ -64,8 +64,6 @@ nav ul li a:hover {
 
      -webkit-text-stroke-color: #ff0000;
      -webkit-text-stroke-width: 2px;
-    /* Non funziona il cambio di colore, centra sicuramente con il click
-    perchè prima di averci cliccato si illuminavano di rosso, dopo no */
     color: white;
 }  
 

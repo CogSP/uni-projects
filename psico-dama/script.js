@@ -1,15 +1,14 @@
-/* GAME STATE DATA: declaration of the board, with all the pieces and their
-html's ids */
 
 var colore_bianchi  
 var colore_neri
 
+//questa richiesta xmlhttp serve per capire quale tema è stato scelto dall'utente
 xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = () => {
             if(xmlhttp.readyState === 4) {
                 if(xmlhttp.status === 200){
 
-                    testo = xmlhttp.responseText;
+                    testo = xmlhttp.responseText.trim();
                     console.log("risposta: " + testo);
                     if(testo == "std"){
                         document.getElementById("foglioback").href = "background.css";
@@ -41,7 +40,7 @@ xmlhttp = new XMLHttpRequest();
         xmlhttp.send();
 
 
-const board = [ /*64 item array*/
+const board = [ //salviamo una rappresentazione della damiera in un array
     null, 0, null, 1, null, 2, null, 3,
     4, null, 5, null, 6, null, 7, null,
     null, 8, null, 9, null, 10, null, 11,
@@ -53,6 +52,7 @@ const board = [ /*64 item array*/
 ]
 
 let found = false; //variabile che serve a capire se ci sono pedine che potrebbero mangiare
+                   //in questo modo obblighiamo l'utente a mangiare se può farlo
 
 let findPiece = function(pieceId) { //La funzione restituisce, dato l'id html del pezzo, il corrispondente indice nella damiera di back-end
     let parsed = parseInt(pieceId);
@@ -60,39 +60,38 @@ let findPiece = function(pieceId) { //La funzione restituisce, dato l'id html de
 }
 
 
-// references to the web html page (DOM references)
-const cells = document.querySelectorAll("td"); /* list of all the "td"s in the  html file*/
+
+const cells = document.querySelectorAll("td"); 
 const pieces = document.querySelectorAll("p");
-let whitesPieces = document.querySelectorAll(".white-piece"); /* does it work? */
-let blacksPieces = document.querySelectorAll(".black-piece"); /* does it work? */
+let whitesPieces = document.querySelectorAll(".white-piece"); 
+for(let i = 0; i < whitesPieces.length;i++)
+            whitesPieces[i].classList.add('turno'); //aggiungiamo la classe turno a tutte le pedine bianche in modo che si illuminino quando ci passo il mouse
+let blacksPieces = document.querySelectorAll(".black-piece"); 
 const whiteTurnText = document.getElementById("wtt");
 const blackTurnText = document.getElementById("btt");
 const divider = document.querySelector("#divider")
 
 
-/* players properties: game state */
 let turn = true;  /* true = white, false = black*/ 
-let whiteScore = 12; // how many pieces the white player currently has
-let blackScore = 12;
-let playerPieces;  // if its white's turn playerPieces = whitesPieces, otherwise 
-                   //playerPieces = blacksPieces
+let whiteScore = 12; //pezzi rimanenti al bianco
+let blackScore = 12; //pezzi rimanenti al nero
+let playerPieces;  //se è il turno del bianco playerpieces = whitepieces
 
 
-let selectedPiece = {
-    // default values when no piece is selected
+let selectedPiece = { //classe che gestisce le informazioni della pedina selezionata
+    //default (nessun pezzo selezionato)
     pieceId: -1,
     indexOfBoardPiece: -1,
     isKing: false,
 
-    /* these are all the moves and whether they are possible or not */
-    /*TODO: check if it's really that*/ 
+    //possibili spazi in cui la pedina può muoversi
     seventhSpace: false,
     ninthSpace: false,
     fourteenthSpace: false,
     eighteenthSpace: false,
-    // +7/+9 for whites, -7/-9 for blacks
-    // we didnt' create two variables because when a piece become king, regardless
-    // of its color, it can move in all the four positions 
+    // +7/+9 per i bianchi, -7/-9 per i neri (mosse standard in avanti)
+
+    //mosse all'indietro (se una pedina è re)
     minusSeventhSpace: false,
     minusNinthSpace: false,
     minusFourteenthSpace: false,
@@ -100,35 +99,30 @@ let selectedPiece = {
 }
 
 
-    /* EVENT LISTENER */
+ 
 
-// give to all the pieces an event listener. This event listener, when the 
-//piece is clicked, will invoke the function "getPlayerPieces"
+//assegniamo un event listener a tutti gli elementi 
 function givePiecesEventListeners() {
 
     if (turn) {
         //console.log("white's turn");
         
         for (let i = 0; i < whitesPieces.length; i++) {
-            blacksPieces[i].classList.remove("turno");
-            whitesPieces[i].classList.add("turno");
             whitesPieces[i].addEventListener("click", getPlayerPieces);
         }
     } else {
         
         //console.log("black's turn");
         for (let i = 0; i < blacksPieces.length; i++) {
-            whitesPieces[i].classList.remove("turno");
-            blacksPieces[i].classList.add("turno");
             blacksPieces[i].addEventListener("click", getPlayerPieces);
         }
     }
 }
 
-    /* END OF EVENT LISTENER CONFIGURATION */
 
 
-/* here starts the functions chain for when we click a piece: */
+
+//funzione che cambia i pezzi del giocatore attuale a seconda del turno
 
 function getPlayerPieces() {
     //whites turn
@@ -140,23 +134,18 @@ function getPlayerPieces() {
         playerPieces = blacksPieces;
     }
 
-        //Controllo per ogni bianco che non possa mangiare; se un qualsiasi bianco può mangiare
-        //il pezzo selezionato non dove poterlo fare
-    
-
     removeCellonclick();
     resetBorders();
 }
 
-// we remove the "onclick" attribute from all the cells
-// after, in the functions chain, we are going to re-calculate which cells should have this attribute
+//leva il click da tutte le celle, in modo da poterlo assegnare solo a quelle giuste in seguito
 function removeCellonclick() {
     for (let i = 0; i < cells.length; i++) {
         cells[i].removeAttribute("onclick");
     }
 }
 
-// resetting the borders color to the initial value, so we can later just color the one that is selected
+//resetta il colore dei bordi, così da poterlo riassegnare in seguito alla pedina selezionata
 function resetBorders() {
     for (let i = 0; i < playerPieces.length; i++) {
         if (screen.width >= 350 && screen.height >= 700) {
@@ -184,10 +173,10 @@ function resetBorders() {
         }
     } 
     resetSelectedPieceProperties();
-    getSelectedPiece(); //here we start operating on the current selected piece
+    getSelectedPiece(); //cominciamo a operare sulla pedina selezionata
 }
 
-function resetSelectedPieceProperties() {
+function resetSelectedPieceProperties() { //reset delle proprietà del pezzo selezionato
     selectedPiece.pieceId = -1;
     selectedPiece.indexOfBoardPiece = -1;
     selectedPiece.isKing = false;
@@ -202,45 +191,39 @@ function resetSelectedPieceProperties() {
 }
 
 
-// usint findPiece(), this will get us the board's index where the
-//selected piece is located
+
 function getSelectedPiece() {
-    // we use "event.target.id" but event is now depreecated 
-    // TODO: replace it
 
-    selectedPiece.pieceId = parseInt(event.target.id);
-
-    console.log("UDDIO QUALCUNO HA CLICCATO IL PEZZO CON ID", selectedPiece.pieceId)
-
-    selectedPiece.indexOfBoardPiece = findPiece(selectedPiece.pieceId);
+    selectedPiece.pieceId = parseInt(event.target.id); //prendiamo l'id del pezzo selezionato
+    selectedPiece.indexOfBoardPiece = findPiece(selectedPiece.pieceId); //prendiamo l'indice del pezzo selezionato nella damiera di back-end
     
-    isPieceKing();
+    isPieceKing(); //controlliamo se il pezzo selezionato è un re
 }
 
 
 
 function isPieceKing() {
 
-    //element.classList give us the list of classes to which our element belongs
     //console.log("sto per controllare se l'elemento è king. L'elemento ha id = " + selectedPiece.pieceId);
     console.log("il selected piece ha Id", selectedPiece.pieceId);
     console.log("l'elemento è", document.getElementById(selectedPiece.pieceId));
-    if (document.getElementById(selectedPiece.pieceId).classList.contains("king")) {
+
+    if (document.getElementById(selectedPiece.pieceId).classList.contains("king")) { //controlliamo se il pezzo selezionato è un re
         selectedPiece.isKing = true;
     } else {
         selectedPiece.isKing = false;
     }
 
-    getAvailableSpaces();
+    getAvailableSpaces(); //gli spazi in cui può muoversi il pezzo variano a seconda che sia re o no
 }
 
 function getAvailableSpaces() { 
-    //we are using the string equality operator
 
-    if (board[selectedPiece.indexOfBoardPiece + 7] === null /*the cell is available (id == null -> no piece here)*/ 
-        && cells[selectedPiece.indexOfBoardPiece + 7].classList.contains("white") !== true) { /*never go on white cells: this is 
-        important because if the piece is on the edge, +7/+9 will get us on the opposite end of the board, so we use the fact that these cells are white to prevent jumping there*/
-            selectedPiece.seventhSpace = true; // moving to upper-right is available
+    //possiamo muoverci se la cella è vuota e se è una casella valida (quindi non bianca)
+    //se il pezzo è un re, può muoversi anche all'indietro, controlleremno se è re in seguito ma per ora supponiamo che lo sia
+    if (board[selectedPiece.indexOfBoardPiece + 7] === null  
+        && cells[selectedPiece.indexOfBoardPiece + 7].classList.contains("white") !== true) { 
+            selectedPiece.seventhSpace = true; 
     }
 
     if (board[selectedPiece.indexOfBoardPiece + 9] === null &&
@@ -248,7 +231,6 @@ function getAvailableSpaces() {
             selectedPiece.ninthSpace = true; 
     }
 
-    // same for -7 and -9
     if (board[selectedPiece.indexOfBoardPiece - 7] === null &&
         cells[selectedPiece.indexOfBoardPiece - 7].classList.contains("white") !== true) {
             selectedPiece.minusSeventhSpace = true; 
@@ -264,7 +246,7 @@ function getAvailableSpaces() {
 }
 
 
-function YouGottaEat(index) { //funzione che controlla se un certo pezzo sulla scacchiera (generico, non il selezionato) può mangiare
+function YouGottaEat(index) { //funzione che controlla se un certo pezzo sulla scacchiera (generico, non il selezionato) può mangiare, in quel caso deve farlo
     
     console.log("controlliamo se il pezzo", index, "è obbligato a mangiare")
     
@@ -275,7 +257,7 @@ function YouGottaEat(index) { //funzione che controlla se un certo pezzo sulla s
         board[index + 14] === null 
         && cells[index + 14].classList.contains("white") !== true
         && board[index + 7] !== null
-        && board[index + 7] >= 12) /*black pieces have id >= 12*/ {
+        && board[index + 7] >= 12){
             console.log("c'è un nero in + 7 da mangiare per poi andare + 14")
             console.log("index = ", index.toString());
             found = true;
@@ -291,15 +273,6 @@ function YouGottaEat(index) { //funzione che controlla se un certo pezzo sulla s
             found = true;
         }
         
-        if(index - 7 >= 0 && index - 14 >=0) {
-            console.log("board[index - 14] === null:", board[index - 14] === null);
-            console.log("cells[index - 14].classList.contains(white) !== true:", cells[index - 14].classList.contains("white") !== true );
-            console.log("document.getElementById(board[index]).classList.contains('king'):", document.getElementById(board[index]).classList.contains("king"));
-            console.log("board[index -7] !== null: ", board[index -7] !== null);
-            console.log("board[index - 7] >= 12: ", board[index - 7] >= 12);
-            console.log("\n");
-            console.log("ora printo ClassList:", cells[index].classList)
-        }
         
         if (
         index - 7 >= 0 && index - 14 >=0
@@ -311,17 +284,6 @@ function YouGottaEat(index) { //funzione che controlla se un certo pezzo sulla s
             console.log("poiché questo bianco è un re, può mangiare al contrario un pezzo nero in -7 per poi andare in -14")
             console.log("index = ", index.toString());
             found = true;
-        }
-
-        if(index - 9 >= 0 && index - 18 >=0){
-        console.log("Condizioni verificate: ");
-        console.log("board[index - 18] === null: ", board[index - 18] === null );
-        console.log("cells[index - 18].classList.contains(white) !== true:", cells[index - 18].classList.contains("white") !== true);
-        console.log("document.getElementById(board[index]).classList.contains('king')", document.getElementById(board[index]).classList.contains("king"));
-        console.log("board[index -9] !== null: ", board[index -9] !== null);
-        console.log("board[index - 9] >= 12: ", board[index - 9] >= 12);
-        console.log("\n");
-        console.log("ora printo ClassList:", cells[index].classList)
         }
 
         if (board[index - 18] === null 
@@ -336,16 +298,6 @@ function YouGottaEat(index) { //funzione che controlla se un certo pezzo sulla s
         }
     } else {
 
-        if (index + 7 < 64 && index + 18 < 64) {
-            console.log("Condizioni verificate:");
-            console.log("board[index + 14] === null", board[index + 14] === null);
-            console.log("index + 7 < 64 && index + 14 < 64", index + 7 < 64 && index + 14 < 64);
-            console.log("document.getElementById(board[index]).classList.contains('king')", document.getElementById(board[index]).classList.contains("king"))
-            console.log("cells[index + 14].classList.contains('white') !== true", cells[index + 14].classList.contains("white") !== true)
-            console.log("board[index + 7] < 12 && board[index + 7] !== null", board[index + 7] < 12 && board[index + 7] !== null)
-            console.log("ora printo ClassList:", cells[index].classList)
-        }
-
         if (board[index + 14] === null
         &&  index + 7 < 64 && index + 14 < 64
         && document.getElementById(board[index]).classList.contains("king")
@@ -355,17 +307,6 @@ function YouGottaEat(index) { //funzione che controlla se un certo pezzo sulla s
             console.log("indexKing = ", index.toString());
             found = true;
         }
-
-
-        if (index + 9 < 64 && index + 18 < 64) {
-            console.log("board[index + 18] === null", board[index + 18] === null)
-            console.log("index + 9 < 64 && index + 18 < 64", index + 9 < 64 && index + 18 < 64)
-            console.log("document.getElementById(board[index]).classList.contains('king')", document.getElementById(board[index]).classList.contains("king"))
-            console.log("cells[index + 18].classList.contains('white') !== true", cells[index + 18].classList.contains("white") !== true)
-            console.log("board[index + 9] < 12 && board[index + 9] !== null", board[index + 9] < 12 && board[index + 9] !== null)
-            console.log("ora printo ClassList:", cells[index].classList)
-        }
-        
 
         if (board[index + 18] === null 
         &&  index + 9 < 64 && index + 18 < 64
@@ -395,20 +336,17 @@ function YouGottaEat(index) { //funzione che controlla se un certo pezzo sulla s
     }
 }
 
-// IS THERE A WAY TO ELMINATE THIS IF-ELSE BRANCH, DOING JUST ONE CODE FOR BOTH THE TEAMS?
-// THE PROBLEM IS THAT WE NEED TO DIFFERENTIATE BETWEEN ID >= 12 (BLACKS) AND < 12 (WHITES)
-function checkAvailableJumpSpaces() {
+
+function checkAvailableJumpSpaces() { //controlliamo se il pezzo può mangiare
 
     if (turn) {
 
         if (board[selectedPiece.indexOfBoardPiece + 14] === null 
         && cells[selectedPiece.indexOfBoardPiece + 14].classList.contains("white") !== true
-        && board[selectedPiece.indexOfBoardPiece + 7] >= 12) /*black pieces have id >= 12*/ {
+        && board[selectedPiece.indexOfBoardPiece + 7] >= 12) {
             console.log("Non entrare qui!!!");
             selectedPiece.fourteenthSpace = true;
-            // found = true;
-        } else { /*PEFFORZA ALTRIMENTI C'È QUEL PROBLEMA CHE DICEVO A ISIDORO PER CUI CON LA MOSSA SOLITA PER FARE LA DOPPIA MANGIATA E DIVENTARE CON IL BIANCO RE POTEVO ANDARE DUE VOLTE A SINISTRA MANGIANDO SOPRA UNA PEDINA*/
-        /*NON HO ANCORA CAPITO DOVE PERO' FOURTEENTHSPACE VENIVA RESA TRUE ANCHE SE DOVEVA ESSERE FALSE*/ 
+        } else {
             selectedPiece.fourteenthSpace = false;
         }
 
@@ -417,7 +355,6 @@ function checkAvailableJumpSpaces() {
         && cells[selectedPiece.indexOfBoardPiece + 18].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece + 9] >= 12) {
             selectedPiece.eighteenthSpace = true;
-            // found = true;
         } else {
             selectedPiece.eighteenthSpace = false;
         }
@@ -427,7 +364,6 @@ function checkAvailableJumpSpaces() {
         && cells[selectedPiece.indexOfBoardPiece - 14].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece - 7] >= 12) {
             selectedPiece.minusFourteenthSpace = true;
-            // found = true;
         } else {
             selectedPiece.minusFourteenthSpace = false;
         }
@@ -437,7 +373,6 @@ function checkAvailableJumpSpaces() {
         && cells[selectedPiece.indexOfBoardPiece - 18].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece - 9] >= 12) {
             selectedPiece.minusEighteenthSpace = true;
-            // found = true;
         } else {
             selectedPiece.minusEighteenthSpace = false;
         }
@@ -447,7 +382,6 @@ function checkAvailableJumpSpaces() {
         && cells[selectedPiece.indexOfBoardPiece + 14].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece + 7] < 12 && board[selectedPiece.indexOfBoardPiece + 7] !== null) {
             selectedPiece.fourteenthSpace = true;
-            // found = true;
         } else {
             selectedPiece.fourteenthSpace = false;
         }
@@ -457,7 +391,6 @@ function checkAvailableJumpSpaces() {
         && cells[selectedPiece.indexOfBoardPiece + 18].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece + 9] < 12 && board[selectedPiece.indexOfBoardPiece + 9] !== null) {
             selectedPiece.eighteenthSpace = true;
-            // found = true;
         } else {
             selectedPiece.eighteenthSpace = false;
         }
@@ -466,7 +399,6 @@ function checkAvailableJumpSpaces() {
         && board[selectedPiece.indexOfBoardPiece - 7] < 12 
         && board[selectedPiece.indexOfBoardPiece - 7] !== null) {
             selectedPiece.minusFourteenthSpace = true;
-            // found = true;
         } else {
             selectedPiece.minusFourteenthSpace = false;
         }
@@ -475,8 +407,7 @@ function checkAvailableJumpSpaces() {
         if (board[selectedPiece.indexOfBoardPiece - 18] === null && cells[selectedPiece.indexOfBoardPiece - 18].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece - 9] < 12
         && board[selectedPiece.indexOfBoardPiece - 9] !== null) {
-            selectedPiece.minusEighteenthSpace = true;
-            // found = true;   
+            selectedPiece.minusEighteenthSpace = true; 
         } else {
             selectedPiece.minusEighteenthSpace = false;
         }
@@ -493,7 +424,7 @@ function checkAvailableJumpSpaces() {
                 YouGottaEat(i);
         }
     }
-    if(found){ //Se qualche pezzo può mangiare, lui non può muoversi senza farlo!
+    if(found){ //se qualche pezzo può mangiare, lui non può muoversi senza farlo, quindi gli lasciamo possibili solo le mosse in cui mangia
         selectedPiece.minusSeventhSpace = false;
         selectedPiece.minusNinthSpace = false;
         selectedPiece.ninthSpace = false;
@@ -502,13 +433,13 @@ function checkAvailableJumpSpaces() {
     checkPieceConditions();
 }
 
-// restrict the movements if the piece is not a king
+//se il pezzo non è re dobbiamo impedirgli di fare i movimenti all'indietro
 function checkPieceConditions() {
 
     if (selectedPiece.isKing) {
         givePieceBorder();
-    } else {
-        //whites turn, the piece is not a king: it can't move -7/-9, so we set this variables to false 
+    } else { 
+       
         if (turn) {
             selectedPiece.minusSeventhSpace = false;
             selectedPiece.minusNinthSpace = false;
@@ -526,7 +457,7 @@ function checkPieceConditions() {
 }
 
 function givePieceBorder() {
-
+    //se il pezzo può fare almeno un movimento gli coloriamo il bordo
     if (selectedPiece.seventhSpace || selectedPiece.ninthSpace || selectedPiece.fourteenthSpace || selectedPiece.eighteenthSpace
         || selectedPiece.minusSeventhSpace || selectedPiece.minusNinthSpace || selectedPiece.minusFourteenthSpace || selectedPiece.minusEighteenthSpace) {
             
@@ -552,12 +483,12 @@ function givePieceBorder() {
             console.log("hai selezionato il pezzo in posizione", selectedPiece.indexOfBoardPiece);
             giveCellsClick();
     } else {
-        //this piece can't move
+        //il pezzo non può muoversi da nessuna parte
         return;
     }
 }
 
-function giveCellsClick() {
+function giveCellsClick() { //diamo la possibilità di muoversi verso le celle in cui il pezzo può andare
     if (selectedPiece.seventhSpace) {
         cells[selectedPiece.indexOfBoardPiece + 7].setAttribute("onclick", "makeMove(7)");
     }
@@ -587,12 +518,12 @@ function giveCellsClick() {
 
 }
 
-/* end of the functions chain for when you click a cell*/
+//fine della cascata di funzioni che si attivano quando si clicca su un pezzo
 
 
 function makeMove(number) {
 
-    //remove the piece from the front end because we are moving elsewhere
+    //rimuoviamo il pezzo dal front-end perchè lo sposteremo
     
     found = false;
     document.getElementById(selectedPiece.pieceId).remove();
@@ -600,9 +531,9 @@ function makeMove(number) {
     cells[selectedPiece.indexOfBoardPiece].innerHTML = "";
 
 
-    // to save in javascript memory the new position of the piece
+    //inseriamo il pezzo nella nuova posizione
     if (turn) {
-        if (selectedPiece.isKing) {                                     // these are two classes: white-piece and king
+        if (selectedPiece.isKing) {                                    
            
             if (screen.width >= 350 && screen.height >= 700) {
                 cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"><i class="fa-solid fa-crown fa-flip"></i></p>`;
@@ -612,8 +543,7 @@ function makeMove(number) {
                 cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"></p>`;
             }
 
-            console.log("MAONNA RAGAZZI IL PEZZO CON ID", selectedPiece.pieceId, "E' DIVENTATO LEZZO");
-            whitesPieces = document.querySelectorAll(".white-piece"); /* why am I recalculating this? */
+            whitesPieces = document.querySelectorAll(".white-piece"); 
         } else {
             cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="white-piece" id="${selectedPiece.pieceId}"></p>`;
             whitesPieces = document.querySelectorAll(".white-piece");
@@ -629,7 +559,6 @@ function makeMove(number) {
                 cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="black-piece king" id="${selectedPiece.pieceId}"></p>`;   //WARNING: must use the "backtick" ` symbol
             }
             
-            console.log("MAONNA RAGAZZI IL PEZZO CON ID", selectedPiece.pieceId, "E' DIVENTATO LEZZO");
             blacksPieces = document.querySelectorAll(".black-piece"); 
         } else {
             cells[selectedPiece.indexOfBoardPiece + number].innerHTML = `<p class="black-piece" id="${selectedPiece.pieceId}"></p>`;
@@ -637,10 +566,11 @@ function makeMove(number) {
         }
     }
 
-    // we can't pass object properties directly into the arguments of the function (why?) so I need to save it
     let indexOfPiece = selectedPiece.indexOfBoardPiece
-    if (number == 14 || number == 18 || number == -14 || number == -18) /* the piece is eating someone else*/ { //IN QUESTO CASO DOVREMMO CONTROLLARE EVENTUALI MANGIATE MULTIPLE
-        changeData(indexOfPiece, indexOfPiece + number, indexOfPiece + number / 2 /*position of the eaten piece*/);
+
+    //a seconda che il movimento sia standard o una presa, chiamiamo changeData() con 2 o tre argomenti
+    if (number == 14 || number == 18 || number == -14 || number == -18) { 
+        changeData(indexOfPiece, indexOfPiece + number, indexOfPiece + number / 2 );
     } else {
         changeData(indexOfPiece, indexOfPiece + number);
     }
@@ -649,11 +579,11 @@ function makeMove(number) {
 }
 
 
-// this will change the data stored in the back end
+//funzione che cambia i dati della board dopo un movimento
 function changeData(indexOfBoardPiece, modifiedIndex, removePiece) {
     board[indexOfBoardPiece] = null;
     board[modifiedIndex] = parseInt(selectedPiece.pieceId);
-    if (turn && selectedPiece.pieceId < 12 && modifiedIndex >= 56) { //the piece reached the end: it become a king
+    if (turn && selectedPiece.pieceId < 12 && modifiedIndex >= 56) { //il pezzo è diventato re
         document.getElementById(selectedPiece.pieceId).classList.add("king");
 
         if (screen.width >= 350 && screen.height >= 700) {
@@ -666,7 +596,7 @@ function changeData(indexOfBoardPiece, modifiedIndex, removePiece) {
             cells[modifiedIndex].innerHTML = `<p class="white-piece king" id="${selectedPiece.pieceId}"></p>`;
         }
 
-        console.log("MAONNA RAGAZZI IL PEZZO CON ID", selectedPiece.pieceId, "E' DIVENTATO LEZZO");
+       
         whitesPieces = document.querySelectorAll(".white-piece");
     
     }
@@ -682,11 +612,12 @@ function changeData(indexOfBoardPiece, modifiedIndex, removePiece) {
             cells[modifiedIndex].innerHTML = `<p class="black-piece king" id="${selectedPiece.pieceId}"></p>`; 
         }
         
-        console.log("MAONNA RAGAZZI IL PEZZO CON ID", selectedPiece.pieceId, "E' DIVENTATO LEZZO");
+       
         blacksPieces = document.querySelectorAll(".black-piece");
 
     }
-    if (removePiece) /*someone got eaten*/ {
+    if (removePiece)//c'è stata una presa
+        {   
         board[removePiece] = null;
         if (turn && selectedPiece.pieceId < 12) {
             cells[removePiece].innerHTML = "";
@@ -698,7 +629,7 @@ function changeData(indexOfBoardPiece, modifiedIndex, removePiece) {
         }
         
         selectedPiece.indexOfBoardPiece = findPiece(selectedPiece.pieceId);
-        let keep = checkMultiple();
+        let keep = checkMultiple(); //controlliamo se il pezzo può fare altre prese (presa multipla), in quel caso deve farlo
         console.log("Valore di keep = " + keep);
         if(keep){
             selectedPiece.seventhSpace = false;
@@ -706,43 +637,45 @@ function changeData(indexOfBoardPiece, modifiedIndex, removePiece) {
             selectedPiece.ninthSpace = false;
             selectedPiece.minusNinthSpace = false;
             checkAvailableJumpSpaces(); //punto cruciale: se può continuare a mangiare DEVE farlo e quindi rimane il pezzo selezionato
+                                        // e ricomincia la cascata ma dando la possibilità di mangiare e basta, quindi chiamo subito
+                                        //checkAvailableJumpSpaces() e non checkAvailableSpaces()
             return;
         }
     }
 
     resetSelectedPieceProperties();
-    removeCellonclick();  //these first two are necessary for the next turn
+    removeCellonclick();  
     removeEventListeners();
 }
 
-function checkMultiple(){
+function checkMultiple(){ //ritorna true se il pezzo può fare altre prese dalla cella in cui è finito mangiando
     if (turn) {
         if (board[selectedPiece.indexOfBoardPiece + 14] === null 
         && cells[selectedPiece.indexOfBoardPiece + 14].classList.contains("white") !== true
-        && board[selectedPiece.indexOfBoardPiece + 7] >= 12) /*black pieces have id >= 12*/ {
+        && board[selectedPiece.indexOfBoardPiece + 7] >= 12){
             return true;
-            // found = true;
+          
             
         }
         if (board[selectedPiece.indexOfBoardPiece + 18] === null 
         && cells[selectedPiece.indexOfBoardPiece + 18].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece + 9] >= 12) {
             return true;
-            // found = true;
+         
             
         }
         if (selectedPiece.isKing && board[selectedPiece.indexOfBoardPiece - 14] === null 
         && cells[selectedPiece.indexOfBoardPiece - 14].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece - 7] >= 12) {
             return true;
-            // found = true;
+           
             
         }
         if (selectedPiece.isKing && board[selectedPiece.indexOfBoardPiece - 18] === null 
         && cells[selectedPiece.indexOfBoardPiece - 18].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece - 9] >= 12) {
             return true;
-            // found = true;
+            
            
         }
     } else {
@@ -750,28 +683,28 @@ function checkMultiple(){
         && cells[selectedPiece.indexOfBoardPiece + 14].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece + 7] < 12 && board[selectedPiece.indexOfBoardPiece + 7] !== null) {
             return true;
-            // found = true;
+            
             
         }
         if (selectedPiece.isKing && board[selectedPiece.indexOfBoardPiece + 18] === null 
         && cells[selectedPiece.indexOfBoardPiece + 18].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece + 9] < 12 && board[selectedPiece.indexOfBoardPiece + 9] !== null) {
             return true;
-            // found = true;
+            
            
         }
         if (board[selectedPiece.indexOfBoardPiece - 14] === null && cells[selectedPiece.indexOfBoardPiece - 14].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece - 7] < 12 
         && board[selectedPiece.indexOfBoardPiece - 7] !== null) {
             return true;
-            // found = true;
+            
             
         }
         if (board[selectedPiece.indexOfBoardPiece - 18] === null && cells[selectedPiece.indexOfBoardPiece - 18].classList.contains("white") !== true
         && board[selectedPiece.indexOfBoardPiece - 9] < 12
         && board[selectedPiece.indexOfBoardPiece - 9] !== null) {
             return true;
-            // found = true;
+            
             
         }
         
@@ -797,19 +730,10 @@ function removeEventListeners() {
     checkForWin();
 }
 
-// it also changes the player
-function checkForWin() {
-    if (blackScore === 0 ) {
-        divider.style.display = "none";
-        // for (let i = 0; i < whiteTurnText.length; i++) {
-        //     whiteTurnText[i].style.color = "black";
-        //     blackTurnText[i].style.display = "none";
-        //     whiteTurnText[i].textContent = "WHITE WINS!";
-        
-        //     // aggiungiamo un pezzo HTML con il pop up
-        //     // NOTA: Importante che modal-container abbia come ulteriore classe show altrimenti non si vede il pop up
 
-        // }
+function checkForWin() {
+    if (blackScore === 0 ) { //se il bianco ha vinto facciamo apparire un placeholder che indica la vittoria
+        divider.style.display = "none";
         placeholder_for_win_message = document.getElementById("placeholder-for-win-message-id").innerHTML = 
             `<div class="modal-container show" id="modal-container-id">
                 <div class="modal">
@@ -837,19 +761,9 @@ function checkForWin() {
         console.log("richiesta fatta");
 
 
-    } else if (whiteScore === 0 ) {
+    } else if (whiteScore === 0) {
         divider.style.display = "none";
 
-        // for (let i = 0; i < blackTurnText.length; i++) {            
-        //     blackTurnText[i].style.color = "black";
-        //     whiteTurnText[i].style.display = "none";
-        //     blackTurnText[i].textContent = "BLACK WINS!";
-
-
-        //     // aggiungiamo un pezzo HTML con il pop up
-        //     // NOTA: Importante che modal-container abbia come ulteriore classe show altrimenti non si vede il pop up
-            
-        // }
         placeholder_for_win_message = document.getElementById("placeholder-for-win-message-id").innerHTML = 
             `<div class="modal-container show" id="modal-container-id">
                 <div class="modal">
@@ -885,8 +799,16 @@ function changePlayer() {
         turn = false;
         whiteTurnText.style.color = "lightGrey";
         blackTurnText.style.color = "black";
+        for(let i = 0; i < blacksPieces.length;i++)
+            blacksPieces[i].classList.add('turno');
+        for(let i = 0; i < whitesPieces.length;i++)
+            whitesPieces[i].classList.remove('turno');
     } else {
         turn = true;
+        for(let i = 0; i < blacksPieces.length;i++)
+            blacksPieces[i].classList.remove('turno');
+        for(let i = 0; i < whitesPieces.length;i++)
+            whitesPieces[i].classList.add('turno');
         whiteTurnText.style.color = "black";
         blackTurnText.style.color = "lightGrey";
 
@@ -897,7 +819,7 @@ function changePlayer() {
 
 
 
-// FOR THE LOGIN FORM
+//PER IL FORM DI LOGIN 
 const modal_container = document.getElementById("modal-container-id");
 
 const close = document.getElementById("form");
@@ -910,13 +832,16 @@ modal_container.classList.add('show');
    const pwd1 = document.getElementById("pwd");
    const pwd2 = document.getElementById("cpwd");
 
+   //di seguito una serie di controlli lato server che verificano se
+   //l'utente ha inserito username e password corretti
+
    pwd1.addEventListener("input", (event)=>{
 
    var xmlhttp = new XMLHttpRequest();
    xmlhttp.onreadystatechange = () => {
     if(xmlhttp.readyState === 4) {
         if(xmlhttp.status === 200){
-            testo = xmlhttp.responseText;
+            testo = xmlhttp.responseText.trim();
             console.log("Risposta:" + testo);
             if(testo == "no"){
                 usr1.setCustomValidity("Inserire username/password corretti!");
@@ -943,7 +868,7 @@ modal_container.classList.add('show');
     xmlhttp.onreadystatechange = () => {
      if(xmlhttp.readyState === 4) {
          if(xmlhttp.status === 200){
-             testo = xmlhttp.responseText;
+             testo = xmlhttp.responseText.trim();
              console.log("Risposta:" + testo);
              if(testo == "no"){
                  usr1.setCustomValidity("Inserire username/password corretti!");
@@ -971,7 +896,7 @@ modal_container.classList.add('show');
    xmlhttp.onreadystatechange = () => {
     if(xmlhttp.readyState === 4) {
         if(xmlhttp.status === 200){
-            testo = xmlhttp.responseText;
+            testo = xmlhttp.responseText.trim();
                 console.log("Risposta:" + testo);
                 if(testo == "no"){
                     usr2.setCustomValidity("Inserire username/password corretti!");
@@ -994,7 +919,7 @@ modal_container.classList.add('show');
     xmlhttp.onreadystatechange = () => {
      if(xmlhttp.readyState === 4) {
          if(xmlhttp.status === 200){
-             testo = xmlhttp.responseText;
+             testo = xmlhttp.responseText.trim();
                  console.log("Risposta:" + testo);
     
                  if(testo == "no"){
@@ -1012,6 +937,7 @@ modal_container.classList.add('show');
     xmlhttp.send();
     })
 
+    //controllo extra che verifica se stiamo inserendo lo stesso utente due volte
 close.addEventListener("submit", (event)=>{
     event.preventDefault();
     testo1 = usr1.value;
@@ -1040,6 +966,6 @@ close.addEventListener("submit", (event)=>{
 
 
 
-//starting point: the cycle begins once the page has loaded
+//parte il programma
 givePiecesEventListeners();
 

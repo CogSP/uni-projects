@@ -1,6 +1,6 @@
 <html>
     <head>
-    <link rel="stylesheet" href="profile.css"> <!-- Uso lo stesso css di profile.php -->
+    <link rel="stylesheet" href="profile.css"> 
     <link rel="stylesheet" href="background.css">
     </head>
 <div class="bg"></div>

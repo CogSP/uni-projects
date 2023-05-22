@@ -23,7 +23,7 @@ session_start();
 <div class="hero">
  
   <nav> 
-      <ul>
+      <ul style = "margin-top: 0.1%;">
           <li><a href="index.php">Home</a></li>
           <li><a href="game.php">Fight!</a></li>
           <li><a href="profile.php">Profile</a></li>

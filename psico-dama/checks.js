@@ -1,5 +1,4 @@
-//Qui ci sono i check (per ora solo il controllo che la conferma è uguale
-//alla password) del form di registrazione
+//Qui ci sono i check del form di registrazione
 
 const form = document.querySelector("form");
 const password = document.getElementById("pwd");
@@ -9,10 +8,10 @@ const fullname = document.getElementById("fullname")
 
 conferma.addEventListener("input",(event)=>{
   if(password.value!= conferma.value){
-    conferma.setCustomValidity("passwords need to match!")
+    conferma.setCustomValidity("Le password non coincidono!")
   }
   else{
-    conferma.setCustomValidity(""); //forse non serve
+    conferma.setCustomValidity(""); 
     //tutto ok, il form viene mandato
   }
 });
@@ -23,12 +22,14 @@ username.addEventListener("input", (event)=>{
     xmlhttp.onreadystatechange = () => {
         if(xmlhttp.readyState === 4) {
             if(xmlhttp.status === 200) {
-                testo = xmlhttp.responseText;
-                console.log("Risposta:" + testo);
+                testo = xmlhttp.responseText.trim();
+                console.log(testo);
                 if(testo == "no"){
+                    console.log("settato a no")
                     username.setCustomValidity("Username già in utilizzo!");
                 }
                 else{
+                    console.log("settato a si")
                     username.setCustomValidity("");
                 }
                 

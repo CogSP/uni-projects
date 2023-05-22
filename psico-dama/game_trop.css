@@ -25,13 +25,6 @@
 @media (((min-height: 700px) ) and (min-width: 700px)) {
 
 
-	/* body {
-		background-size: 300% 300%;
-		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
-		-webkit-animation: AnimateBG 5s ease infinite;
-		animation: AnimateBG 5s ease infinite;
-	} */
-
 	.modal-container {
 		background-color: rgba(0, 0, 0, 0.3);
 		position: fixed;
@@ -209,37 +202,6 @@
 		background-image: linear-gradient(-90deg, rgb(49, 49, 49) 0%, rgb(10, 10, 10) 25%, rgb(182, 182, 182) 51%, #c3084d 100%);
 	}
 
-	/* fine nuovo */
-
-	/* @-webkit-keyframes AnimateBG {
-		0% {
-			background-position: 0% 50%;
-		}
-
-		50% {
-			background-position: 100% 50%;
-		}
-
-		100% {
-			background-position: 0% 50%;
-		}
-	}
-
-	@keyframes AnimateBG {
-		0% {
-			background-position: 0% 50%;
-		}
-
-		50% {
-			background-position: 100% 50%;
-		}
-
-		100% {
-			background-position: 0% 50%;
-		}
-	} */
-
-
 	* {
 		margin: auto;
 	}
@@ -289,14 +251,13 @@
 
 	.black {
 		background-color: #c4128e;
-		/* we consider this color as black */
+		
 		border: 1px solid lightgrey;
 
 	}
 
 	@keyframes become_black_king {
 
-		/* Animazioni matte per quando un pezzo diventa Re, colori da decidere*/
 		0% {
 			background-color: rgb(0, 0, 0);
 		}
@@ -309,7 +270,7 @@
 			background-color: black;
 		}
 
-		/* Sarebbe figo aggiungere il simbolino di una corona dentro alla pedina quando diventa re, non dovrebbe essere troppo difficile in teoria*/
+		
 	}
 
 	@keyframes become_white_king {
@@ -379,7 +340,6 @@
 	}
 
 	td {
-		/* these attributes apply both to black and white cells */
 		width: 4.063rem;
 		height: 4.063rem;
 		text-align: center;
@@ -418,7 +378,6 @@
 }
 
 
-/*HARDCODATO PER NEST HUB E TUTTI QUEI DISPOSITIVI BASSI E LARGHI (ES. 1000 X 600)*/
 @media ((max-height: 700px) and (min-width: 700px)){
 
 	/* CSS RESET */
@@ -438,41 +397,8 @@
 	body {
 		width: 100%;
 		height: 100%;
-		/* background-size: 300% 300%;
-		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
-			-webkit-animation: AnimateBG 5s ease infinite;
-		animation: AnimateBG 5s ease infinite; */
+
 	}
-
-
-	/* @-webkit-keyframes AnimateBG {
-		0% {
-			background-position: 0% 50%;
-		}
-
-		50% {
-			background-position: 100% 50%;
-		}
-
-		100% {
-			background-position: 0% 90%;
-		}
-	}
-
-	@keyframes AnimateBG {
-		0% {
-			background-position: 0% 50%;
-		}
-
-		50% {
-			background-position: 100% 50%;
-		}
-
-		100% {
-			background-position: 0% 50%;
-		}
-	} */
-
 
 
 	main {
@@ -516,7 +442,6 @@
 
 	}
 
-	/*ho dovuto levare il bordo altrimenti dava problemi con le dimensioni*/
 	.white-piece {
 		width: 50%;
 		height: 50%;
@@ -573,9 +498,7 @@
 		animation-name: become_black_king;
 		animation-iteration-count: infinite;
 		animation-duration: 1s;
-		/* width: 82%;
-		height: 75%;
-		margin: 10%; */
+
 	}
 
 	.white-piece.king {
@@ -583,9 +506,7 @@
 		animation-name: become_white_king;
 		animation-iteration-count: infinite;
 		animation-duration: 1s;
-		/* width: 82%;
-		height: 75%;
-		margin: 10%; */
+
 	}
 
 
@@ -842,40 +763,8 @@
 	body {
 		width: 100%;
 		height: 100%;
-		/* background-size: 300% 300%;
-		background-image: linear-gradient(-45deg, rgb(174, 174, 174) 0%, rgb(90, 90, 90) 25%, rgb(0, 0, 0) 51%, #79032e 100%);
-			-webkit-animation: AnimateBG 5s ease infinite;
-		animation: AnimateBG 5s ease infinite; */
+
 	}
-
-
-	/* @-webkit-keyframes AnimateBG {
-		0% {
-			background-position: 0% 50%;
-		}
-
-		50% {
-			background-position: 100% 50%;
-		}
-
-		100% {
-			background-position: 0% 90%;
-		}
-	}
-
-	@keyframes AnimateBG {
-		0% {
-			background-position: 0% 50%;
-		}
-
-		50% {
-			background-position: 100% 50%;
-		}
-
-		100% {
-			background-position: 0% 50%;
-		}
-	} */
 
 
 
@@ -920,7 +809,6 @@
 
 	}
 
-	/*ho dovuto levare il bordo altrimenti dava problemi con le dimensioni*/
 	.white-piece {
 		width: 50%;
 		height: 50%;
@@ -942,7 +830,6 @@
 		border-radius: 50%;
 	}
 
-	/* qua ci sandrebbero white-piece e black-piece ma li abbiamo modificati */
 
 	@keyframes become_black_king {
 
@@ -960,7 +847,6 @@
 	}
 
 
-	/*Abbiamo invertito become_white_king e become_black_king in qualche modo*/
 
 	@keyframes become_white_king {
 		0% {
@@ -981,9 +867,7 @@
 		animation-name: become_black_king;
 		animation-iteration-count: infinite;
 		animation-duration: 1s;
-		/* width: 82%;
-		height: 75%;
-		margin: 10%; */
+	
 	}
 
 	.white-piece.king {
@@ -991,9 +875,7 @@
 		animation-name: become_white_king;
 		animation-iteration-count: infinite;
 		animation-duration: 1s;
-		/* width: 82%;
-		height: 75%;
-		margin: 10%; */
+	
 	}
 
 

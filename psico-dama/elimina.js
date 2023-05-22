@@ -10,7 +10,7 @@ $(document).ready(function(){
             if(xmlhttp.readyState === 4) {
                 if(xmlhttp.status === 200){
 
-                    testo = xmlhttp.responseText;
+                    testo = xmlhttp.responseText.trim();
                     console.log("risposta: " + testo);
                     console.log("username: " + username.value);
                     console.log("password: " + password.value);

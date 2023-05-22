@@ -1,20 +1,17 @@
 console.log("provaaaaa");
 
-$(document).ready(function(){
-    // paginagioco = window.open("game.php");
-    
+$(document).ready(function(){    
     $("#ct-std").click(function(event){
         event.preventDefault();
         document.getElementById("ct-std").classList.add("active");
         document.getElementById("ct-dark").classList.remove("active");
         document.getElementById("ct-trop").classList.remove("active");
-        // paginagioco.document.getElementById("foglioback").href = "background.css";
         xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = () => {
             if(xmlhttp.readyState === 4) {
                 if(xmlhttp.status === 200){
 
-                    testo = xmlhttp.responseText;
+                    testo = xmlhttp.responseText.trim();
                     console.log("risposta: " + testo);
                     
                 }
@@ -36,7 +33,7 @@ $(document).ready(function(){
             if(xmlhttp.readyState === 4) {
                 if(xmlhttp.status === 200){
 
-                    testo = xmlhttp.responseText;
+                    testo = xmlhttp.responseText.trim();
                     console.log("risposta: " + testo);
                     
                 }
@@ -44,7 +41,6 @@ $(document).ready(function(){
            }
         xmlhttp.open("GET",`change_theme.php?theme=dark`, true);
         xmlhttp.send();
-        // paginagioco.document.getElementById("foglioback").href = "background_dark.css";
     });
 
     $("#ct-trop").click(function(event){
@@ -52,13 +48,13 @@ $(document).ready(function(){
         document.getElementById("ct-trop").classList.add("active");
         document.getElementById("ct-dark").classList.remove("active");
         document.getElementById("ct-std").classList.remove("active");
-        // paginagioco.document.getElementById("foglioback").href = "background_trop.css";
+
         xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = () => {
             if(xmlhttp.readyState === 4) {
                 if(xmlhttp.status === 200){
 
-                    testo = xmlhttp.responseText;
+                    testo = xmlhttp.responseText.trim();
                     console.log("risposta: " + testo);
                     
                 }

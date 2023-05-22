@@ -10,10 +10,9 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link  id = "fogliogame" rel="stylesheet" href="game.css"> 
     <link id = "foglioback" rel="stylesheet" href="background.css">
-    <!-- <link rel = "stylesheet" href = "back.css"> -->
     <script src="https://kit.fontawesome.com/cd9a86b4ff.js" crossorigin="anonymous"></script> <!-- serve per le corone-->
-    <script defer src="script.js"></script>
-    <script defer src ="profile.js"></script>
+    <script  defer src="script.js"></script>
+    <script  defer src ="profile.js"></script>
 
     <title>Let's FIGHT!</title>
 </head>
@@ -70,9 +69,7 @@ session_start();
     <!-- questo diventa qualcosa effettivamente solo alla vittoria di un giocatore (vedi codice js) -->
     </div>
 
-    <!-- <div class ="trucco">
-   
-    </div> -->
+    
 
 
     <main>

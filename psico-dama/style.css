@@ -1,11 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap');
 
-* {   /* applied to all html elements: without it the red pieces and the entire board are not centered */
+* {   
     margin: 0;
     padding: 0;
-    /* font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
     font-family: "Luckiest Guy";
-    box-sizing: border-box;  /* without it there is blank space on the right */
+    box-sizing: border-box;  
 }
 
 
@@ -33,7 +32,7 @@ nav {
     padding: 3vmin 8%;
     display: flex;
     align-items: center;
-    justify-content: flex-end; /*I tried space-between but the 4 options were not in the upper right corner*/
+    justify-content: flex-end; 
 }
 
 nav ul li {
@@ -47,8 +46,7 @@ nav ul li a:hover {
 
      -webkit-text-stroke-color: #ff0000;
      -webkit-text-stroke-width: 2px;
-    /* Non funziona il cambio di colore, centra sicuramente con il click
-    perchè prima di averci cliccato si illuminavano di rosso, dopo no */
+
     color: white;
 }  
 
@@ -66,7 +64,7 @@ nav ul li a {
 }
 
 .content h1 {
-    /*font-size: 160px;*/
+
     font-size: 15vmin;
     color: #fff;
     font-weight: 600;
@@ -92,8 +90,7 @@ nav ul li a {
 }
 
 .content a:hover {
-    -webkit-text-stroke: 3px rgb(255, 0, 0);  /*I would like to change this orange 
-    for a more "ready to war" color*/
+    -webkit-text-stroke: 3px rgb(255, 0, 0); 
     border: 3px solid #ff0000;
     color: transparent;
 }
@@ -110,7 +107,7 @@ nav ul li a {
 }
 
 
-/*those two following @media commands are paramount to set proper size for the video*/
+
 @media (min-aspect-ratio: 16/9) {
     .back-video{
         width: 100%;

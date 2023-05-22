@@ -2,7 +2,6 @@
 session_start();
 
 ?>
-
 <?php
 
 $usr = $_REQUEST["usr"];

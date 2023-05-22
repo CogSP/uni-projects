@@ -16,13 +16,12 @@
 <body>
 
 <div class="hero">
-<nav> <!-- nav is a section that contains navigations link (to the same page or other) -->
+<nav> 
     <ul>
         <li><a href="index.php">Home</a></li>
         <li><a href="game.php">Fight!</a></li>
         <li><a href="profile.php">Profile</a></li>
         <li><a href="rules.php">Rules</a></li>
-        <!-- https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjcvIPex4v-AhXJSvEDHcrPCaUQFnoECA0QAw&url=https%3A%2F%2Fwww.usatoday.com%2Fstory%2Fgraphics%2F2023%2F01%2F23%2Fhow-to-play-checkers-rules-strategy%2F10795787002%2F&usg=AOvVaw0_Pa61Itzk_Kwhg77W4q26 -->
         <li><a href="settings.php">Settings</a></li>
         <li><a href="ranking.php">Ranking</a></li>
     </ul>
