@@ -7,6 +7,8 @@ This repo contains some of the university projects I have done until now.
 
 - **BE-thesis**: I am currently writing my thesis "Analisi del Traffico delle Reti Wireless con Grafana: Implementazione e Tecniche di Monitoraggio in Tempo Reale"
 
+- **virtual-memory-system-simulator**: made for the "Sistemi Operativi" exam, this project is a Memory Management Unit (MMU) simulator from scratch. I implemented a 2-bit Clock Algorithm as page replacement algorithm.
+
 - **psico-dama**: made for the "Linguaggi e Tecnologie per il Web" exam, _PsicoDAMA_ is a game of checkers with special psychedelic effects.
 
 - **ML-models-AI-agents**: made for the "Fondamenti di Intelligenza Artificiale" exam, consists of two parts:
