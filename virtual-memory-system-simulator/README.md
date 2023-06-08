@@ -32,4 +32,4 @@ The CPU want to write, let's say x = 2, but it only know the logical address of 
 The process of reading is analogous
 
 ## What happens when the RAM is full
-TODO
+when there are no more free frames and a request for an invalid page is done, the page replacement algorithm is activated, so a frame is swapped in disk memory (a single 16MB file) to let the new frame be in RAM. Implemented with a clock algorithm, this algorithm chooses the victim frame by taking the one that has been "used the least".
