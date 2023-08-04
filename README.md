@@ -24,3 +24,5 @@ This repo contains some of the university projects I have done until now.
 - **notes-from-BE**: some notes I have taken to learn how to write LaTeX.
 
 <hr>
+
+## Master's degree in ["Artificial Intelligence and Robotics"](https://corsidilaurea.uniroma1.it/it/corso/2021/30431/home), Sapienza
