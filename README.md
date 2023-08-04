@@ -17,7 +17,7 @@ This repo contains some of the university projects I have done until now.
 
 - **net-simulation**: made for the ["Telecomunicazioni"](https://corsidilaurea.uniroma1.it/en/view-course-details/2022/31810/20190322084705/9a12f0ba-8d2e-4ce1-a96f-044acdb26b42/4d8dae6f-e491-4c6c-bde8-44733e7ca3f7/51f01718-5d9b-46a3-8e8d-962a7ef1de3b/a78dba62-e278-4fd9-bc50-0a89273a97ad?guid_cv=4d8dae6f-e491-4c6c-bde8-44733e7ca3f7&current_erogata=9a12f0ba-8d2e-4ce1-a96f-044acdb26b42) exam, consists of two projects done using *ns3*, *Wireshark* and *NetAnim*: 
    - implement a CSMA + P2P simulation with ns3 and analyze traffic performance with Wireshark 
-   - implement two WLAN simulation with ns3, anaòyze traffic performance with Wireshark and make a visualization of the traffic with NetAnim. The two simulations are:
+   - implement two WLAN simulation with ns3, analyze traffic performance with Wireshark and make a visualization of the traffic with NetAnim. The two simulations are:
       - WLAN Ad-hoc mode with RTS/CTS 
       - WLAN Infrastructure mode
 
