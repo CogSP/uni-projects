@@ -1,0 +1,7 @@
+/etc/init.d/networking restart
+ip route add 151.100.164.0/24 via 10.0.0.9
+ip route add 10.0.0.2/31 via 10.0.0.9
+ip route add 151.100.160.0/22 via 10.0.0.7
+ip route add 10.0.0.10/31 via 10.0.0.7
+ip route add 10.0.0.4/31 via 10.0.0.7
+/etc/init.d/isc-dhcp-server start

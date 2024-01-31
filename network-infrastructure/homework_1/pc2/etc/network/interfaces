@@ -1,0 +1,4 @@
+auto eth0
+iface eth0 inet dhcp
+	netmask 255.255.255.0
+	gateway 151.100.165.1

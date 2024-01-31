@@ -1,0 +1,19 @@
+/etc/init.d/networking restart
+
+/etc/init.d/ssh restart
+
+
+
+useradd myuser1 -m
+
+echo -e 'palumbossh\npalumbossh\n' | passwd myuser1
+
+
+
+chown myuser1:myuser1 /home/myuser1/.ssh
+
+chmod 700 /home/myuser1/.ssh
+
+chown myuser1:myuser1 /home/myuser1/.ssh/authorized_keys
+
+chmod 600 /home/myuser1/.ssh/authorized_keys
