@@ -5,7 +5,7 @@ This repo contains some of the university projects I have done until now.
 
 ## Bachelor's degree in Computer and Control Engineering (["Ingegneria informatica ed Automatica"](https://corsidilaurea.uniroma1.it/en/corso/2022/31810/home)), Sapienza, 2020-2023
 
-- **BE-thesis**: the pdf of my thesis "Analisi del Traffico delle Reti Wireless con Grafana: Implementazione e Tecniche di Monitoraggio in Tempo Reale". The framework code is in a repo in the NetLab Sapienza Organization.
+- **BE-thesis**: the pdf of my thesis "Analisi del Traffico delle Reti Wireless con Grafana: Implementazione e Tecniche di Monitoraggio in Tempo Reale". The framework code is in a repo in the [WiNES Lab organization](https://github.com/wineslab/ns-o-ran-grafana).
 
 - **virtual-memory-system-simulator**: made for the ["Sistemi Operativi"](https://corsidilaurea.uniroma1.it/en/view-course-details/2022/31810/20190322084705/9a12f0ba-8d2e-4ce1-a96f-044acdb26b42/4d8dae6f-e491-4c6c-bde8-44733e7ca3f7/75f17208-795e-4575-b22f-26f76e37fd70/0dcaba52-2686-4b84-8ac8-47b092372772?guid_cv=4d8dae6f-e491-4c6c-bde8-44733e7ca3f7&current_erogata=9a12f0ba-8d2e-4ce1-a96f-044acdb26b42) exam, this project is a Memory Management Unit (MMU) simulator from scratch. I implemented a 2-bit Clock Algorithm as page replacement algorithm.
 
