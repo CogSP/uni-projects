@@ -21,7 +21,7 @@ This repo contains some of the university projects I have done until now.
       - WLAN Ad-hoc mode with RTS/CTS 
       - WLAN Infrastructure mode
 
-- **latex_notes-from-BE**: some notes I have taken to learn how to write LaTeX.
+- **latex-notes-from-BE**: some notes I have taken to learn how to write LaTeX.
 
 <hr>
 
