@@ -15,8 +15,9 @@ for i=1:Nbits-1
 	xdec=xdec+xbin(Nbits-i)*2^i;
 end
 
-xdec
-
-% then xdec an be multiplied by the resolution in order to obtain the angle. This because xbec indicates the number of "spicchi" 
+% then xdec can be multiplied by the resolution in order to obtain the angle. This because xdec indicates the number of "spicchi" 
 % that the angle covers, and since each "spicchio" is a resolution long in terms of degrees/radians, xdec * res gives the 
 % whole angle covered, in degrees/radians
+
+xdec
+
