@@ -1,0 +1,9 @@
+SCARA stands for Selective Compliance Arm for Robotic Assembly, a robot having
+4 joints with vertical axes, the third one being prismatic and the others revolute. The end-effector
+compliance is present only along horizontal directions, and is usually provided by an harmonic
+drive on the motor axis of the first joint and by a transmission belt for driving the second joint
+by another motor mounted also on the first joint. This allows to accommodate in a passive way
+the lateral forces that may arise in assembly tasks, when the vertical insertion direction is not
+sufficiently accurate
+
+Moreover: the SCARA type robot has only 4 DoF, so there are some orientation of the E.E that are not feasible. In fact, the e.e. can rotate only along the vertical axis, but not along the other two directions (in that case it would have been a spherical wrist with 3 revolute joints, constituting in total a 6 DOF). This, for the applications of micro-assembly and pick and place in a flat ground is not a problem, so the designer preferred a simpler design over more DoF.
