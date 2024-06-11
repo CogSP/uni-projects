@@ -259,7 +259,7 @@
 
 ## November 2019 (2019-11)
 - Ex 1: RPY, axis angle method
-	- identity regarding rotation axis $0^r_1$ and $i_r_1$
+	- identity regarding rotation axis ${0}^r_{1}$ and ${i}^r_{1}$
 - Ex 2: DH of the 6R UR10
 - Ex 3: planar 2R workspace, DH and $2^R_e$ with atan
 - Ex 4: Newton method
