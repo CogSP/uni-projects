@@ -34,5 +34,3 @@ and you should see the user_mobility and host_tracking modules in action, while 
 IMPORTANT: whenever there is a change in flow, look for "Event raised by" messages in the controller terminal, from there until the end of the log you can read how the whole event is handled. The host tracker
 will tell where the host is using "Host is connected to..." messages.
 
-# Second project
-The second laboratory project is available at my colleague's repository at https://github.com/CogSP/distributed_consensus_p4
