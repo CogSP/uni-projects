@@ -1,4 +1,4 @@
-# matlab-for-robotics
+# matlab-for-robotics - Robotics 1
 
 ## Misc
 - Cubic_rest_to_move_PLOT: trajectory planning for a rest to move with general time $t_i$ and $t_f$, **with plots for $q(t)$, $\dot{q}(t)$ and $\ddot{q}(t)$** 
