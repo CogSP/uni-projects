@@ -1,0 +1,1774 @@
+
+[14:03:39.046] [bmv2] [D] [thread 34] Set default default entry for table 'tbl_from_src_ipv4': MyIngress.from_src_ipv4 - 
+[14:03:39.046] [bmv2] [D] [thread 34] Set default default entry for table 'tbl_from_src_ipv6': MyIngress.from_src_ipv6 - 
+[14:03:39.046] [bmv2] [D] [thread 34] Set default default entry for table 'MyIngress.l3_ipv4_voting': MyIngress.deny - 
+[14:03:39.046] [bmv2] [D] [thread 34] Set default default entry for table 'MyIngress.l3_ipv6_voting': MyIngress.deny - 
+[14:03:39.046] [bmv2] [D] [thread 34] Set default default entry for table 'MyIngress.ipv4_forwarding': MyIngress.drop - 
+[14:03:39.046] [bmv2] [D] [thread 34] Set default default entry for table 'MyIngress.ipv6_forwarding': MyIngress.drop - 
+[14:03:39.046] [bmv2] [D] [thread 34] Set default default entry for table 'tbl_consensus402': consensus402 - 
+[14:03:39.046] [bmv2] [D] [thread 34] Set default default entry for table 'tbl_consensus404': consensus404 - 
+[14:03:39.047] [bmv2] [D] [thread 34] Adding interface eth0 as port 1
+[14:03:39.078] [bmv2] [D] [thread 34] Adding interface eth1 as port 2
+[14:03:39.123] [bmv2] [D] [thread 34] Adding interface eth2 as port 3
+[14:03:39.168] [bmv2] [I] [thread 34] Starting Thrift server on port 9090
+[14:03:39.169] [bmv2] [I] [thread 34] Thrift server was started
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Processing packet received on port 2
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Parser 'parser': start
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Extracting header 'ethernet'
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:39.205] [bmv2] [T] [thread 46] [0.0] [cxt 0] Bytes parsed: 14
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Extracting header 'ipv6'
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:39.205] [bmv2] [T] [thread 46] [0.0] [cxt 0] Bytes parsed: 54
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Parser 'parser': end
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Pipeline 'ingress': start
+[14:03:39.205] [bmv2] [T] [thread 46] [0.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:39.205] [bmv2] [T] [thread 46] [0.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:39.205] [bmv2] [T] [thread 46] [0.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Looking up key:
+
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:39.205] [bmv2] [T] [thread 46] [0.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:39.205] [bmv2] [T] [thread 46] [0.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:39.205] [bmv2] [T] [thread 46] [0.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:39.205] [bmv2] [T] [thread 46] [0.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:39.205] [bmv2] [T] [thread 46] [0.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:39.205] [bmv2] [T] [thread 46] [0.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:39.205] [bmv2] [T] [thread 46] [0.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe80000000000000a482c9fffeda43ef
+
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:39.205] [bmv2] [T] [thread 46] [0.0] [cxt 0] Action MyIngress.deny
+[14:03:39.205] [bmv2] [T] [thread 46] [0.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:39.205] [bmv2] [T] [thread 46] [0.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:39.205] [bmv2] [T] [thread 46] [0.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:39.205] [bmv2] [T] [thread 46] [0.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:39.205] [bmv2] [T] [thread 46] [0.0] [cxt 0] Action MyIngress.drop
+[14:03:39.205] [bmv2] [T] [thread 46] [0.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:39.205] [bmv2] [T] [thread 46] [0.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Pipeline 'ingress': end
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Egress port is 511
+[14:03:39.205] [bmv2] [D] [thread 46] [0.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:39.205] [bmv2] [T] [thread 53] bm_get_config
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Processing packet received on port 2
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Parser 'parser': start
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Extracting header 'ethernet'
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:39.224] [bmv2] [T] [thread 46] [1.0] [cxt 0] Bytes parsed: 14
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Extracting header 'ipv6'
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:39.224] [bmv2] [T] [thread 46] [1.0] [cxt 0] Bytes parsed: 54
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Parser 'parser': end
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Pipeline 'ingress': start
+[14:03:39.224] [bmv2] [T] [thread 46] [1.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:39.224] [bmv2] [T] [thread 46] [1.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:39.224] [bmv2] [T] [thread 46] [1.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Looking up key:
+
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:39.224] [bmv2] [T] [thread 46] [1.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:39.224] [bmv2] [T] [thread 46] [1.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:39.224] [bmv2] [T] [thread 46] [1.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:39.224] [bmv2] [T] [thread 46] [1.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:39.224] [bmv2] [T] [thread 46] [1.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:39.224] [bmv2] [T] [thread 46] [1.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:39.224] [bmv2] [T] [thread 46] [1.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe80000000000000a482c9fffeda43ef
+
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:39.224] [bmv2] [T] [thread 46] [1.0] [cxt 0] Action MyIngress.deny
+[14:03:39.224] [bmv2] [T] [thread 46] [1.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:39.224] [bmv2] [T] [thread 46] [1.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:39.224] [bmv2] [T] [thread 46] [1.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:39.224] [bmv2] [T] [thread 46] [1.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:39.224] [bmv2] [T] [thread 46] [1.0] [cxt 0] Action MyIngress.drop
+[14:03:39.224] [bmv2] [T] [thread 46] [1.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:39.224] [bmv2] [T] [thread 46] [1.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Pipeline 'ingress': end
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Egress port is 511
+[14:03:39.224] [bmv2] [D] [thread 46] [1.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Processing packet received on port 2
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Parser 'parser': start
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Extracting header 'ethernet'
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:39.334] [bmv2] [T] [thread 46] [2.0] [cxt 0] Bytes parsed: 14
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Extracting header 'ipv6'
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:39.334] [bmv2] [T] [thread 46] [2.0] [cxt 0] Bytes parsed: 54
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Parser 'parser': end
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Pipeline 'ingress': start
+[14:03:39.334] [bmv2] [T] [thread 46] [2.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:39.334] [bmv2] [T] [thread 46] [2.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:39.334] [bmv2] [T] [thread 46] [2.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Looking up key:
+
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:39.334] [bmv2] [T] [thread 46] [2.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:39.334] [bmv2] [T] [thread 46] [2.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:39.334] [bmv2] [T] [thread 46] [2.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:39.334] [bmv2] [T] [thread 46] [2.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:39.334] [bmv2] [T] [thread 46] [2.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:39.334] [bmv2] [T] [thread 46] [2.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:39.334] [bmv2] [T] [thread 46] [2.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe80000000000000a482c9fffeda43ef
+
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:39.334] [bmv2] [T] [thread 46] [2.0] [cxt 0] Action MyIngress.deny
+[14:03:39.334] [bmv2] [T] [thread 46] [2.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:39.334] [bmv2] [T] [thread 46] [2.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:39.334] [bmv2] [T] [thread 46] [2.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:39.334] [bmv2] [T] [thread 46] [2.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:39.334] [bmv2] [T] [thread 46] [2.0] [cxt 0] Action MyIngress.drop
+[14:03:39.334] [bmv2] [T] [thread 46] [2.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:39.334] [bmv2] [T] [thread 46] [2.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Pipeline 'ingress': end
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Egress port is 511
+[14:03:39.334] [bmv2] [D] [thread 46] [2.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:39.371] [bmv2] [T] [thread 56] bm_get_config
+[14:03:39.379] [bmv2] [T] [thread 56] bm_table_add_entry
+[14:03:39.379] [bmv2] [D] [thread 56] Entry 0 added to table 'MyIngress.ipv4_forwarding'
+[14:03:39.379] [bmv2] [D] [thread 56] Dumping entry 0
+Match key:
+* hdr.ipv4.dstAddr    : LPM       c0a80001/32
+Action entry: MyIngress.ipv4_forward - 1,
+
+[14:03:39.379] [bmv2] [T] [thread 56] bm_table_add_entry
+[14:03:39.379] [bmv2] [D] [thread 56] Entry 1 added to table 'MyIngress.ipv4_forwarding'
+[14:03:39.379] [bmv2] [D] [thread 56] Dumping entry 1
+Match key:
+* hdr.ipv4.dstAddr    : LPM       c0a80002/32
+Action entry: MyIngress.ipv4_forward - 1,
+
+[14:03:39.379] [bmv2] [T] [thread 56] bm_table_add_entry
+[14:03:39.379] [bmv2] [D] [thread 56] Entry 2 added to table 'MyIngress.ipv4_forwarding'
+[14:03:39.379] [bmv2] [D] [thread 56] Dumping entry 2
+Match key:
+* hdr.ipv4.dstAddr    : LPM       c0a80003/32
+Action entry: MyIngress.ipv4_forward - 3,
+
+[14:03:39.379] [bmv2] [T] [thread 56] bm_table_add_entry
+[14:03:39.379] [bmv2] [D] [thread 56] Entry 3 added to table 'MyIngress.ipv4_forwarding'
+[14:03:39.379] [bmv2] [D] [thread 56] Dumping entry 3
+Match key:
+* hdr.ipv4.dstAddr    : LPM       c0a80004/32
+Action entry: MyIngress.ipv4_forward - 3,
+
+[14:03:39.380] [bmv2] [T] [thread 56] bm_table_add_entry
+[14:03:39.380] [bmv2] [D] [thread 56] Entry 0 added to table 'MyIngress.ipv6_forwarding'
+[14:03:39.380] [bmv2] [D] [thread 56] Dumping entry 0
+Match key:
+* hdr.ipv6.dstAddr    : LPM       20010000000000000000000000000001/128
+Action entry: MyIngress.ipv6_forward - 1,
+
+[14:03:39.380] [bmv2] [T] [thread 56] bm_table_add_entry
+[14:03:39.380] [bmv2] [D] [thread 56] Entry 1 added to table 'MyIngress.ipv6_forwarding'
+[14:03:39.380] [bmv2] [D] [thread 56] Dumping entry 1
+Match key:
+* hdr.ipv6.dstAddr    : LPM       20010000000000000000000000000002/128
+Action entry: MyIngress.ipv6_forward - 1,
+
+[14:03:39.380] [bmv2] [T] [thread 56] bm_table_add_entry
+[14:03:39.380] [bmv2] [D] [thread 56] Entry 2 added to table 'MyIngress.ipv6_forwarding'
+[14:03:39.380] [bmv2] [D] [thread 56] Dumping entry 2
+Match key:
+* hdr.ipv6.dstAddr    : LPM       20010000000000000000000000000003/128
+Action entry: MyIngress.ipv6_forward - 3,
+
+[14:03:39.380] [bmv2] [T] [thread 56] bm_table_add_entry
+[14:03:39.380] [bmv2] [D] [thread 56] Entry 3 added to table 'MyIngress.ipv6_forwarding'
+[14:03:39.380] [bmv2] [D] [thread 56] Dumping entry 3
+Match key:
+* hdr.ipv6.dstAddr    : LPM       20010000000000000000000000000004/128
+Action entry: MyIngress.ipv6_forward - 3,
+
+[14:03:39.380] [bmv2] [T] [thread 56] bm_table_add_entry
+[14:03:39.380] [bmv2] [E] [thread 56] Error when trying to add entry to table 'MyIngress.ipv6_forwarding': DUPLICATE_ENTRY
+[14:03:39.380] [bmv2] [T] [thread 56] bm_table_add_entry
+[14:03:39.380] [bmv2] [D] [thread 56] Entry 0 added to table 'MyIngress.l3_ipv6_voting'
+[14:03:39.381] [bmv2] [D] [thread 56] Dumping entry 0
+Match key:
+* hdr.ipv6.srcAddr    : EXACT     20010000000000000000000000000003
+Action entry: MyIngress.accept - 
+
+[14:03:39.381] [bmv2] [T] [thread 56] bm_table_add_entry
+[14:03:39.381] [bmv2] [D] [thread 56] Entry 1 added to table 'MyIngress.l3_ipv6_voting'
+[14:03:39.381] [bmv2] [D] [thread 56] Dumping entry 1
+Match key:
+* hdr.ipv6.srcAddr    : EXACT     20010000000000000000000000000004
+Action entry: MyIngress.accept - 
+
+[14:03:39.381] [bmv2] [T] [thread 56] bm_table_add_entry
+[14:03:39.381] [bmv2] [E] [thread 56] Error when trying to add entry to table 'MyIngress.l3_ipv6_voting': DUPLICATE_ENTRY
+[14:03:39.381] [bmv2] [T] [thread 56] bm_table_add_entry
+[14:03:39.381] [bmv2] [D] [thread 56] Entry 0 added to table 'MyIngress.l3_ipv4_voting'
+[14:03:39.381] [bmv2] [D] [thread 56] Dumping entry 0
+Match key:
+* hdr.ipv4.srcAddr    : EXACT     c0a80003
+Action entry: MyIngress.deny - 
+
+[14:03:39.381] [bmv2] [T] [thread 56] bm_table_add_entry
+[14:03:39.381] [bmv2] [D] [thread 56] Entry 1 added to table 'MyIngress.l3_ipv4_voting'
+[14:03:39.381] [bmv2] [D] [thread 56] Dumping entry 1
+Match key:
+* hdr.ipv4.srcAddr    : EXACT     c0a80004
+Action entry: MyIngress.deny - 
+
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Processing packet received on port 2
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Parser 'parser': start
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Extracting header 'ethernet'
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:39.607] [bmv2] [T] [thread 46] [3.0] [cxt 0] Bytes parsed: 14
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Extracting header 'ipv6'
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:39.607] [bmv2] [T] [thread 46] [3.0] [cxt 0] Bytes parsed: 54
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Parser 'parser': end
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Pipeline 'ingress': start
+[14:03:39.607] [bmv2] [T] [thread 46] [3.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:39.607] [bmv2] [T] [thread 46] [3.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:39.607] [bmv2] [T] [thread 46] [3.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Looking up key:
+
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:39.607] [bmv2] [T] [thread 46] [3.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:39.607] [bmv2] [T] [thread 46] [3.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:39.607] [bmv2] [T] [thread 46] [3.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:39.607] [bmv2] [T] [thread 46] [3.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:39.607] [bmv2] [T] [thread 46] [3.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:39.607] [bmv2] [T] [thread 46] [3.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:39.607] [bmv2] [T] [thread 46] [3.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe80000000000000a482c9fffeda43ef
+
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:39.607] [bmv2] [T] [thread 46] [3.0] [cxt 0] Action MyIngress.deny
+[14:03:39.607] [bmv2] [T] [thread 46] [3.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:39.607] [bmv2] [T] [thread 46] [3.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:39.607] [bmv2] [T] [thread 46] [3.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:39.607] [bmv2] [T] [thread 46] [3.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:39.607] [bmv2] [T] [thread 46] [3.0] [cxt 0] Action MyIngress.drop
+[14:03:39.607] [bmv2] [T] [thread 46] [3.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:39.607] [bmv2] [T] [thread 46] [3.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Pipeline 'ingress': end
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Egress port is 511
+[14:03:39.607] [bmv2] [D] [thread 46] [3.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Processing packet received on port 1
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Parser 'parser': start
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Extracting header 'ethernet'
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:39.610] [bmv2] [T] [thread 46] [4.0] [cxt 0] Bytes parsed: 14
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Extracting header 'ipv6'
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Parser state 'parse_ipv6': key is 3a
+[14:03:39.610] [bmv2] [T] [thread 46] [4.0] [cxt 0] Bytes parsed: 54
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Parser 'parser': end
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Pipeline 'ingress': start
+[14:03:39.610] [bmv2] [T] [thread 46] [4.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:39.610] [bmv2] [T] [thread 46] [4.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:39.610] [bmv2] [T] [thread 46] [4.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Looking up key:
+
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:39.610] [bmv2] [T] [thread 46] [4.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:39.610] [bmv2] [T] [thread 46] [4.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:39.610] [bmv2] [T] [thread 46] [4.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:39.610] [bmv2] [T] [thread 46] [4.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:39.610] [bmv2] [T] [thread 46] [4.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:39.610] [bmv2] [T] [thread 46] [4.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:39.610] [bmv2] [T] [thread 46] [4.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : 00000000000000000000000000000000
+
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:39.610] [bmv2] [T] [thread 46] [4.0] [cxt 0] Action MyIngress.deny
+[14:03:39.610] [bmv2] [T] [thread 46] [4.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:39.610] [bmv2] [T] [thread 46] [4.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:39.610] [bmv2] [T] [thread 46] [4.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:39.610] [bmv2] [T] [thread 46] [4.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff0200000000000000000001ff174592
+
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:39.610] [bmv2] [T] [thread 46] [4.0] [cxt 0] Action MyIngress.drop
+[14:03:39.610] [bmv2] [T] [thread 46] [4.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:39.610] [bmv2] [T] [thread 46] [4.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Pipeline 'ingress': end
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Egress port is 511
+[14:03:39.610] [bmv2] [D] [thread 46] [4.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Processing packet received on port 1
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Parser 'parser': start
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Extracting header 'ethernet'
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:39.621] [bmv2] [T] [thread 46] [5.0] [cxt 0] Bytes parsed: 14
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Extracting header 'ipv6'
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:39.621] [bmv2] [T] [thread 46] [5.0] [cxt 0] Bytes parsed: 54
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Parser 'parser': end
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Pipeline 'ingress': start
+[14:03:39.621] [bmv2] [T] [thread 46] [5.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:39.621] [bmv2] [T] [thread 46] [5.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:39.621] [bmv2] [T] [thread 46] [5.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Looking up key:
+
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:39.621] [bmv2] [T] [thread 46] [5.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:39.621] [bmv2] [T] [thread 46] [5.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:39.621] [bmv2] [T] [thread 46] [5.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:39.621] [bmv2] [T] [thread 46] [5.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:39.621] [bmv2] [T] [thread 46] [5.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:39.621] [bmv2] [T] [thread 46] [5.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:39.621] [bmv2] [T] [thread 46] [5.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : 00000000000000000000000000000000
+
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:39.621] [bmv2] [T] [thread 46] [5.0] [cxt 0] Action MyIngress.deny
+[14:03:39.621] [bmv2] [T] [thread 46] [5.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:39.621] [bmv2] [T] [thread 46] [5.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:39.621] [bmv2] [T] [thread 46] [5.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:39.621] [bmv2] [T] [thread 46] [5.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:39.621] [bmv2] [T] [thread 46] [5.0] [cxt 0] Action MyIngress.drop
+[14:03:39.621] [bmv2] [T] [thread 46] [5.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:39.621] [bmv2] [T] [thread 46] [5.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Pipeline 'ingress': end
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Egress port is 511
+[14:03:39.621] [bmv2] [D] [thread 46] [5.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:40.004] [bmv2] [D] [thread 46] [6.0] [cxt 0] Processing packet received on port 1
+[14:03:40.004] [bmv2] [D] [thread 46] [6.0] [cxt 0] Parser 'parser': start
+[14:03:40.004] [bmv2] [D] [thread 46] [6.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:40.004] [bmv2] [D] [thread 46] [6.0] [cxt 0] Extracting header 'ethernet'
+[14:03:40.005] [bmv2] [D] [thread 46] [6.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:40.005] [bmv2] [T] [thread 46] [6.0] [cxt 0] Bytes parsed: 14
+[14:03:40.005] [bmv2] [D] [thread 46] [6.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:40.005] [bmv2] [D] [thread 46] [6.0] [cxt 0] Extracting header 'ipv6'
+[14:03:40.005] [bmv2] [D] [thread 46] [6.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:40.005] [bmv2] [T] [thread 46] [6.0] [cxt 0] Bytes parsed: 54
+[14:03:40.005] [bmv2] [D] [thread 46] [6.0] [cxt 0] Parser 'parser': end
+[14:03:40.005] [bmv2] [D] [thread 46] [6.0] [cxt 0] Pipeline 'ingress': start
+[14:03:40.005] [bmv2] [T] [thread 46] [6.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:40.005] [bmv2] [T] [thread 46] [6.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:40.005] [bmv2] [T] [thread 46] [6.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:40.005] [bmv2] [D] [thread 46] [6.0] [cxt 0] Looking up key:
+
+[14:03:40.005] [bmv2] [D] [thread 46] [6.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:40.005] [bmv2] [D] [thread 46] [6.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:40.005] [bmv2] [T] [thread 46] [6.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:40.005] [bmv2] [T] [thread 46] [6.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:40.005] [bmv2] [T] [thread 46] [6.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:40.005] [bmv2] [T] [thread 46] [6.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:40.005] [bmv2] [T] [thread 46] [6.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:40.005] [bmv2] [T] [thread 46] [6.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:40.005] [bmv2] [T] [thread 46] [6.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:40.005] [bmv2] [D] [thread 46] [6.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe800000000000009c2113fffe22fd17
+
+[14:03:40.005] [bmv2] [D] [thread 46] [6.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:40.005] [bmv2] [D] [thread 46] [6.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:40.005] [bmv2] [T] [thread 46] [6.0] [cxt 0] Action MyIngress.deny
+[14:03:40.005] [bmv2] [T] [thread 46] [6.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:40.005] [bmv2] [T] [thread 46] [6.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:40.005] [bmv2] [T] [thread 46] [6.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:40.005] [bmv2] [T] [thread 46] [6.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:40.005] [bmv2] [D] [thread 46] [6.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:40.005] [bmv2] [D] [thread 46] [6.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:40.005] [bmv2] [D] [thread 46] [6.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:40.005] [bmv2] [T] [thread 46] [6.0] [cxt 0] Action MyIngress.drop
+[14:03:40.005] [bmv2] [T] [thread 46] [6.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:40.005] [bmv2] [T] [thread 46] [6.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:40.005] [bmv2] [D] [thread 46] [6.0] [cxt 0] Pipeline 'ingress': end
+[14:03:40.005] [bmv2] [D] [thread 46] [6.0] [cxt 0] Egress port is 511
+[14:03:40.005] [bmv2] [D] [thread 46] [6.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Processing packet received on port 1
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Parser 'parser': start
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Extracting header 'ethernet'
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:40.016] [bmv2] [T] [thread 46] [7.0] [cxt 0] Bytes parsed: 14
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Extracting header 'ipv6'
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:40.016] [bmv2] [T] [thread 46] [7.0] [cxt 0] Bytes parsed: 54
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Parser 'parser': end
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Pipeline 'ingress': start
+[14:03:40.016] [bmv2] [T] [thread 46] [7.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:40.016] [bmv2] [T] [thread 46] [7.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:40.016] [bmv2] [T] [thread 46] [7.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Looking up key:
+
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:40.016] [bmv2] [T] [thread 46] [7.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:40.016] [bmv2] [T] [thread 46] [7.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:40.016] [bmv2] [T] [thread 46] [7.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:40.016] [bmv2] [T] [thread 46] [7.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:40.016] [bmv2] [T] [thread 46] [7.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:40.016] [bmv2] [T] [thread 46] [7.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:40.016] [bmv2] [T] [thread 46] [7.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe800000000000009c2113fffe22fd17
+
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:40.016] [bmv2] [T] [thread 46] [7.0] [cxt 0] Action MyIngress.deny
+[14:03:40.016] [bmv2] [T] [thread 46] [7.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:40.016] [bmv2] [T] [thread 46] [7.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:40.016] [bmv2] [T] [thread 46] [7.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:40.016] [bmv2] [T] [thread 46] [7.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:40.016] [bmv2] [T] [thread 46] [7.0] [cxt 0] Action MyIngress.drop
+[14:03:40.016] [bmv2] [T] [thread 46] [7.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:40.016] [bmv2] [T] [thread 46] [7.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Pipeline 'ingress': end
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Egress port is 511
+[14:03:40.016] [bmv2] [D] [thread 46] [7.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Processing packet received on port 3
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Parser 'parser': start
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Extracting header 'ethernet'
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:40.058] [bmv2] [T] [thread 46] [8.0] [cxt 0] Bytes parsed: 14
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Extracting header 'ipv6'
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:40.058] [bmv2] [T] [thread 46] [8.0] [cxt 0] Bytes parsed: 54
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Parser 'parser': end
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Pipeline 'ingress': start
+[14:03:40.058] [bmv2] [T] [thread 46] [8.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:40.058] [bmv2] [T] [thread 46] [8.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:40.058] [bmv2] [T] [thread 46] [8.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Looking up key:
+
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:40.058] [bmv2] [T] [thread 46] [8.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:40.058] [bmv2] [T] [thread 46] [8.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:40.058] [bmv2] [T] [thread 46] [8.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:40.058] [bmv2] [T] [thread 46] [8.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:40.058] [bmv2] [T] [thread 46] [8.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:40.058] [bmv2] [T] [thread 46] [8.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:40.058] [bmv2] [T] [thread 46] [8.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe80000000000000446d1ffffea23e87
+
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:40.058] [bmv2] [T] [thread 46] [8.0] [cxt 0] Action MyIngress.deny
+[14:03:40.058] [bmv2] [T] [thread 46] [8.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:40.058] [bmv2] [T] [thread 46] [8.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:40.058] [bmv2] [T] [thread 46] [8.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:40.058] [bmv2] [T] [thread 46] [8.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:40.058] [bmv2] [T] [thread 46] [8.0] [cxt 0] Action MyIngress.drop
+[14:03:40.058] [bmv2] [T] [thread 46] [8.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:40.058] [bmv2] [T] [thread 46] [8.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Pipeline 'ingress': end
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Egress port is 511
+[14:03:40.058] [bmv2] [D] [thread 46] [8.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Processing packet received on port 3
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Parser 'parser': start
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Extracting header 'ethernet'
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:40.069] [bmv2] [T] [thread 46] [9.0] [cxt 0] Bytes parsed: 14
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Extracting header 'ipv6'
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:40.069] [bmv2] [T] [thread 46] [9.0] [cxt 0] Bytes parsed: 54
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Parser 'parser': end
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Pipeline 'ingress': start
+[14:03:40.069] [bmv2] [T] [thread 46] [9.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:40.069] [bmv2] [T] [thread 46] [9.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:40.069] [bmv2] [T] [thread 46] [9.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Looking up key:
+
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:40.069] [bmv2] [T] [thread 46] [9.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:40.069] [bmv2] [T] [thread 46] [9.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:40.069] [bmv2] [T] [thread 46] [9.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:40.069] [bmv2] [T] [thread 46] [9.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:40.069] [bmv2] [T] [thread 46] [9.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:40.069] [bmv2] [T] [thread 46] [9.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:40.069] [bmv2] [T] [thread 46] [9.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe80000000000000446d1ffffea23e87
+
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:40.069] [bmv2] [T] [thread 46] [9.0] [cxt 0] Action MyIngress.deny
+[14:03:40.069] [bmv2] [T] [thread 46] [9.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:40.069] [bmv2] [T] [thread 46] [9.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:40.069] [bmv2] [T] [thread 46] [9.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:40.069] [bmv2] [T] [thread 46] [9.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:40.069] [bmv2] [T] [thread 46] [9.0] [cxt 0] Action MyIngress.drop
+[14:03:40.069] [bmv2] [T] [thread 46] [9.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:40.069] [bmv2] [T] [thread 46] [9.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Pipeline 'ingress': end
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Egress port is 511
+[14:03:40.069] [bmv2] [D] [thread 46] [9.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Processing packet received on port 3
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Parser 'parser': start
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Extracting header 'ethernet'
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:40.188] [bmv2] [T] [thread 46] [10.0] [cxt 0] Bytes parsed: 14
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Extracting header 'ipv6'
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:40.188] [bmv2] [T] [thread 46] [10.0] [cxt 0] Bytes parsed: 54
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Parser 'parser': end
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Pipeline 'ingress': start
+[14:03:40.188] [bmv2] [T] [thread 46] [10.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:40.188] [bmv2] [T] [thread 46] [10.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:40.188] [bmv2] [T] [thread 46] [10.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Looking up key:
+
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:40.188] [bmv2] [T] [thread 46] [10.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:40.188] [bmv2] [T] [thread 46] [10.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:40.188] [bmv2] [T] [thread 46] [10.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:40.188] [bmv2] [T] [thread 46] [10.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:40.188] [bmv2] [T] [thread 46] [10.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:40.188] [bmv2] [T] [thread 46] [10.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:40.188] [bmv2] [T] [thread 46] [10.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe80000000000000446d1ffffea23e87
+
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:40.188] [bmv2] [T] [thread 46] [10.0] [cxt 0] Action MyIngress.deny
+[14:03:40.188] [bmv2] [T] [thread 46] [10.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:40.188] [bmv2] [T] [thread 46] [10.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:40.188] [bmv2] [T] [thread 46] [10.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:40.188] [bmv2] [T] [thread 46] [10.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:40.188] [bmv2] [T] [thread 46] [10.0] [cxt 0] Action MyIngress.drop
+[14:03:40.188] [bmv2] [T] [thread 46] [10.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:40.188] [bmv2] [T] [thread 46] [10.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Pipeline 'ingress': end
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Egress port is 511
+[14:03:40.188] [bmv2] [D] [thread 46] [10.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Processing packet received on port 2
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Parser 'parser': start
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Extracting header 'ethernet'
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:40.244] [bmv2] [T] [thread 46] [11.0] [cxt 0] Bytes parsed: 14
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Extracting header 'ipv6'
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:40.244] [bmv2] [T] [thread 46] [11.0] [cxt 0] Bytes parsed: 54
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Parser 'parser': end
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Pipeline 'ingress': start
+[14:03:40.244] [bmv2] [T] [thread 46] [11.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:40.244] [bmv2] [T] [thread 46] [11.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:40.244] [bmv2] [T] [thread 46] [11.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Looking up key:
+
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:40.244] [bmv2] [T] [thread 46] [11.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:40.244] [bmv2] [T] [thread 46] [11.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:40.244] [bmv2] [T] [thread 46] [11.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:40.244] [bmv2] [T] [thread 46] [11.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:40.244] [bmv2] [T] [thread 46] [11.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:40.244] [bmv2] [T] [thread 46] [11.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:40.244] [bmv2] [T] [thread 46] [11.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : 00000000000000000000000000000000
+
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:40.244] [bmv2] [T] [thread 46] [11.0] [cxt 0] Action MyIngress.deny
+[14:03:40.244] [bmv2] [T] [thread 46] [11.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:40.244] [bmv2] [T] [thread 46] [11.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:40.244] [bmv2] [T] [thread 46] [11.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:40.244] [bmv2] [T] [thread 46] [11.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:40.244] [bmv2] [T] [thread 46] [11.0] [cxt 0] Action MyIngress.drop
+[14:03:40.244] [bmv2] [T] [thread 46] [11.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:40.244] [bmv2] [T] [thread 46] [11.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Pipeline 'ingress': end
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Egress port is 511
+[14:03:40.244] [bmv2] [D] [thread 46] [11.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Processing packet received on port 2
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Parser 'parser': start
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Extracting header 'ethernet'
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:40.306] [bmv2] [T] [thread 46] [12.0] [cxt 0] Bytes parsed: 14
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Extracting header 'ipv6'
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:40.306] [bmv2] [T] [thread 46] [12.0] [cxt 0] Bytes parsed: 54
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Parser 'parser': end
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Pipeline 'ingress': start
+[14:03:40.306] [bmv2] [T] [thread 46] [12.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:40.306] [bmv2] [T] [thread 46] [12.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:40.306] [bmv2] [T] [thread 46] [12.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Looking up key:
+
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:40.306] [bmv2] [T] [thread 46] [12.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:40.306] [bmv2] [T] [thread 46] [12.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:40.306] [bmv2] [T] [thread 46] [12.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:40.306] [bmv2] [T] [thread 46] [12.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:40.306] [bmv2] [T] [thread 46] [12.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:40.306] [bmv2] [T] [thread 46] [12.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:40.306] [bmv2] [T] [thread 46] [12.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : 00000000000000000000000000000000
+
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:40.306] [bmv2] [T] [thread 46] [12.0] [cxt 0] Action MyIngress.deny
+[14:03:40.306] [bmv2] [T] [thread 46] [12.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:40.306] [bmv2] [T] [thread 46] [12.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:40.306] [bmv2] [T] [thread 46] [12.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:40.306] [bmv2] [T] [thread 46] [12.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:40.306] [bmv2] [T] [thread 46] [12.0] [cxt 0] Action MyIngress.drop
+[14:03:40.306] [bmv2] [T] [thread 46] [12.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:40.306] [bmv2] [T] [thread 46] [12.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Pipeline 'ingress': end
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Egress port is 511
+[14:03:40.306] [bmv2] [D] [thread 46] [12.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:40.476] [bmv2] [D] [thread 46] [13.0] [cxt 0] Processing packet received on port 3
+[14:03:40.476] [bmv2] [D] [thread 46] [13.0] [cxt 0] Parser 'parser': start
+[14:03:40.476] [bmv2] [D] [thread 46] [13.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:40.476] [bmv2] [D] [thread 46] [13.0] [cxt 0] Extracting header 'ethernet'
+[14:03:40.476] [bmv2] [D] [thread 46] [13.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:40.476] [bmv2] [T] [thread 46] [13.0] [cxt 0] Bytes parsed: 14
+[14:03:40.476] [bmv2] [D] [thread 46] [13.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:40.476] [bmv2] [D] [thread 46] [13.0] [cxt 0] Extracting header 'ipv6'
+[14:03:40.476] [bmv2] [D] [thread 46] [13.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:40.476] [bmv2] [T] [thread 46] [13.0] [cxt 0] Bytes parsed: 54
+[14:03:40.476] [bmv2] [D] [thread 46] [13.0] [cxt 0] Parser 'parser': end
+[14:03:40.476] [bmv2] [D] [thread 46] [13.0] [cxt 0] Pipeline 'ingress': start
+[14:03:40.476] [bmv2] [T] [thread 46] [13.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:40.476] [bmv2] [T] [thread 46] [13.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:40.476] [bmv2] [T] [thread 46] [13.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:40.476] [bmv2] [D] [thread 46] [13.0] [cxt 0] Looking up key:
+
+[14:03:40.476] [bmv2] [D] [thread 46] [13.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:40.476] [bmv2] [D] [thread 46] [13.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:40.476] [bmv2] [T] [thread 46] [13.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:40.476] [bmv2] [T] [thread 46] [13.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:40.476] [bmv2] [T] [thread 46] [13.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:40.476] [bmv2] [T] [thread 46] [13.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:40.476] [bmv2] [T] [thread 46] [13.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:40.476] [bmv2] [T] [thread 46] [13.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:40.476] [bmv2] [T] [thread 46] [13.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:40.476] [bmv2] [D] [thread 46] [13.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : 00000000000000000000000000000000
+
+[14:03:40.476] [bmv2] [D] [thread 46] [13.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:40.476] [bmv2] [D] [thread 46] [13.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:40.476] [bmv2] [T] [thread 46] [13.0] [cxt 0] Action MyIngress.deny
+[14:03:40.476] [bmv2] [T] [thread 46] [13.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:40.477] [bmv2] [T] [thread 46] [13.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:40.477] [bmv2] [T] [thread 46] [13.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:40.477] [bmv2] [T] [thread 46] [13.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:40.477] [bmv2] [D] [thread 46] [13.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:40.477] [bmv2] [D] [thread 46] [13.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:40.477] [bmv2] [D] [thread 46] [13.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:40.477] [bmv2] [T] [thread 46] [13.0] [cxt 0] Action MyIngress.drop
+[14:03:40.477] [bmv2] [T] [thread 46] [13.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:40.477] [bmv2] [T] [thread 46] [13.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:40.477] [bmv2] [D] [thread 46] [13.0] [cxt 0] Pipeline 'ingress': end
+[14:03:40.477] [bmv2] [D] [thread 46] [13.0] [cxt 0] Egress port is 511
+[14:03:40.477] [bmv2] [D] [thread 46] [13.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Processing packet received on port 1
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Parser 'parser': start
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Extracting header 'ethernet'
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:40.538] [bmv2] [T] [thread 46] [14.0] [cxt 0] Bytes parsed: 14
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Extracting header 'ipv6'
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:40.538] [bmv2] [T] [thread 46] [14.0] [cxt 0] Bytes parsed: 54
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Parser 'parser': end
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Pipeline 'ingress': start
+[14:03:40.538] [bmv2] [T] [thread 46] [14.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:40.538] [bmv2] [T] [thread 46] [14.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:40.538] [bmv2] [T] [thread 46] [14.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Looking up key:
+
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:40.538] [bmv2] [T] [thread 46] [14.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:40.538] [bmv2] [T] [thread 46] [14.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:40.538] [bmv2] [T] [thread 46] [14.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:40.538] [bmv2] [T] [thread 46] [14.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:40.538] [bmv2] [T] [thread 46] [14.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:40.538] [bmv2] [T] [thread 46] [14.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:40.538] [bmv2] [T] [thread 46] [14.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : 00000000000000000000000000000000
+
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:40.538] [bmv2] [T] [thread 46] [14.0] [cxt 0] Action MyIngress.deny
+[14:03:40.538] [bmv2] [T] [thread 46] [14.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:40.538] [bmv2] [T] [thread 46] [14.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:40.538] [bmv2] [T] [thread 46] [14.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:40.538] [bmv2] [T] [thread 46] [14.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:40.538] [bmv2] [T] [thread 46] [14.0] [cxt 0] Action MyIngress.drop
+[14:03:40.538] [bmv2] [T] [thread 46] [14.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:40.538] [bmv2] [T] [thread 46] [14.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Pipeline 'ingress': end
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Egress port is 511
+[14:03:40.538] [bmv2] [D] [thread 46] [14.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Processing packet received on port 1
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Parser 'parser': start
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Extracting header 'ethernet'
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:40.709] [bmv2] [T] [thread 46] [15.0] [cxt 0] Bytes parsed: 14
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Extracting header 'ipv6'
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:40.709] [bmv2] [T] [thread 46] [15.0] [cxt 0] Bytes parsed: 54
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Parser 'parser': end
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Pipeline 'ingress': start
+[14:03:40.709] [bmv2] [T] [thread 46] [15.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:40.709] [bmv2] [T] [thread 46] [15.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:40.709] [bmv2] [T] [thread 46] [15.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Looking up key:
+
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:40.709] [bmv2] [T] [thread 46] [15.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:40.709] [bmv2] [T] [thread 46] [15.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:40.709] [bmv2] [T] [thread 46] [15.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:40.709] [bmv2] [T] [thread 46] [15.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:40.709] [bmv2] [T] [thread 46] [15.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:40.709] [bmv2] [T] [thread 46] [15.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:40.709] [bmv2] [T] [thread 46] [15.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe800000000000009c2113fffe22fd17
+
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:40.709] [bmv2] [T] [thread 46] [15.0] [cxt 0] Action MyIngress.deny
+[14:03:40.709] [bmv2] [T] [thread 46] [15.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:40.709] [bmv2] [T] [thread 46] [15.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:40.709] [bmv2] [T] [thread 46] [15.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:40.709] [bmv2] [T] [thread 46] [15.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:40.709] [bmv2] [T] [thread 46] [15.0] [cxt 0] Action MyIngress.drop
+[14:03:40.709] [bmv2] [T] [thread 46] [15.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:40.709] [bmv2] [T] [thread 46] [15.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Pipeline 'ingress': end
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Egress port is 511
+[14:03:40.709] [bmv2] [D] [thread 46] [15.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:40.712] [bmv2] [D] [thread 46] [16.0] [cxt 0] Processing packet received on port 3
+[14:03:40.712] [bmv2] [D] [thread 46] [16.0] [cxt 0] Parser 'parser': start
+[14:03:40.712] [bmv2] [D] [thread 46] [16.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:40.712] [bmv2] [D] [thread 46] [16.0] [cxt 0] Extracting header 'ethernet'
+[14:03:40.712] [bmv2] [D] [thread 46] [16.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:40.712] [bmv2] [T] [thread 46] [16.0] [cxt 0] Bytes parsed: 14
+[14:03:40.712] [bmv2] [D] [thread 46] [16.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:40.712] [bmv2] [D] [thread 46] [16.0] [cxt 0] Extracting header 'ipv6'
+[14:03:40.712] [bmv2] [D] [thread 46] [16.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:40.712] [bmv2] [T] [thread 46] [16.0] [cxt 0] Bytes parsed: 54
+[14:03:40.712] [bmv2] [D] [thread 46] [16.0] [cxt 0] Parser 'parser': end
+[14:03:40.712] [bmv2] [D] [thread 46] [16.0] [cxt 0] Pipeline 'ingress': start
+[14:03:40.712] [bmv2] [T] [thread 46] [16.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:40.712] [bmv2] [T] [thread 46] [16.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:40.712] [bmv2] [T] [thread 46] [16.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:40.712] [bmv2] [D] [thread 46] [16.0] [cxt 0] Looking up key:
+
+[14:03:40.712] [bmv2] [D] [thread 46] [16.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:40.712] [bmv2] [D] [thread 46] [16.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:40.712] [bmv2] [T] [thread 46] [16.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:40.712] [bmv2] [T] [thread 46] [16.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:40.712] [bmv2] [T] [thread 46] [16.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:40.712] [bmv2] [T] [thread 46] [16.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:40.712] [bmv2] [T] [thread 46] [16.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:40.712] [bmv2] [T] [thread 46] [16.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:40.712] [bmv2] [T] [thread 46] [16.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:40.712] [bmv2] [D] [thread 46] [16.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : 00000000000000000000000000000000
+
+[14:03:40.712] [bmv2] [D] [thread 46] [16.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:40.712] [bmv2] [D] [thread 46] [16.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:40.712] [bmv2] [T] [thread 46] [16.0] [cxt 0] Action MyIngress.deny
+[14:03:40.714] [bmv2] [T] [thread 46] [16.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:40.715] [bmv2] [T] [thread 46] [16.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:40.715] [bmv2] [T] [thread 46] [16.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:40.715] [bmv2] [T] [thread 46] [16.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:40.715] [bmv2] [D] [thread 46] [16.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:40.715] [bmv2] [D] [thread 46] [16.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:40.715] [bmv2] [D] [thread 46] [16.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:40.715] [bmv2] [T] [thread 46] [16.0] [cxt 0] Action MyIngress.drop
+[14:03:40.715] [bmv2] [T] [thread 46] [16.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:40.715] [bmv2] [T] [thread 46] [16.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:40.715] [bmv2] [D] [thread 46] [16.0] [cxt 0] Pipeline 'ingress': end
+[14:03:40.715] [bmv2] [D] [thread 46] [16.0] [cxt 0] Egress port is 511
+[14:03:40.715] [bmv2] [D] [thread 46] [16.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Processing packet received on port 1
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Parser 'parser': start
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Extracting header 'ethernet'
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:40.715] [bmv2] [T] [thread 46] [17.0] [cxt 0] Bytes parsed: 14
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Extracting header 'ipv6'
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:40.715] [bmv2] [T] [thread 46] [17.0] [cxt 0] Bytes parsed: 54
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Parser 'parser': end
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Pipeline 'ingress': start
+[14:03:40.715] [bmv2] [T] [thread 46] [17.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:40.715] [bmv2] [T] [thread 46] [17.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:40.715] [bmv2] [T] [thread 46] [17.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Looking up key:
+
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:40.715] [bmv2] [T] [thread 46] [17.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:40.715] [bmv2] [T] [thread 46] [17.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:40.715] [bmv2] [T] [thread 46] [17.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:40.715] [bmv2] [T] [thread 46] [17.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:40.715] [bmv2] [T] [thread 46] [17.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:40.715] [bmv2] [T] [thread 46] [17.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:40.715] [bmv2] [T] [thread 46] [17.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe80000000000000f0df65fffe174592
+
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:40.715] [bmv2] [T] [thread 46] [17.0] [cxt 0] Action MyIngress.deny
+[14:03:40.715] [bmv2] [T] [thread 46] [17.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:40.715] [bmv2] [T] [thread 46] [17.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:40.715] [bmv2] [T] [thread 46] [17.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:40.715] [bmv2] [T] [thread 46] [17.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:40.715] [bmv2] [T] [thread 46] [17.0] [cxt 0] Action MyIngress.drop
+[14:03:40.715] [bmv2] [T] [thread 46] [17.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:40.715] [bmv2] [T] [thread 46] [17.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Pipeline 'ingress': end
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Egress port is 511
+[14:03:40.715] [bmv2] [D] [thread 46] [17.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Processing packet received on port 2
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Parser 'parser': start
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Extracting header 'ethernet'
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:40.715] [bmv2] [T] [thread 46] [18.0] [cxt 0] Bytes parsed: 14
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Extracting header 'ipv6'
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:40.715] [bmv2] [T] [thread 46] [18.0] [cxt 0] Bytes parsed: 54
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Parser 'parser': end
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Pipeline 'ingress': start
+[14:03:40.715] [bmv2] [T] [thread 46] [18.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:40.715] [bmv2] [T] [thread 46] [18.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:40.715] [bmv2] [T] [thread 46] [18.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Looking up key:
+
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:40.715] [bmv2] [T] [thread 46] [18.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:40.715] [bmv2] [T] [thread 46] [18.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:40.715] [bmv2] [T] [thread 46] [18.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:40.715] [bmv2] [T] [thread 46] [18.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:40.715] [bmv2] [T] [thread 46] [18.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:40.715] [bmv2] [T] [thread 46] [18.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:40.715] [bmv2] [T] [thread 46] [18.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : 00000000000000000000000000000000
+
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:40.715] [bmv2] [T] [thread 46] [18.0] [cxt 0] Action MyIngress.deny
+[14:03:40.715] [bmv2] [T] [thread 46] [18.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:40.715] [bmv2] [T] [thread 46] [18.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:40.715] [bmv2] [T] [thread 46] [18.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:40.715] [bmv2] [T] [thread 46] [18.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:40.715] [bmv2] [T] [thread 46] [18.0] [cxt 0] Action MyIngress.drop
+[14:03:40.715] [bmv2] [T] [thread 46] [18.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:40.715] [bmv2] [T] [thread 46] [18.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Pipeline 'ingress': end
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Egress port is 511
+[14:03:40.715] [bmv2] [D] [thread 46] [18.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Processing packet received on port 1
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Parser 'parser': start
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Extracting header 'ethernet'
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:40.715] [bmv2] [T] [thread 46] [19.0] [cxt 0] Bytes parsed: 14
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Extracting header 'ipv6'
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:40.715] [bmv2] [T] [thread 46] [19.0] [cxt 0] Bytes parsed: 54
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Parser 'parser': end
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Pipeline 'ingress': start
+[14:03:40.715] [bmv2] [T] [thread 46] [19.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:40.715] [bmv2] [T] [thread 46] [19.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:40.715] [bmv2] [T] [thread 46] [19.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Looking up key:
+
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:40.715] [bmv2] [T] [thread 46] [19.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:40.715] [bmv2] [T] [thread 46] [19.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:40.715] [bmv2] [T] [thread 46] [19.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:40.715] [bmv2] [T] [thread 46] [19.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:40.715] [bmv2] [T] [thread 46] [19.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:40.715] [bmv2] [T] [thread 46] [19.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:40.715] [bmv2] [T] [thread 46] [19.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe80000000000000f0df65fffe174592
+
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:40.715] [bmv2] [T] [thread 46] [19.0] [cxt 0] Action MyIngress.deny
+[14:03:40.715] [bmv2] [T] [thread 46] [19.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:40.715] [bmv2] [T] [thread 46] [19.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:40.715] [bmv2] [T] [thread 46] [19.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:40.715] [bmv2] [T] [thread 46] [19.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:40.715] [bmv2] [T] [thread 46] [19.0] [cxt 0] Action MyIngress.drop
+[14:03:40.715] [bmv2] [T] [thread 46] [19.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:40.715] [bmv2] [T] [thread 46] [19.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Pipeline 'ingress': end
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Egress port is 511
+[14:03:40.715] [bmv2] [D] [thread 46] [19.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Processing packet received on port 3
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Parser 'parser': start
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Extracting header 'ethernet'
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:40.813] [bmv2] [T] [thread 46] [20.0] [cxt 0] Bytes parsed: 14
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Extracting header 'ipv6'
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:40.813] [bmv2] [T] [thread 46] [20.0] [cxt 0] Bytes parsed: 54
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Parser 'parser': end
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Pipeline 'ingress': start
+[14:03:40.813] [bmv2] [T] [thread 46] [20.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:40.813] [bmv2] [T] [thread 46] [20.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:40.813] [bmv2] [T] [thread 46] [20.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Looking up key:
+
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:40.813] [bmv2] [T] [thread 46] [20.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:40.813] [bmv2] [T] [thread 46] [20.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:40.813] [bmv2] [T] [thread 46] [20.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:40.813] [bmv2] [T] [thread 46] [20.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:40.813] [bmv2] [T] [thread 46] [20.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:40.813] [bmv2] [T] [thread 46] [20.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:40.813] [bmv2] [T] [thread 46] [20.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe80000000000000446d1ffffea23e87
+
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:40.813] [bmv2] [T] [thread 46] [20.0] [cxt 0] Action MyIngress.deny
+[14:03:40.813] [bmv2] [T] [thread 46] [20.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:40.813] [bmv2] [T] [thread 46] [20.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:40.813] [bmv2] [T] [thread 46] [20.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:40.813] [bmv2] [T] [thread 46] [20.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:40.813] [bmv2] [T] [thread 46] [20.0] [cxt 0] Action MyIngress.drop
+[14:03:40.813] [bmv2] [T] [thread 46] [20.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:40.813] [bmv2] [T] [thread 46] [20.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Pipeline 'ingress': end
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Egress port is 511
+[14:03:40.813] [bmv2] [D] [thread 46] [20.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Processing packet received on port 1
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Parser 'parser': start
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Extracting header 'ethernet'
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:40.816] [bmv2] [T] [thread 46] [21.0] [cxt 0] Bytes parsed: 14
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Extracting header 'ipv6'
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:40.816] [bmv2] [T] [thread 46] [21.0] [cxt 0] Bytes parsed: 54
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Parser 'parser': end
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Pipeline 'ingress': start
+[14:03:40.816] [bmv2] [T] [thread 46] [21.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:40.816] [bmv2] [T] [thread 46] [21.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:40.816] [bmv2] [T] [thread 46] [21.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Looking up key:
+
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:40.816] [bmv2] [T] [thread 46] [21.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:40.816] [bmv2] [T] [thread 46] [21.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:40.816] [bmv2] [T] [thread 46] [21.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:40.816] [bmv2] [T] [thread 46] [21.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:40.816] [bmv2] [T] [thread 46] [21.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:40.816] [bmv2] [T] [thread 46] [21.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:40.816] [bmv2] [T] [thread 46] [21.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe80000000000000f0df65fffe174592
+
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:40.816] [bmv2] [T] [thread 46] [21.0] [cxt 0] Action MyIngress.deny
+[14:03:40.816] [bmv2] [T] [thread 46] [21.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:40.816] [bmv2] [T] [thread 46] [21.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:40.816] [bmv2] [T] [thread 46] [21.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:40.816] [bmv2] [T] [thread 46] [21.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:40.816] [bmv2] [T] [thread 46] [21.0] [cxt 0] Action MyIngress.drop
+[14:03:40.816] [bmv2] [T] [thread 46] [21.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:40.816] [bmv2] [T] [thread 46] [21.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Pipeline 'ingress': end
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Egress port is 511
+[14:03:40.816] [bmv2] [D] [thread 46] [21.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Processing packet received on port 2
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Parser 'parser': start
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Extracting header 'ethernet'
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:40.856] [bmv2] [T] [thread 46] [22.0] [cxt 0] Bytes parsed: 14
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Extracting header 'ipv6'
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:40.856] [bmv2] [T] [thread 46] [22.0] [cxt 0] Bytes parsed: 54
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Parser 'parser': end
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Pipeline 'ingress': start
+[14:03:40.856] [bmv2] [T] [thread 46] [22.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:40.856] [bmv2] [T] [thread 46] [22.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:40.856] [bmv2] [T] [thread 46] [22.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Looking up key:
+
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:40.856] [bmv2] [T] [thread 46] [22.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:40.856] [bmv2] [T] [thread 46] [22.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:40.856] [bmv2] [T] [thread 46] [22.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:40.856] [bmv2] [T] [thread 46] [22.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:40.856] [bmv2] [T] [thread 46] [22.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:40.856] [bmv2] [T] [thread 46] [22.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:40.856] [bmv2] [T] [thread 46] [22.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : 00000000000000000000000000000000
+
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:40.856] [bmv2] [T] [thread 46] [22.0] [cxt 0] Action MyIngress.deny
+[14:03:40.856] [bmv2] [T] [thread 46] [22.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:40.856] [bmv2] [T] [thread 46] [22.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:40.856] [bmv2] [T] [thread 46] [22.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:40.856] [bmv2] [T] [thread 46] [22.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:40.856] [bmv2] [T] [thread 46] [22.0] [cxt 0] Action MyIngress.drop
+[14:03:40.856] [bmv2] [T] [thread 46] [22.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:40.856] [bmv2] [T] [thread 46] [22.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Pipeline 'ingress': end
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Egress port is 511
+[14:03:40.856] [bmv2] [D] [thread 46] [22.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Processing packet received on port 2
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Parser 'parser': start
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Extracting header 'ethernet'
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:40.856] [bmv2] [T] [thread 46] [23.0] [cxt 0] Bytes parsed: 14
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Extracting header 'ipv6'
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Parser state 'parse_ipv6': key is 3a
+[14:03:40.856] [bmv2] [T] [thread 46] [23.0] [cxt 0] Bytes parsed: 54
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Parser 'parser': end
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Pipeline 'ingress': start
+[14:03:40.856] [bmv2] [T] [thread 46] [23.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:40.856] [bmv2] [T] [thread 46] [23.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:40.856] [bmv2] [T] [thread 46] [23.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Looking up key:
+
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:40.856] [bmv2] [T] [thread 46] [23.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:40.856] [bmv2] [T] [thread 46] [23.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:40.856] [bmv2] [T] [thread 46] [23.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:40.856] [bmv2] [T] [thread 46] [23.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:40.856] [bmv2] [T] [thread 46] [23.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:40.856] [bmv2] [T] [thread 46] [23.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:40.856] [bmv2] [T] [thread 46] [23.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : 00000000000000000000000000000000
+
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:40.856] [bmv2] [T] [thread 46] [23.0] [cxt 0] Action MyIngress.deny
+[14:03:40.856] [bmv2] [T] [thread 46] [23.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:40.856] [bmv2] [T] [thread 46] [23.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:40.856] [bmv2] [T] [thread 46] [23.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:40.856] [bmv2] [T] [thread 46] [23.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff0200000000000000000001ff0e7ee8
+
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:40.856] [bmv2] [T] [thread 46] [23.0] [cxt 0] Action MyIngress.drop
+[14:03:40.856] [bmv2] [T] [thread 46] [23.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:40.856] [bmv2] [T] [thread 46] [23.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Pipeline 'ingress': end
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Egress port is 511
+[14:03:40.856] [bmv2] [D] [thread 46] [23.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Processing packet received on port 1
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Parser 'parser': start
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Extracting header 'ethernet'
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:41.109] [bmv2] [T] [thread 46] [24.0] [cxt 0] Bytes parsed: 14
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Extracting header 'ipv6'
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:41.109] [bmv2] [T] [thread 46] [24.0] [cxt 0] Bytes parsed: 54
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Parser 'parser': end
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Pipeline 'ingress': start
+[14:03:41.109] [bmv2] [T] [thread 46] [24.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:41.109] [bmv2] [T] [thread 46] [24.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:41.109] [bmv2] [T] [thread 46] [24.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Looking up key:
+
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:41.109] [bmv2] [T] [thread 46] [24.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:41.109] [bmv2] [T] [thread 46] [24.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:41.109] [bmv2] [T] [thread 46] [24.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:41.109] [bmv2] [T] [thread 46] [24.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:41.109] [bmv2] [T] [thread 46] [24.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:41.109] [bmv2] [T] [thread 46] [24.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:41.109] [bmv2] [T] [thread 46] [24.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe800000000000009c2113fffe22fd17
+
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:41.109] [bmv2] [T] [thread 46] [24.0] [cxt 0] Action MyIngress.deny
+[14:03:41.109] [bmv2] [T] [thread 46] [24.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:41.109] [bmv2] [T] [thread 46] [24.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:41.109] [bmv2] [T] [thread 46] [24.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:41.109] [bmv2] [T] [thread 46] [24.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:41.109] [bmv2] [T] [thread 46] [24.0] [cxt 0] Action MyIngress.drop
+[14:03:41.109] [bmv2] [T] [thread 46] [24.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:41.109] [bmv2] [T] [thread 46] [24.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Pipeline 'ingress': end
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Egress port is 511
+[14:03:41.109] [bmv2] [D] [thread 46] [24.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Processing packet received on port 3
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Parser 'parser': start
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Extracting header 'ethernet'
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:41.143] [bmv2] [T] [thread 46] [25.0] [cxt 0] Bytes parsed: 14
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Extracting header 'ipv6'
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Parser state 'parse_ipv6': key is 3a
+[14:03:41.143] [bmv2] [T] [thread 46] [25.0] [cxt 0] Bytes parsed: 54
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Parser 'parser': end
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Pipeline 'ingress': start
+[14:03:41.143] [bmv2] [T] [thread 46] [25.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:41.143] [bmv2] [T] [thread 46] [25.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:41.143] [bmv2] [T] [thread 46] [25.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Looking up key:
+
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:41.143] [bmv2] [T] [thread 46] [25.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:41.143] [bmv2] [T] [thread 46] [25.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:41.143] [bmv2] [T] [thread 46] [25.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:41.143] [bmv2] [T] [thread 46] [25.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:41.143] [bmv2] [T] [thread 46] [25.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:41.143] [bmv2] [T] [thread 46] [25.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:41.143] [bmv2] [T] [thread 46] [25.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : 00000000000000000000000000000000
+
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:41.143] [bmv2] [T] [thread 46] [25.0] [cxt 0] Action MyIngress.deny
+[14:03:41.143] [bmv2] [T] [thread 46] [25.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:41.143] [bmv2] [T] [thread 46] [25.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:41.143] [bmv2] [T] [thread 46] [25.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:41.143] [bmv2] [T] [thread 46] [25.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff0200000000000000000001ffddaef2
+
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:41.143] [bmv2] [T] [thread 46] [25.0] [cxt 0] Action MyIngress.drop
+[14:03:41.143] [bmv2] [T] [thread 46] [25.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:41.143] [bmv2] [T] [thread 46] [25.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Pipeline 'ingress': end
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Egress port is 511
+[14:03:41.143] [bmv2] [D] [thread 46] [25.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Processing packet received on port 3
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Parser 'parser': start
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Extracting header 'ethernet'
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:41.575] [bmv2] [T] [thread 46] [26.0] [cxt 0] Bytes parsed: 14
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Extracting header 'ipv6'
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:41.575] [bmv2] [T] [thread 46] [26.0] [cxt 0] Bytes parsed: 54
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Parser 'parser': end
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Pipeline 'ingress': start
+[14:03:41.575] [bmv2] [T] [thread 46] [26.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:41.575] [bmv2] [T] [thread 46] [26.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:41.575] [bmv2] [T] [thread 46] [26.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Looking up key:
+
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:41.575] [bmv2] [T] [thread 46] [26.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:41.575] [bmv2] [T] [thread 46] [26.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:41.575] [bmv2] [T] [thread 46] [26.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:41.575] [bmv2] [T] [thread 46] [26.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:41.575] [bmv2] [T] [thread 46] [26.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:41.575] [bmv2] [T] [thread 46] [26.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:41.575] [bmv2] [T] [thread 46] [26.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : 00000000000000000000000000000000
+
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:41.575] [bmv2] [T] [thread 46] [26.0] [cxt 0] Action MyIngress.deny
+[14:03:41.575] [bmv2] [T] [thread 46] [26.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:41.575] [bmv2] [T] [thread 46] [26.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:41.575] [bmv2] [T] [thread 46] [26.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:41.575] [bmv2] [T] [thread 46] [26.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:41.575] [bmv2] [T] [thread 46] [26.0] [cxt 0] Action MyIngress.drop
+[14:03:41.575] [bmv2] [T] [thread 46] [26.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:41.575] [bmv2] [T] [thread 46] [26.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Pipeline 'ingress': end
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Egress port is 511
+[14:03:41.575] [bmv2] [D] [thread 46] [26.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Processing packet received on port 1
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Parser 'parser': start
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Extracting header 'ethernet'
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:41.654] [bmv2] [T] [thread 46] [27.0] [cxt 0] Bytes parsed: 14
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Extracting header 'ipv6'
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:41.654] [bmv2] [T] [thread 46] [27.0] [cxt 0] Bytes parsed: 54
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Parser 'parser': end
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Pipeline 'ingress': start
+[14:03:41.654] [bmv2] [T] [thread 46] [27.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:41.654] [bmv2] [T] [thread 46] [27.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:41.654] [bmv2] [T] [thread 46] [27.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Looking up key:
+
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:41.654] [bmv2] [T] [thread 46] [27.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:41.654] [bmv2] [T] [thread 46] [27.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:41.654] [bmv2] [T] [thread 46] [27.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:41.654] [bmv2] [T] [thread 46] [27.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:41.654] [bmv2] [T] [thread 46] [27.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:41.654] [bmv2] [T] [thread 46] [27.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:41.654] [bmv2] [T] [thread 46] [27.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe80000000000000f0df65fffe174592
+
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:41.654] [bmv2] [T] [thread 46] [27.0] [cxt 0] Action MyIngress.deny
+[14:03:41.654] [bmv2] [T] [thread 46] [27.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:41.654] [bmv2] [T] [thread 46] [27.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:41.654] [bmv2] [T] [thread 46] [27.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:41.654] [bmv2] [T] [thread 46] [27.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:41.654] [bmv2] [T] [thread 46] [27.0] [cxt 0] Action MyIngress.drop
+[14:03:41.654] [bmv2] [T] [thread 46] [27.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:41.654] [bmv2] [T] [thread 46] [27.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Pipeline 'ingress': end
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Egress port is 511
+[14:03:41.654] [bmv2] [D] [thread 46] [27.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Processing packet received on port 2
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Parser 'parser': start
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Extracting header 'ethernet'
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:41.952] [bmv2] [T] [thread 46] [28.0] [cxt 0] Bytes parsed: 14
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Extracting header 'ipv6'
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:41.952] [bmv2] [T] [thread 46] [28.0] [cxt 0] Bytes parsed: 54
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Parser 'parser': end
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Pipeline 'ingress': start
+[14:03:41.952] [bmv2] [T] [thread 46] [28.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:41.952] [bmv2] [T] [thread 46] [28.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:41.952] [bmv2] [T] [thread 46] [28.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Looking up key:
+
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:41.952] [bmv2] [T] [thread 46] [28.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:41.952] [bmv2] [T] [thread 46] [28.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:41.952] [bmv2] [T] [thread 46] [28.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:41.952] [bmv2] [T] [thread 46] [28.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:41.952] [bmv2] [T] [thread 46] [28.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:41.952] [bmv2] [T] [thread 46] [28.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:41.952] [bmv2] [T] [thread 46] [28.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe80000000000000ec2db3fffe0e7ee8
+
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:41.952] [bmv2] [T] [thread 46] [28.0] [cxt 0] Action MyIngress.deny
+[14:03:41.952] [bmv2] [T] [thread 46] [28.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:41.952] [bmv2] [T] [thread 46] [28.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:41.952] [bmv2] [T] [thread 46] [28.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:41.952] [bmv2] [T] [thread 46] [28.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:41.952] [bmv2] [T] [thread 46] [28.0] [cxt 0] Action MyIngress.drop
+[14:03:41.952] [bmv2] [T] [thread 46] [28.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:41.952] [bmv2] [T] [thread 46] [28.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Pipeline 'ingress': end
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Egress port is 511
+[14:03:41.952] [bmv2] [D] [thread 46] [28.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Processing packet received on port 2
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Parser 'parser': start
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Extracting header 'ethernet'
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:41.953] [bmv2] [T] [thread 46] [29.0] [cxt 0] Bytes parsed: 14
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Extracting header 'ipv6'
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:41.953] [bmv2] [T] [thread 46] [29.0] [cxt 0] Bytes parsed: 54
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Parser 'parser': end
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Pipeline 'ingress': start
+[14:03:41.953] [bmv2] [T] [thread 46] [29.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:41.953] [bmv2] [T] [thread 46] [29.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:41.953] [bmv2] [T] [thread 46] [29.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Looking up key:
+
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:41.953] [bmv2] [T] [thread 46] [29.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:41.953] [bmv2] [T] [thread 46] [29.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:41.953] [bmv2] [T] [thread 46] [29.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:41.953] [bmv2] [T] [thread 46] [29.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:41.953] [bmv2] [T] [thread 46] [29.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:41.953] [bmv2] [T] [thread 46] [29.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:41.953] [bmv2] [T] [thread 46] [29.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe80000000000000ec2db3fffe0e7ee8
+
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:41.953] [bmv2] [T] [thread 46] [29.0] [cxt 0] Action MyIngress.deny
+[14:03:41.953] [bmv2] [T] [thread 46] [29.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:41.953] [bmv2] [T] [thread 46] [29.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:41.953] [bmv2] [T] [thread 46] [29.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:41.953] [bmv2] [T] [thread 46] [29.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:41.953] [bmv2] [T] [thread 46] [29.0] [cxt 0] Action MyIngress.drop
+[14:03:41.953] [bmv2] [T] [thread 46] [29.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:41.953] [bmv2] [T] [thread 46] [29.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Pipeline 'ingress': end
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Egress port is 511
+[14:03:41.953] [bmv2] [D] [thread 46] [29.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Processing packet received on port 2
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Parser 'parser': start
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Extracting header 'ethernet'
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:42.016] [bmv2] [T] [thread 46] [30.0] [cxt 0] Bytes parsed: 14
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Extracting header 'ipv6'
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:42.016] [bmv2] [T] [thread 46] [30.0] [cxt 0] Bytes parsed: 54
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Parser 'parser': end
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Pipeline 'ingress': start
+[14:03:42.016] [bmv2] [T] [thread 46] [30.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:42.016] [bmv2] [T] [thread 46] [30.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:42.016] [bmv2] [T] [thread 46] [30.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Looking up key:
+
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:42.016] [bmv2] [T] [thread 46] [30.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:42.016] [bmv2] [T] [thread 46] [30.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:42.016] [bmv2] [T] [thread 46] [30.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:42.016] [bmv2] [T] [thread 46] [30.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:42.016] [bmv2] [T] [thread 46] [30.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:42.016] [bmv2] [T] [thread 46] [30.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:42.016] [bmv2] [T] [thread 46] [30.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe80000000000000ec2db3fffe0e7ee8
+
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:42.016] [bmv2] [T] [thread 46] [30.0] [cxt 0] Action MyIngress.deny
+[14:03:42.016] [bmv2] [T] [thread 46] [30.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:42.016] [bmv2] [T] [thread 46] [30.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:42.016] [bmv2] [T] [thread 46] [30.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:42.016] [bmv2] [T] [thread 46] [30.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:42.016] [bmv2] [T] [thread 46] [30.0] [cxt 0] Action MyIngress.drop
+[14:03:42.016] [bmv2] [T] [thread 46] [30.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:42.016] [bmv2] [T] [thread 46] [30.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Pipeline 'ingress': end
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Egress port is 511
+[14:03:42.016] [bmv2] [D] [thread 46] [30.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Processing packet received on port 3
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Parser 'parser': start
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Extracting header 'ethernet'
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:42.159] [bmv2] [T] [thread 46] [31.0] [cxt 0] Bytes parsed: 14
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Extracting header 'ipv6'
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:42.159] [bmv2] [T] [thread 46] [31.0] [cxt 0] Bytes parsed: 54
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Parser 'parser': end
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Pipeline 'ingress': start
+[14:03:42.159] [bmv2] [T] [thread 46] [31.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:42.159] [bmv2] [T] [thread 46] [31.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:42.159] [bmv2] [T] [thread 46] [31.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Looking up key:
+
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:42.159] [bmv2] [T] [thread 46] [31.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:42.159] [bmv2] [T] [thread 46] [31.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:42.159] [bmv2] [T] [thread 46] [31.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:42.159] [bmv2] [T] [thread 46] [31.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:42.159] [bmv2] [T] [thread 46] [31.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:42.159] [bmv2] [T] [thread 46] [31.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:42.159] [bmv2] [T] [thread 46] [31.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe8000000000000034054bfffeddaef2
+
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:42.159] [bmv2] [T] [thread 46] [31.0] [cxt 0] Action MyIngress.deny
+[14:03:42.159] [bmv2] [T] [thread 46] [31.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:42.159] [bmv2] [T] [thread 46] [31.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:42.159] [bmv2] [T] [thread 46] [31.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:42.159] [bmv2] [T] [thread 46] [31.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:42.159] [bmv2] [T] [thread 46] [31.0] [cxt 0] Action MyIngress.drop
+[14:03:42.159] [bmv2] [T] [thread 46] [31.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:42.159] [bmv2] [T] [thread 46] [31.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Pipeline 'ingress': end
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Egress port is 511
+[14:03:42.159] [bmv2] [D] [thread 46] [31.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Processing packet received on port 3
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Parser 'parser': start
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Extracting header 'ethernet'
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:42.170] [bmv2] [T] [thread 46] [32.0] [cxt 0] Bytes parsed: 14
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Extracting header 'ipv6'
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:42.170] [bmv2] [T] [thread 46] [32.0] [cxt 0] Bytes parsed: 54
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Parser 'parser': end
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Pipeline 'ingress': start
+[14:03:42.170] [bmv2] [T] [thread 46] [32.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:42.170] [bmv2] [T] [thread 46] [32.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:42.170] [bmv2] [T] [thread 46] [32.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Looking up key:
+
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:42.170] [bmv2] [T] [thread 46] [32.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:42.170] [bmv2] [T] [thread 46] [32.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:42.170] [bmv2] [T] [thread 46] [32.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:42.170] [bmv2] [T] [thread 46] [32.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:42.170] [bmv2] [T] [thread 46] [32.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:42.170] [bmv2] [T] [thread 46] [32.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:42.170] [bmv2] [T] [thread 46] [32.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe8000000000000034054bfffeddaef2
+
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:42.170] [bmv2] [T] [thread 46] [32.0] [cxt 0] Action MyIngress.deny
+[14:03:42.170] [bmv2] [T] [thread 46] [32.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:42.170] [bmv2] [T] [thread 46] [32.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:42.170] [bmv2] [T] [thread 46] [32.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:42.170] [bmv2] [T] [thread 46] [32.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:42.170] [bmv2] [T] [thread 46] [32.0] [cxt 0] Action MyIngress.drop
+[14:03:42.170] [bmv2] [T] [thread 46] [32.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:42.170] [bmv2] [T] [thread 46] [32.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Pipeline 'ingress': end
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Egress port is 511
+[14:03:42.170] [bmv2] [D] [thread 46] [32.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:42.302] [bmv2] [D] [thread 46] [33.0] [cxt 0] Processing packet received on port 3
+[14:03:42.302] [bmv2] [D] [thread 46] [33.0] [cxt 0] Parser 'parser': start
+[14:03:42.302] [bmv2] [D] [thread 46] [33.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:42.302] [bmv2] [D] [thread 46] [33.0] [cxt 0] Extracting header 'ethernet'
+[14:03:42.302] [bmv2] [D] [thread 46] [33.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:42.302] [bmv2] [T] [thread 46] [33.0] [cxt 0] Bytes parsed: 14
+[14:03:42.302] [bmv2] [D] [thread 46] [33.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:42.302] [bmv2] [D] [thread 46] [33.0] [cxt 0] Extracting header 'ipv6'
+[14:03:42.302] [bmv2] [D] [thread 46] [33.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:42.302] [bmv2] [T] [thread 46] [33.0] [cxt 0] Bytes parsed: 54
+[14:03:42.302] [bmv2] [D] [thread 46] [33.0] [cxt 0] Parser 'parser': end
+[14:03:42.302] [bmv2] [D] [thread 46] [33.0] [cxt 0] Pipeline 'ingress': start
+[14:03:42.302] [bmv2] [T] [thread 46] [33.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:42.302] [bmv2] [T] [thread 46] [33.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:42.302] [bmv2] [T] [thread 46] [33.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:42.302] [bmv2] [D] [thread 46] [33.0] [cxt 0] Looking up key:
+
+[14:03:42.302] [bmv2] [D] [thread 46] [33.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:42.302] [bmv2] [D] [thread 46] [33.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:42.302] [bmv2] [T] [thread 46] [33.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:42.302] [bmv2] [T] [thread 46] [33.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:42.302] [bmv2] [T] [thread 46] [33.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:42.302] [bmv2] [T] [thread 46] [33.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:42.302] [bmv2] [T] [thread 46] [33.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:42.302] [bmv2] [T] [thread 46] [33.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:42.303] [bmv2] [T] [thread 46] [33.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:42.303] [bmv2] [D] [thread 46] [33.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe8000000000000034054bfffeddaef2
+
+[14:03:42.303] [bmv2] [D] [thread 46] [33.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:42.303] [bmv2] [D] [thread 46] [33.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:42.303] [bmv2] [T] [thread 46] [33.0] [cxt 0] Action MyIngress.deny
+[14:03:42.303] [bmv2] [T] [thread 46] [33.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:42.303] [bmv2] [T] [thread 46] [33.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:42.304] [bmv2] [T] [thread 46] [33.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:42.304] [bmv2] [T] [thread 46] [33.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:42.304] [bmv2] [D] [thread 46] [33.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:42.304] [bmv2] [D] [thread 46] [33.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:42.304] [bmv2] [D] [thread 46] [33.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:42.304] [bmv2] [T] [thread 46] [33.0] [cxt 0] Action MyIngress.drop
+[14:03:42.304] [bmv2] [T] [thread 46] [33.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:42.304] [bmv2] [T] [thread 46] [33.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:42.304] [bmv2] [D] [thread 46] [33.0] [cxt 0] Pipeline 'ingress': end
+[14:03:42.304] [bmv2] [D] [thread 46] [33.0] [cxt 0] Egress port is 511
+[14:03:42.304] [bmv2] [D] [thread 46] [33.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Processing packet received on port 2
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Parser 'parser': start
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Extracting header 'ethernet'
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:42.600] [bmv2] [T] [thread 46] [34.0] [cxt 0] Bytes parsed: 14
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Extracting header 'ipv6'
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:42.600] [bmv2] [T] [thread 46] [34.0] [cxt 0] Bytes parsed: 54
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Parser 'parser': end
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Pipeline 'ingress': start
+[14:03:42.600] [bmv2] [T] [thread 46] [34.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:42.600] [bmv2] [T] [thread 46] [34.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:42.600] [bmv2] [T] [thread 46] [34.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Looking up key:
+
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:42.600] [bmv2] [T] [thread 46] [34.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:42.600] [bmv2] [T] [thread 46] [34.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:42.600] [bmv2] [T] [thread 46] [34.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:42.600] [bmv2] [T] [thread 46] [34.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:42.600] [bmv2] [T] [thread 46] [34.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[14:03:42.600] [bmv2] [T] [thread 46] [34.0] [cxt 0] /shared/consensus.p4(384) Condition "hdr.ipv6.isValid()" (node_8) is true
+[14:03:42.600] [bmv2] [T] [thread 46] [34.0] [cxt 0] Applying table 'MyIngress.l3_ipv6_voting'
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Looking up key:
+* hdr.ipv6.srcAddr    : fe80000000000000ec2db3fffe0e7ee8
+
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Table 'MyIngress.l3_ipv6_voting': miss
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Action entry is MyIngress.deny - 
+[14:03:42.600] [bmv2] [T] [thread 46] [34.0] [cxt 0] Action MyIngress.deny
+[14:03:42.600] [bmv2] [T] [thread 46] [34.0] [cxt 0] /shared/consensus.p4(182) Primitive hdr.consensus.denied_number = hdr.consensus.denied_number + 1
+[14:03:42.600] [bmv2] [T] [thread 46] [34.0] [cxt 0] /shared/consensus.p4(394) Condition "hdr.ipv4.isValid()" (node_10) is false
+[14:03:42.600] [bmv2] [T] [thread 46] [34.0] [cxt 0] /shared/consensus.p4(397) Condition "hdr.ipv6.isValid()" (node_12) is true
+[14:03:42.600] [bmv2] [T] [thread 46] [34.0] [cxt 0] Applying table 'MyIngress.ipv6_forwarding'
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Looking up key:
+* hdr.ipv6.dstAddr    : ff020000000000000000000000000016
+
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Table 'MyIngress.ipv6_forwarding': miss
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Action entry is MyIngress.drop - 
+[14:03:42.600] [bmv2] [T] [thread 46] [34.0] [cxt 0] Action MyIngress.drop
+[14:03:42.600] [bmv2] [T] [thread 46] [34.0] [cxt 0] /shared/consensus.p4(187) Primitive mark_to_drop(standard_metadata)
+[14:03:42.600] [bmv2] [T] [thread 46] [34.0] [cxt 0] /shared/consensus.p4(401) Condition "hdr.consensus.isValid()" (node_14) is true
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Pipeline 'ingress': end
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Egress port is 511
+[14:03:42.600] [bmv2] [D] [thread 46] [34.0] [cxt 0] Dropping packet at the end of ingress
+[14:03:42.856] [bmv2] [D] [thread 46] [35.0] [cxt 0] Processing packet received on port 3
+[14:03:42.856] [bmv2] [D] [thread 46] [35.0] [cxt 0] Parser 'parser': start
+[14:03:42.856] [bmv2] [D] [thread 46] [35.0] [cxt 0] Parser 'parser' entering state 'start'
+[14:03:42.856] [bmv2] [D] [thread 46] [35.0] [cxt 0] Extracting header 'ethernet'
+[14:03:42.856] [bmv2] [D] [thread 46] [35.0] [cxt 0] Parser state 'start': key is 86dd
+[14:03:42.856] [bmv2] [T] [thread 46] [35.0] [cxt 0] Bytes parsed: 14
+[14:03:42.856] [bmv2] [D] [thread 46] [35.0] [cxt 0] Parser 'parser' entering state 'parse_ipv6'
+[14:03:42.856] [bmv2] [D] [thread 46] [35.0] [cxt 0] Extracting header 'ipv6'
+[14:03:42.856] [bmv2] [D] [thread 46] [35.0] [cxt 0] Parser state 'parse_ipv6': key is 00
+[14:03:42.856] [bmv2] [T] [thread 46] [35.0] [cxt 0] Bytes parsed: 54
+[14:03:42.856] [bmv2] [D] [thread 46] [35.0] [cxt 0] Parser 'parser': end
+[14:03:42.856] [bmv2] [D] [thread 46] [35.0] [cxt 0] Pipeline 'ingress': start
+[14:03:42.856] [bmv2] [T] [thread 46] [35.0] [cxt 0] /shared/consensus.p4(370) Condition "hdr.consensus.isValid()" (node_2) is false
+[14:03:42.856] [bmv2] [T] [thread 46] [35.0] [cxt 0] /shared/consensus.p4(371) Condition "hdr.ipv4.isValid()" (node_3) is false
+[14:03:42.856] [bmv2] [T] [thread 46] [35.0] [cxt 0] Applying table 'tbl_from_src_ipv6'
+[14:03:42.856] [bmv2] [D] [thread 46] [35.0] [cxt 0] Looking up key:
+
+[14:03:42.856] [bmv2] [D] [thread 46] [35.0] [cxt 0] Table 'tbl_from_src_ipv6': miss
+[14:03:42.856] [bmv2] [D] [thread 46] [35.0] [cxt 0] Action entry is MyIngress.from_src_ipv6 - 
+[14:03:42.856] [bmv2] [T] [thread 46] [35.0] [cxt 0] Action MyIngress.from_src_ipv6
+[14:03:42.856] [bmv2] [T] [thread 46] [35.0] [cxt 0] /shared/consensus.p4(233) Primitive hdr.consensus.setValid()
+[14:03:42.856] [bmv2] [T] [thread 46] [35.0] [cxt 0] /shared/consensus.p4(234) Primitive hdr.consensus.proto_id = hdr.ipv6.nextHeader
+[14:03:42.856] [bmv2] [T] [thread 46] [35.0] [cxt 0] /shared/consensus.p4(11) Primitive 253; ...
+[14:03:42.856] [bmv2] [T] [thread 46] [35.0] [cxt 0] /shared/consensus.p4(383) Condition "hdr.ipv4.isValid()" (node_6) is false
+[1

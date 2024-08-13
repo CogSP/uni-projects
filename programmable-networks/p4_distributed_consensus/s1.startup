@@ -1,0 +1,8 @@
+echo -e "" > /shared/s1.log.txt
+p4c -D LAYER2_VOTING=1 /shared/consensus.p4 -o /
+simple_switch -i 1@eth0 -i 2@eth1 -i 3@eth2 -i 4@eth3 consensus.json --log-file /shared/s1.log /shared &
+
+while [[ $(pgrep simple_switch) -eq 0 ]]; do sleep 1; done
+until simple_switch_CLI <<< "help"; do sleep 1; done
+
+simple_switch_CLI <<< $(cat commands.txt)

@@ -1,0 +1,28 @@
+table_add MyIngress.ipv4_forwarding ipv4_to_dest 192.168.0.1/32 => 1
+table_add MyIngress.ipv4_forwarding ipv4_to_dest 192.168.0.2/32 => 2
+table_add MyIngress.ipv4_forwarding ipv4_forward 192.168.0.3/32 => 4
+table_add MyIngress.ipv4_forwarding ipv4_forward 192.168.0.4/32 => 3
+table_add MyIngress.ipv6_forwarding ipv6_to_dest 2001::1/128 => 1
+table_add MyIngress.ipv6_forwarding ipv6_to_dest 2001::2/128 => 2
+table_add MyIngress.ipv6_forwarding ipv6_forward 2001::3/128 => 4
+table_add MyIngress.ipv6_forwarding ipv6_forward 2001::4/128 => 3
+
+
+table_add MyIngress.l2_voting accept 00:00:00:00:00:10 00:00:00:00:00:40 0x86DD =>
+table_add MyIngress.l2_voting accept 00:00:00:00:00:40 00:00:00:00:00:10 0x86DD =>
+
+table_add MyIngress.l2_voting accept 00:00:00:00:00:20 00:00:00:00:00:40 0x86DD =>
+table_add MyIngress.l2_voting accept 00:00:00:00:00:40 00:00:00:00:00:20 0x86DD =>
+
+table_add MyIngress.l2_voting accept 00:00:00:00:00:10 00:00:00:00:00:20 0x0800 =>
+table_add MyIngress.l2_voting accept 00:00:00:00:00:10 00:00:00:00:00:20 0x86DD =>
+
+
+
+table_add MyIngress.l2_voting deny 00:00:00:00:00:10 00:00:00:00:00:30 0x0800 =>
+table_add MyIngress.l2_voting deny 00:00:00:00:00:30 00:00:00:00:00:10 0x0800 =>
+table_add MyIngress.l2_voting deny 00:00:00:00:00:10 00:00:00:00:00:30 0x86DD =>
+table_add MyIngress.l2_voting deny 00:00:00:00:00:30 00:00:00:00:00:10 0x86DD =>
+
+table_add MyIngress.l2_voting deny 00:00:00:00:00:20 00:00:00:00:00:40 0x0800 =>
+table_add MyIngress.l2_voting deny 00:00:00:00:00:40 00:00:00:00:00:20 0x0800 =>

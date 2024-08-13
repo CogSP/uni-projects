@@ -1,0 +1,14 @@
+table_add MyIngress.ipv4_forwarding ipv4_forward 192.168.0.1/32 => 1
+table_add MyIngress.ipv4_forwarding ipv4_forward 192.168.0.2/32 => 1
+table_add MyIngress.ipv4_forwarding ipv4_forward 192.168.0.3/32 => 3
+table_add MyIngress.ipv4_forwarding ipv4_forward 192.168.0.4/32 => 3
+table_add MyIngress.ipv6_forwarding ipv6_forward 2001::1/128 => 1
+table_add MyIngress.ipv6_forwarding ipv6_forward 2001::2/128 => 1
+table_add MyIngress.ipv6_forwarding ipv6_forward 2001::3/128 => 3
+table_add MyIngress.ipv6_forwarding ipv6_forward 2001::4/128 => 3
+
+table_add MyIngress.l3_ipv6_voting accept 2001::3 =>
+table_add MyIngress.l3_ipv6_voting accept 2001::4 =>
+
+table_add MyIngress.l3_ipv4_voting deny 192.168.0.3 =>
+table_add MyIngress.l3_ipv4_voting deny 192.168.0.4 =>

@@ -1,0 +1,11 @@
+ip link set eth0 address 00:00:00:00:00:30
+ip addr add 192.168.0.3/24 dev eth0
+ip addr add 2001::3/48 dev eth0
+
+arp -s 192.168.0.1 00:00:00:00:00:10
+arp -s 192.168.0.2 00:00:00:00:00:20
+arp -s 192.168.0.4 00:00:00:00:00:40
+
+ip -6 neigh add 2001::1 lladdr 00:00:00:00:00:10 dev eth0
+ip -6 neigh add 2001::2 lladdr 00:00:00:00:00:20 dev eth0
+ip -6 neigh add 2001::4 lladdr 00:00:00:00:00:40 dev eth0
