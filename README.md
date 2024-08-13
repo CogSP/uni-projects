@@ -32,3 +32,8 @@ This repo contains some of the university projects I have done until now.
 - **network-infrastructures**:  made for the ["Network Infrastructures"](https://corsidilaurea.uniroma1.it/en/view-course-details/2023/30431/20190322090929/bd51dd0b-1755-4ec6-9aa5-0dc20c9c653d/6ce727ff-070f-4c1a-b2db-4e67abd24d7d/7611e19a-ca0a-499c-a08c-f5572d80b957/27a42794-3b1d-4f57-a28d-763ca7abb9f8?guid_cv=6ce727ff-070f-4c1a-b2db-4e67abd24d7d&current_erogata=bd51dd0b-1755-4ec6-9aa5-0dc20c9c653d) exam, this repository contains two homework, done in [Kathara](https://www.kathara.org/), with the goal of creating and configuring networks, dealing with routing, firewall, ssh and pretty much everything that is necessary to configure linux systems in the context of networking.
 
 - **matlab-for-robotics**: made for the ["Robotics 1"](https://www.diag.uniroma1.it/deluca/rob1_en.php) and ["Robotics 2"](https://www.diag.uniroma1.it/deluca/rob2_en.php) exam, this repository contains MATLAB code written to solve problems related to robotics.
+
+- **programmable-networks**: made for the [Programmable Networks](https://corsidilaurea.uniroma1.it/it/view-course-details/2023/30430/20190322090929/291bf907-1564-42f6-aeb3-67dfb15b5aa9/85093cf7-882f-49f3-8691-1d2531d59912/82ccee29-dc9b-4670-80af-029ee8cccf5f/343a4719-4e12-440d-8ca7-d60f88605563?guid_cv=85093cf7-882f-49f3-8691-1d2531d59912&current_erogata=291bf907-1564-42f6-aeb3-67dfb15b5aa9) exam, this repository contains two projects:
+
+   - POX_apps: a simulated mobile software defined network with applications in a POX controller 
+   - p4_distributed_consensus: a distributed consensus protocol implemented in the P4 language
