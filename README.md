@@ -31,9 +31,4 @@ This repo contains some of the university projects I have done until now.
 
 - **network-infrastructures**:  made for the ["Network Infrastructures"](https://corsidilaurea.uniroma1.it/en/view-course-details/2023/30431/20190322090929/bd51dd0b-1755-4ec6-9aa5-0dc20c9c653d/6ce727ff-070f-4c1a-b2db-4e67abd24d7d/7611e19a-ca0a-499c-a08c-f5572d80b957/27a42794-3b1d-4f57-a28d-763ca7abb9f8?guid_cv=6ce727ff-070f-4c1a-b2db-4e67abd24d7d&current_erogata=bd51dd0b-1755-4ec6-9aa5-0dc20c9c653d) exam, this repository contains two homework, done in [Kathara](https://www.kathara.org/), with the goal of creating and configuring networks, dealing with routing, firewall, ssh and pretty much everything that is necessary to configure linux systems in the context of networking.
 
-- **matlab-for-robotics**: made for the ["Robotics 1"](https://www.diag.uniroma1.it/deluca/rob1_en.php) exam, this repository contains MATLAB code written to solve problems related to:
-	1. robot components (actuators, transmissions, sensors)
-	2. direct and inverse kinematics
-	3. direct and inverse differential kinematics
-	4. trajectory planning
-	5. kinematic control
+- **matlab-for-robotics**: made for the ["Robotics 1"](https://www.diag.uniroma1.it/deluca/rob1_en.php) and ["Robotics 2"](https://www.diag.uniroma1.it/deluca/rob2_en.php) exam, this repository contains MATLAB code written to solve problems related to robotics.
