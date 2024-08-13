@@ -1,139 +1,139 @@
-THE IMAGE OF THE TOPOLOGY IS AVAILABLE IN /shared
+# Distributed Consensus Protocol in P4
 
-SWITCH S1:
+In this project, we used the P4 language to define a distributed consensus service. Specifically, during the transit of a packet within the network domain, each intermediate node expresses its opinion regarding the treatment that the packet should undergo (allowed, to drop, abstained). This decision is made by each node by observing certain specific fields of the packet itself. Each network node is specialized in a specific layer of the stack. Upon reaching the egress node, if the absolute majority of nodes have voted for the "allowed" option, then the packet is delivered to the recipient; otherwise, it is discarded. 
 
-Accetta:
-- traffico ipv6 tra h1 e h4 (in entrambe le direzioni)
-- traffico ipv6 tra h2 e h4 (in entrambe le direzioni)
-- traffico ipv4 e ipv6 che va da h1 a h2 (ma non viceversa)
+<img src="shared/topology.png" alt="topology" width="634" height="537">
 
-Vota No:
-- traffico ipv4 e ipv6 tra h1 e h3 (in entrambe le direzioni)
-- traffico ipv4 tra h2 e h4 (in entrambe le direzioni)
+Based on the topology and rules we have implemented, we have the following switches behaviours.
 
+## SWITCH S1:
 
-SWITCH S2:
+Allow:
+- IPv6 traffic between h1 and h4 (in both directions)
+- IPv6 traffic between h2 and h4 (in both directions)
+- IPv4 and IPv6 traffic from h1 to h2 (but not vice versa)
 
-Accetta:
-- traffico ipv6 da h3
-- traffico ipv6 da h4
-
-Vota No:
-- traffico ipv4 da h3
-- traffico ipv4 da h4
+Deny:
+- IPv4 and IPv6 traffic between h1 and h3 (in both directions)
+- IPv4 traffic between h2 and h4 (in both directions)
 
 
-SWITCH S3:
+## SWITCH S2:
 
-Accetta:
-- traffico ipv4 e ipv6 da h1
-- traffico ipv4 e ipv6 da h2
-- traffico ipv4 e ipv6 da h4
+Allow:
+- IPv6 traffic from h3
+- IPv6 traffic from h4
 
-Vota No:
-- niente
+Deny:
+- IPv4 traffic from h3
+- IPv4 traffic from h4
 
-SWITCH S4:
 
-Accetta:
-- traffico dalla porta tcp 1122
-- traffico dalla porta udp 4455
+## SWITCH S3:
 
-Vota No:
-- niente
+Allow:
+- IPv4 and IPv6 traffic from h1
+- IPv4 and IPv6 traffic from h2
+- IPv4 and IPv6 traffic from h4
 
-SWITCH S5:
+Deny:
+- Nothing
 
-Accetta:
-- traffico dalla porta tcp 120
 
-Vota No:
-- niente
+## SWITCH S4:
 
-SWITCH S6:
+Allow:
+- Traffic on TCP port 1122
+- Traffic on UDP port 4455
 
-Accetta:
-- traffico ipv4 e ipv6 tra h4 e h1 (in entrambe le direzioni)
-- traffico ipv4 e ipv6 tra h4 e h2 (in entrambe le direzioni)
-- traffico ipv6 da h4 a h3 (solo in questa direzione)
+Deny:
+- Nothing
 
-Vota No:
-- niente
 
-Esempi:
+## SWITCH S5:
 
-- h4 esegue: ping4 192.168.0.1
+Allow:
+- Traffic on TCP port 120
+
+Deny:
+- Nothing
+
+
+## SWITCH S6:
+
+Allow:
+- IPv4 and IPv6 traffic between h4 and h1 (in both directions)
+- IPv4 and IPv6 traffic between h4 and h2 (in both directions)
+- IPv6 traffic from h4 to h3 (only in this direction)
+
+Deny:
+- Nothing
+
+
+## Examples:
+
+- h4 executes: `ping4 192.168.0.1`
 	- s6: allow
-	- s4: ininfluente (L4)
+	- s4: irrelevant (L4)
 	- s2: abstain -> deny
 	- s1: abstain -> deny\
-	Il pacchetto viene quindi scartato 
+	The packet is therefore discarded.
 
-- h4 esegue: ping6 2001::1
+- h4 executes: `ping6 2001::1`
 	- s6: allow
-	- s4: ininfluente (L4)
+	- s4: irrelevant (L4)
 	- s2: allow
 	- s1: allow\
-	Il pacchetto raggiunge quindi h1, ma h1 riesce a rispondere?
+	The packet reaches h1, but can h1 respond?
 	- s1: allow
 	- s2: abstain -> deny
-	- s4: ininfluente (L4)
+	- s4: irrelevant (L4)
 	- s6: allow\
-	La risposta arriva quindi a h1
+	The response therefore reaches h1.
 
-- h4 esegue: nc -p <not 1122> 192.168.0.1 <not 1122>
-  h1 esegue: nc -lvp <not 1122>
+- h4 executes: `nc -p <not 1122> 192.168.0.1 <not 1122>`
+  h1 executes: `nc -lvp <not 1122>`
 	- s6: allow
 	- s4: deny
 	- s2: deny
 	- s1: deny\
-	Il pacchetto viene quindi scartato 
+	The packet is therefore discarded.
 
-
-- h4 esegue: nc -p 1122 192.168.0.1 1122
-  h1 esegue: nc -lvp 1122
+- h4 executes: `nc -p 1122 192.168.0.1 1122`
+  h1 executes: `nc -lvp 1122`
 	- s6: allow
 	- s4: allow
 	- s2: deny
 	- s1: deny\
-	Il pacchetto viene quindi scartato 
+	The packet is therefore discarded.
 
-
-- h4 esegue: nc -p 1122 2001::1 1122
-  h1 esegue: nc -6 -l -v -p 1122
+- h4 executes: `nc -p 1122 2001::1 1122`
+  h1 executes: `nc -6 -l -v -p 1122`
 	- s6: allow
 	- s4: allow
 	- s2: allow
 	- s1: allow\
-	Risposta:
+	Response:
 	- s1: allow
 	- s2: allow
 	- s4: deny
 	- s6: allow\
-	La comunicazione è quindi possible
+	Communication is therefore possible.
 
-
-- h4 esegue: ping4 192.168.0.2
+- h4 executes: `ping4 192.168.0.2`
 	- s6: allow
-	- s5: ininfluente (L4)
+	- s5: irrelevant (L4)
 	- s3: allow
 	- s1: deny\
-	Risposta:
+	Response:
 	- s1: deny
 	- s3: allow
-	- s5: ininflunte (L4)
+	- s5: irrelevant (L4)
 	- s6: allow\
-	La comunicazione è quindi possible
+	Communication is therefore possible.
 
-
-- h1 esegue: ping4 192.168.0.2	
+- h1 executes: `ping4 192.168.0.2`
 	- s1: allow\
-	Risposta:
+	Response:
 	- s1: deny\
-	Il pacchetto viene quindi scartato
-
-
-# Primo Progetto
-Il primo progetto di laboratorio è disponibile alla repository: https://github.com/kev187038/KatharaLab_1
-
-
+	The packet is therefore discarded.
