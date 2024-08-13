@@ -1,0 +1,10 @@
+chmod +x /codice_della_NASA.py
+ip link set eth0 address 00:00:00:00:01:23
+ip link set eth1 address 00:00:00:00:01:24
+ip link set eth2 address 00:00:00:00:01:33
+ip link set eth3 address 00:00:00:00:01:34
+
+ip addr add 173.0.10.1/24 dev eth0
+ip addr add 173.0.10.2/24 dev eth1
+ip addr add 173.0.10.3/24 dev eth2
+ip addr add 173.0.10.4/24 dev eth3
