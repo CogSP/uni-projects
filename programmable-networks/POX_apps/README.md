@@ -1,3 +1,21 @@
+# Software Defined Networking (SDN) with POX Controller
+The scenario considered in this project is that of a mobile network.
+The network infrastructure consists of two main sections:
++ the fronthaul, which provides access to end users;
++ the backhaul, which interconnects the access section with external networks (e.g., the Internet).
+  
+Control functions are managed by an SDN controller, which provides services such as:
+
++ host tracking, an application that constantly monitors the user's location, understood as the access node used to connect to the infrastructure;
++ topology discovery, a function that determines the network topology;
++ user mobility, an application that manages traffic flow routing, handling path modifications when a user moves;
++ fake gateway, a responder to ARP requests addressed to the gateway.
+
+<img src="topology.png" alt="topology" width="292" height="436">
+
+With reference to the user mobility application, an example of its operation is shown in the figure. In particular, the green line represents the currently used path to send data to the user. Subsequently, the User Equipment changes access point, causing traffic to be rerouted along the new path (determined by the user mobility app). This path is chosen to minimize the number of devices to be reconfigured, thus reducing handover time. An example is depicted in the figure as a dashed red line.
+
+
 # How to run the applications
 With python3.9:
 ```bash
