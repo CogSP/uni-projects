@@ -1,5 +1,11 @@
 # matlab-for-robotics - Robotics 2
 
+## Misc
+- dynamic_model: inputting T and the number of joints, compute
+	- $M(q)$
+	- $c(q, \dot(q))$
+	- $g(q)$
+
 ## June 2010 (2010-06)
 - RP Robot: dynamic model, redundancy (one-dimensional task) -> pseudoinverse
 	- weight matrix $W$ to compare $\tau$ revolute joint torque and prismatic joint force
@@ -8,3 +14,6 @@
 ## September 2010 (2010-09)
 - RPR Robot: find inertia matrix and minimal set of dynamic coefficients
 	- **TODO**: understand how these coefficients are found
+
+## April 2016 (2016-04)
+- PRR Robot: dynamic model 
