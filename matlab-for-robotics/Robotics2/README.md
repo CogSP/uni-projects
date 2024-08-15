@@ -3,7 +3,7 @@
 ## Misc
 - dynamic_model: inputting T and the number of joints, compute
 	- $M(q)$
-	- $c(q, \dot(q))$
+	- $c(q, \dot{q})$
 	- $g(q)$
 
 ## June 2010 (2010-06)
@@ -13,7 +13,7 @@
 
 ## September 2010 (2010-09)
 - RPR Robot: find inertia matrix and minimal set of dynamic coefficients
-	- **TODO**: understand how these coefficients are found
+
 
 ## April 2016 (2016-04)
 - ex 1: PRR Robot: dynamic model 
@@ -24,15 +24,18 @@
 	- $d_i$ s.t. $g(q) = 0 \forall q$, i.e. $a_G = 0$
 - ex 3: 4R planar, determine $\dot{q}$ s.t. $\dot{r}_d = (v_d, \dot{\phi}_d)$ is realized while decreasing $H_{range}(q)$
 
+
 ## March 2017 (2017-03)
 - ex 1: 3R spatial robot: determine $M(q)$ using moving frames
 	- minimal number of dynamic coefficients
-- ex 2: **TODO**, prove that the weighted pseudoinverse is in general $J_W^{#} = W^{-\frac{1}{2})*(J(q)*W^{-\frac{1}{2})^#$, even when $J(q)$ loses rank
-- ex 3: TODO
-- ex 4: TODO 
-- ex 5: TODO
+
 
 ## April 2018 (2018-04)
 - ex 1: planar PPRR
 	- dynamic model with viscous friction
+	- linear parametrization $Y(q, \dot{q}, \ddot{q})a = u$
+
+## April 2019 (2019-04)
+- ex 2: PRP planar
+	- dynamic model
 	- linear parametrization $Y(q, \dot{q}, \ddot{q})a = u$
