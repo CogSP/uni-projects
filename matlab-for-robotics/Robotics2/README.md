@@ -1,7 +1,7 @@
 # matlab-for-robotics - Robotics 2
 
 ## Misc
-- dynamic_model: inputting T and the number of joints, compute
+- dynamic_model_planar: inputting T and the number of joints, compute
 	- $M(q)$
 	- $c(q, \dot{q})$
 	- $g(q)$
@@ -39,3 +39,17 @@
 - ex 2: PRP planar
 	- dynamic model
 	- linear parametrization $Y(q, \dot{q}, \ddot{q})a = u$
+
+## April 2020 (2020-04)
+- ex 7: PPR planar
+	- dynamic model
+	- linar parametrization
+
+## April 2021 (2020-04)
+- ex 1: 2R planar
+	- dynamic model
+	- linear parametrization
+
+## April 2022 (2022-04)
+- ex 3: 3R spatial:
+	-  compute M
