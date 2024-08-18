@@ -83,7 +83,7 @@
 # April 2023 (2023-04)
 - ex 3: 4P planar:
 	- compute M
-	- inertia-weighted pseudoinverse $J_M^{\#}$ to minimize T
-	- pseudoinverse $J^{\#}$ to minimize $||\dot{q}||$
+	- inertia-weighted pseudoinverse $J_M^{\verb|#|}$ to minimize T
+	- pseudoinverse $J^{\verb|#|}$ to minimize $||\dot{q}||$
 - ex 4: RPR spatial
 	- compute M
