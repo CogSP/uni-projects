@@ -53,8 +53,8 @@
 	- dynamic model: $M$, $c$ and $g$
 	- plane $(x_0, y_0)$ inclined by $\alpha$ w.r.t. horizontal plane around $x_0$
 	- $\ddot{q}_0$ s.t. robot at rest, i.e. $\dot{q}_0 = 0$ and $u = (\tau, F)$
-	- $||\ddot{p}_0||^2$ and $q_{min}^{*}$ and $q_{max}^{*}$, given bounds on $\tau$, $F$ and $q_2$ 	
-		- how $min||\ddot{p}_0||^2$ and $max||\ddot{p}_0||^2$ change if $\frac{I_1}{I_2}$ changes
+	- $\Vert\ddot{p_0}\Vert^2$ and $q_{min}^{\*}$ and $q_{max}^{\*}$, given bounds on $\tau$, $F$ and $q_2$ 	
+		- how $min\Vert\ddot{p}_0\Vert^2$ and $max\Vert\ddot{p}_0\Vert^2$ change if $\frac{I_1}{I_2}$ changes
 
 ## April 2018 (2018-04)
 - ex 1: planar PPRR
@@ -84,6 +84,6 @@
 - ex 3: 4P planar:
 	- compute M
 	- inertia-weighted pseudoinverse $J_M^{\verb|#|}$ to minimize T
-	- pseudoinverse $J^{\verb|#|}$ to minimize $||\dot{q}||$
+	- pseudoinverse $J^{\verb|#|}$ to minimize $\Vert\dot{q}\Vert$
 - ex 4: RPR spatial
 	- compute M
