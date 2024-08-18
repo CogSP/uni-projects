@@ -1,0 +1,4 @@
+a_i: distance between z_{i-1} and z_{i} along x_i
+d_i: distance between x_{i-1} and x{i} along z_{i-1}
+alpha_i: angle between z_{i-1} and z_{i} as seen from x_i
+q_i: angle between x_{i-1} and x_{i} as seen from z_{i-1}
