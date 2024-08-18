@@ -32,11 +32,13 @@
 	- $d_i$ s.t. $g(q) = 0 \forall q$, i.e. $a_G = 0$
 - ex 3: 4R planar, determine $\dot{q}$ s.t. $\dot{r}_d = (v_d, \dot{\phi}_d)$ is realized while decreasing $H_{range}(q)$
 
+
 ## July 2016 (2016-07)
 - ex 1: 2R planar:
 	- find $M$ with absolute coordinates
 	- No Coriolis terms $c_{kij}$ with $i \neq j$ since we are using absolute coordinates
 	- input $u$ for absolute coordinates vs $u_{\theta}$ for dh joint coordinates 
+
 
 ## October 2016 (2016-10)
 - ex 1: RP planar:
@@ -65,6 +67,12 @@
 - ex 2: PRP planar
 	- dynamic model
 	- linear parametrization $Y(q, \dot{q}, \ddot{q})a = u$
+
+## June 2019 (2019-06)
+- ex 1: 6R spatial (Kawasaki S030)
+	- find $g(q)$: use DH or guess that $g_1 = g_4 = g_5 = g_6 = 0$
+	- linear parametrization
+	- $q_e$ s.t. $g(q_e) = 0$
 
 ## April 2020 (2020-04)
 - ex 7: PPR planar
