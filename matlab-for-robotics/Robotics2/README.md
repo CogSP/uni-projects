@@ -27,7 +27,7 @@
 
 ## June 2011 (2011-06)
 - 2R planar
-	- robot hit by cartesian $F$: feedback control law $\tau$ s.t. $min\Vect\ddot{q}\Vect$
+	- robot hit by cartesian $F$: feedback control law $\tau$ s.t. $min\Vert\ddot{q}\Vert$
 	- robot sensing requirements for achieving this result
 	- control law $\tau$ for same behaviour but having only $q$ and $\dot{q}$
 
@@ -36,13 +36,13 @@
 	- find mechanical conditions s.t. it's self-balanced $\forall q$ w.r.t. gravity in absence of payload, i.e. $g(q) = 0$
 - ex 2: application of PD + constant gravity compensation for $q_d$
 	- now there is a point-wise payload: derive $g(q_d)$
-	- find $M_{max}$ s.t. $(q_d, 0)$ is global asymptotically stable: use $\Vect \Nabla g(q) \Vect \leq \alpha$
+	- find $M_{max}$ s.t. $(\ q_d\ \ \ 0\ )$ is global asymptotically stable: use $\Vert \nabla g(q) \Vert \leq \alpha$
 
 ## June 2012 (2012-06)
 - Ex 1: visual servoing, pin-hole camera
-	- interaction matrix $J_p = (J_v J_w)$ null space: camera motions that do not move the point feature in the image plane
-	- $dim(N\{J_v\})$ to find which pure translation motion(s) $(v, 0)$ do not move the camera
-	- - $dim(N\{J_w\})$ to find which pure rotation motion(s) $(0, w)$ do not move the camera
+	- interaction matrix $J_p = (\ J_v\ \ \ J_w\ )$ null space: camera motions that do not move the point feature in the image plane
+	- $dim(\mathcal{N}(J_v\))$ to find which pure translation motion(s) $(v, 0)$ do not move the camera
+	- $dim(\mathcal{N}(J_w\))$ to find which pure rotation motion(s) $(0, w)$ do not move the camera
 - Ex 2: 3R planar
 	- $F_c$ applied to the second link midpoint: generate $\tau_c$ only for $q_1$ and $q_2$. Still the third link accelerates due to the inertia coupling
 	- Force becomes $2F_c$ but control law $\tau$ is the same: new equilibrium $\bar{q} \neq q_d$, so steady-state error
