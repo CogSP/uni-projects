@@ -12,15 +12,42 @@
 	- weight matrix $W$ to compare $\tau$ revolute joint torque and prismatic joint force
 	- null space method to not build up joint velocities (TODO: check if this is actually the null space method)
 
-## September 2010 (2010-09)
-- RPR Robot: find inertia matrix and minimal set of dynamic coefficients
+## July 2010 (2010-07)
+- mass/spring/damper scheme
+	- differential equations of motion $F = ma$
+	- Contact force control problem $F = k_f(F_d - F_c)$, determine $x_E$ and $e(x_e) = F_d - F_{c,e}$
+	- Control action to remove the error
+	- **TODO**: exponential stability with root locus analysis and Routh criterion 
 
-
 ## September 2010 (2010-09)
-- ex 1: RPR planar:
+- RPR planar:
 	- find $M$
 	- minimal set of dynamic coefficient $a \in \mathcal{R}^p$ for $M$
 
+
+## June 2011 (2011-06)
+- 2R planar
+	- robot hit by cartesian $F$: feedback control law $\tau$ s.t. $min\Vect\ddot{q}\Vect$
+	- robot sensing requirements for achieving this result
+	- control law $\tau$ for same behaviour but having only $q$ and $\dot{q}$
+
+## September (2011-09)
+- ex 1: 2R planar
+	- find mechanical conditions s.t. it's self-balanced $\forall q$ w.r.t. gravity in absence of payload, i.e. $g(q) = 0$
+- ex 2: application of PD + constant gravity compensation for $q_d$
+	- now there is a point-wise payload: derive $g(q_d)$
+	- find $M_{max}$ s.t. $(q_d, 0)$ is global asymptotically stable: use $\Vect \Nabla g(q) \Vect \leq \alpha$
+
+## June 2012 (2012-06)
+- Ex 1: visual servoing, pin-hole camera
+	- interaction matrix $J_p = (J_v J_w)$ null space: camera motions that do not move the point feature in the image plane
+	- $dim(N\{J_v\})$ to find which pure translation motion(s) $(v, 0)$ do not move the camera
+	- - $dim(N\{J_w\})$ to find which pure rotation motion(s) $(0, w)$ do not move the camera
+- Ex 2: 3R planar
+	- $F_c$ applied to the second link midpoint: generate $\tau_c$ only for $q_1$ and $q_2$. Still the third link accelerates due to the inertia coupling
+	- Force becomes $2F_c$ but control law $\tau$ is the same: new equilibrium $\bar{q} \neq q_d$, so steady-state error
+	- Using a force sensor you can update the control law when $F_c$ doubles, having 0 error
+ 
 
 ## April 2016 (2016-04)
 - ex 1: PRR Robot: 
