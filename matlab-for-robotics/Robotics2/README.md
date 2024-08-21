@@ -54,7 +54,7 @@
 		- superposition of contribution $\dot{q}_1$, $\dot{q}_2$, $\dot{q}_3$ to $\omega$
 		- usage of $\omega = \frac{v_{normal}sin(\theta)}{r}$
 		- Reduced expression neglecting $(q_1 - q_2)^2$ that leads to $c(q, \dot{q} = 0$ 
-	- PD + Constant Gravity Compensation Control Law: since \Vert \nabla g \Vert = 0, $K_p > 0$ guarantees asymptotic stability
+	- PD + Constant Gravity Compensation Control Law: since $\Vert \nabla g \Vert = 0$, $K_p > 0$ guarantees asymptotic stability
 		- exponential stability of a non-linear system using PD gains $BK_p$ and $BK_d$
 	- show that $q = (\ q_1 \ \ q_2 \ \ q_3 \ )$ are generalized coordinates of the **closed kinematic chain** robot: the angular position and extension of the passive revolute and prismatic joints can be obtained from $q$
 	
