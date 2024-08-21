@@ -57,7 +57,14 @@
 	- PD + Constant Gravity Compensation Control Law: since $\Vert \nabla g \Vert = 0$, $K_p > 0$ guarantees asymptotic stability
 		- exponential stability of a non-linear system using PD gains $BK_p$ and $BK_d$
 	- show that $q = (\ q_1 \ \ q_2 \ \ q_3 \ )$ are generalized coordinates of the **closed kinematic chain** robot: the angular position and extension of the passive revolute and prismatic joints can be obtained from $q$
-	
+
+## January 2013
+- ex 1: 3R planar, two tasks
+	- algorithmic singularities
+	- task-priority strategy: **TODO**, the $\dot{q}$ formula used looks different from the one on the slides, are they equivalent?
+- ex 2: RP robot move on a vertical line
+	- constrained robot dynamics
+	- **TODO**: complete
 
 ## April 2016 (2016-04)
 - ex 1: PRR Robot: 
