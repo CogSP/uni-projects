@@ -47,7 +47,17 @@
 	- $F_c$ applied to the second link midpoint: generate $\tau_c$ only for $q_1$ and $q_2$. Still the third link accelerates due to the inertia coupling
 	- Force becomes $2F_c$ but control law $\tau$ is the same: new equilibrium $\bar{q} \neq q_d$, so steady-state error
 	- Using a force sensor you can update the control law when $F_c$ doubles, having 0 error
- 
+
+## July 2012 (2012-07)
+- Portal Robot with 3 passive joints and 3 actuated joints (2 P and 1 R)
+	- Dynamic Model
+		- superposition of contribution $\dot{q}_1$, $\dot{q}_2$, $\dot{q}_3$ to $\omega$
+		- usage of $\omega = \frac{v_{normal}sin(\theta)}{r}$
+		- Reduced expression neglecting $(q_1 - q_2)^2$ that leads to $c(q, \dot{q} = 0$ 
+	- PD + Constant Gravity Compensation Control Law: since \Vert \nabla g \Vert = 0, $K_p > 0$ guarantees asymptotic stability
+		- exponential stability of a non-linear system using PD gains $BK_p$ and $BK_d$
+	- show that $q = (\ q_1 \ \ q_2 \ \ q_3 \ )$ are generalized coordinates of the **closed kinematic chain** robot: the angular position and extension of the passive revolute and prismatic joints can be obtained from $q$
+	
 
 ## April 2016 (2016-04)
 - ex 1: PRR Robot: 
