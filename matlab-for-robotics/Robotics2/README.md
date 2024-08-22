@@ -63,7 +63,7 @@
 	- algorithmic singularities
 	- task-priority strategy: **TODO**, the $\dot{q}$ formula used looks different from the one on the slides, are they equivalent?
 - ex 2: RP robot move on a vertical line: **TODO** UNDERSTAND WHAT THIS IS ABOUT
-	- constrained robot dynamics adding $A^T\lamdba$
+	- constrained robot dynamics adding $A^T\lambda$
 
 ## February 2013 (2013-02)
 - RP robot move on a vertical line: **TODO** SAME AS 2013-01 EX 1
