@@ -38,6 +38,7 @@
 	- now there is a point-wise payload: derive $g(q_d)$
 	- find $M_{max}$ s.t. $(\ q_d\ \ \ 0\ )$ is global asymptotically stable: use $\Vert \nabla g(q) \Vert \leq \alpha$
 
+
 ## June 2012 (2012-06)
 - Ex 1: visual servoing, pin-hole camera
 	- interaction matrix $J_p = (\ J_v\ \ \ J_w\ )$ null space: camera motions that do not move the point feature in the image plane
@@ -47,6 +48,7 @@
 	- $F_c$ applied to the second link midpoint: generate $\tau_c$ only for $q_1$ and $q_2$. Still the third link accelerates due to the inertia coupling
 	- Force becomes $2F_c$ but control law $\tau$ is the same: new equilibrium $\bar{q} \neq q_d$, so steady-state error
 	- Using a force sensor you can update the control law when $F_c$ doubles, having 0 error
+
 
 ## July 2012 (2012-07)
 - Portal Robot with 3 passive joints and 3 actuated joints (2 P and 1 R)
@@ -58,6 +60,7 @@
 		- exponential stability of a non-linear system using PD gains $BK_p$ and $BK_d$
 	- show that $q = (\ q_1 \ \ q_2 \ \ q_3 \ )$ are generalized coordinates of the **closed kinematic chain** robot: the angular position and extension of the passive revolute and prismatic joints can be obtained from $q$
 
+
 ## January 2013 (2013-01)
 - ex 1: 3R planar, two tasks
 	- algorithmic singularities
@@ -65,9 +68,11 @@
 - ex 2: RP robot move on a vertical line: **TODO** UNDERSTAND WHAT THIS IS ABOUT
 	- constrained robot dynamics adding $A^T\lambda$
 
+
 ## February 2013 (2013-02)
 - RP robot move on a vertical line: **TODO** SAME AS 2013-01 EX 1
 	- this time the robot dynamics is **reduced** and not **constrained**: is it because we have a single first-order differential equation instead of a second order?
+
 
 ## July 2013 (2013-07)
 - 3R robot, 3 scenarios with forces $F_i$ applied to links
@@ -77,6 +82,7 @@
 		- **TODO**: understand why in scenario 2, even if $J_2$ is not full rank, there seems to be a way of find $F_i$ at least partially
 	- estimate $F_i$ without $l_{c,i}$: possible for third link
 	- add the presence of gravity (nothing fancy about it)
+
 
 ## October 2014 (2014-10)
 - **TODO** stuff about collision
@@ -92,6 +98,7 @@
 	- $d_i$ s.t. $g(q) = 0 \forall q$, i.e. $a_G = 0$
 - ex 3: 4R planar
 	- PG to execute $r(t)$ while increasing $-H_{range}(q)$
+
 
 ## June 2016 - Final Test with Midterm (2016-06-midterm)
 - 2R robots with $h(q) = q1 + q2 - \beta = 0$
@@ -115,12 +122,18 @@
 	- find $M$ with absolute coordinates
 	- No Coriolis terms $c_{kij}$ with $i \neq j$ since we are using absolute coordinates
 	- input $u$ for absolute coordinates vs $u_{\theta}$ for dh joint coordinates 
+- ex 2: peg-in-hole frictionless task
+	- natural vs virtual constraint
+	- if there is no clearance you can put all virtual constraint to zero besides $v_z = v_{z,d} > 0$. Otherwise, if a firm contact needs to be maintained with one side of the hole you can choose $F_{x,d}$ and/or $F_{y,d}$
+- ex 3: peg-in-hole compliant behaviour
+	- **TODO**
 
 
 ## October 2016 (2016-10)
 - ex 1: RP planar:
 	- dynamic model with uniform mass distribution
 	- equilibrium configuration under $u = 0$, i.e. $q$ s.t. $g(q) = 0$
+
 
 ## March 2017 (2017-03)
 - ex 1: 3R spatial robot: determine $M(q)$ using moving frames
@@ -135,15 +148,18 @@
 	- $\Vert\ddot{p_0}\Vert^2$ and $q_{min}^{\*}$ and $q_{max}^{\*}$, given bounds on $\tau$, $F$ and $q_2$ 	
 		- how $min\Vert\ddot{p}_0\Vert^2$ and $max\Vert\ddot{p}_0\Vert^2$ change if $\frac{I_1}{I_2}$ changes
 
+
 ## April 2018 (2018-04)
 - ex 1: planar PPRR
 	- dynamic model with viscous friction
 	- linear parametrization $Y(q, \dot{q}, \ddot{q})a = u$
 
+
 ## April 2019 (2019-04)
 - ex 2: PRP planar
 	- dynamic model
 	- linear parametrization $Y(q, \dot{q}, \ddot{q})a = u$
+
 
 ## June 2019 (2019-06)
 - ex 1: 6R spatial (Kawasaki S030)
@@ -155,6 +171,7 @@
 - ex 7: PPR planar
 	- dynamic model
 	- linear parametrization
+
 
 ## April 2021 (2020-04)
 - ex 1: 2R planar
