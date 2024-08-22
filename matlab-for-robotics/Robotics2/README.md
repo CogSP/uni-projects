@@ -63,8 +63,9 @@
 	- algorithmic singularities
 	- task-priority strategy: **TODO**, the $\dot{q}$ formula used looks different from the one on the slides, are they equivalent?
 - ex 2: RP robot move on a vertical line
-	- constrained robot dynamics
-	- **TODO**: complete
+	- holonomic constraint $h(q) = q_2cos(q_1)$ - k = 0$
+	- constrained robot dynamics adding $A^T\lamdba$
+
 
 ## April 2016 (2016-04)
 - ex 1: PRR Robot: 
