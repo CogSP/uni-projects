@@ -156,7 +156,7 @@
 - ex 3: 3R spatial:
 	-  compute M
 
-# April 2023 (2023-04)
+## April 2023 (2023-04)
 - ex 3: 4P planar:
 	- compute M
 	- inertia-weighted pseudoinverse $J_M^{\verb|#|}$ to minimize T
