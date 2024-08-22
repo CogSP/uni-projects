@@ -63,7 +63,6 @@
 	- algorithmic singularities
 	- task-priority strategy: **TODO**, the $\dot{q}$ formula used looks different from the one on the slides, are they equivalent?
 - ex 2: RP robot move on a vertical line: **TODO** UNDERSTAND WHAT THIS IS ABOUT
-	- holonomic constraint $h(q) = q_2cos(q_1)$ - k = 0$
 	- constrained robot dynamics adding $A^T\lamdba$
 
 ## February 2013 (2013-02)
@@ -79,6 +78,10 @@
 	- estimate $F_i$ without $l_{c,i}$: possible for third link
 	- add the presence of gravity (nothing fancy about it)
 
+## October 2014 (2014-10)
+- **TODO** stuff about collision
+
+
 ## April 2016 (2016-04)
 - ex 1: PRR Robot: 
 	- dynamic model
@@ -87,8 +90,16 @@
 	- equilibrium configuration $q_e$ s.t. $g(q_e) = 0$
 	- linear parametrization $g(q) = Y_G(q)a_G$
 	- $d_i$ s.t. $g(q) = 0 \forall q$, i.e. $a_G = 0$
-- ex 3: 4R planar, determine $\dot{q}$ s.t. $\dot{r}_d = (v_d, \dot{\phi}_d)$ is realized while decreasing $H_{range}(q)$
+- ex 3: 4R planar
+	- PG to execute $r(t)$ while increasing $-H_{range}(q)$
 
+## June 2016 - Final Test with Midterm (2016-07-midterm)
+- 2R robots with $h(q) = q1 + q2 - \beta = 0$
+	- reduced dynamic model: $A$ constant
+	- input to keep static equilibrium, i.e. $\dot{v} = 0$
+		- note that $\lambda(0)$ should be zero if the constraint $h(q) = 0$ is **virtual**, i.e. is not imposed by mechanism but enforced through control action. $\lambda(0)$ should vanish since there can be no real constraint forces generated (so in this case we should find the condition on $u(0)$ that leads to $\lambda(0) = 0$).
+	- **TODO**: simulation with $u(t)$, I don't know where to find this thing in the theory
+	- compute the reduce dynamic for $\dot{v} = \dot{v}_d$ and $\lambda = 0$
 
 ## July 2016 (2016-07)
 - ex 1: 2R planar:
