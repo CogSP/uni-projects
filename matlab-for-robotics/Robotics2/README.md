@@ -93,7 +93,7 @@
 - ex 3: 4R planar
 	- PG to execute $r(t)$ while increasing $-H_{range}(q)$
 
-## June 2016 - Final Test with Midterm (2016-07-midterm)
+## June 2016 - Final Test with Midterm (2016-06-midterm)
 - 2R robots with $h(q) = q1 + q2 - \beta = 0$
 	- reduced dynamic model: $A$ constant
 	- input to keep static equilibrium, i.e. $\dot{v} = 0$
