@@ -58,14 +58,26 @@
 		- exponential stability of a non-linear system using PD gains $BK_p$ and $BK_d$
 	- show that $q = (\ q_1 \ \ q_2 \ \ q_3 \ )$ are generalized coordinates of the **closed kinematic chain** robot: the angular position and extension of the passive revolute and prismatic joints can be obtained from $q$
 
-## January 2013
+## January 2013 (2013-01)
 - ex 1: 3R planar, two tasks
 	- algorithmic singularities
 	- task-priority strategy: **TODO**, the $\dot{q}$ formula used looks different from the one on the slides, are they equivalent?
-- ex 2: RP robot move on a vertical line
+- ex 2: RP robot move on a vertical line: **TODO** UNDERSTAND WHAT THIS IS ABOUT
 	- holonomic constraint $h(q) = q_2cos(q_1)$ - k = 0$
 	- constrained robot dynamics adding $A^T\lamdba$
 
+## February 2013 (2013-02)
+- RP robot move on a vertical line: **TODO** SAME AS 2013-01 EX 1
+	- this time the robot dynamics is **reduced** and not **constrained**: is it because we have a single first-order differential equation instead of a second order?
+
+## July 2013 (2013-07)
+- 3R robot, 3 scenarios with forces $F_i$ applied to links
+	- identify which link is subject to $F_i$ thanks to $\tau_i = J_{c,i}F_i$: if from $\tau_i$ starts a 0 values sequence it means that the force is applied at link $i-1$
+		- when $F_i$ is applied with $l_{c,i} = 0$ it is attributed to the previous link, i.e. $l_{c,i-1} = l_{i-1}$
+	- knowing $l_{c,i}$ and $\tau_i$ find $F_i$: you can do if both $F_{i,x}$ and $F_{i,y}$ are present in $\tau_i = J_{c,i}F_i$. 
+		- **TODO**: understand why in scenario 2, even if $J_2$ is not full rank, there seems to be a way of find $F_i$ at least partially
+	- estimate $F_i$ without $l_{c,i}$: possible for third link
+	- add the presence of gravity (nothing fancy about it)
 
 ## April 2016 (2016-04)
 - ex 1: PRR Robot: 
