@@ -101,6 +101,15 @@
 	- **TODO**: simulation with $u(t)$, I don't know where to find this thing in the theory
 	- compute the reduce dynamic for $\dot{v} = \dot{v}_d$ and $\lambda = 0$
 
+## June 2016 (2016-06)
+- ex 1: 2R polar robot
+	- dynamic model
+		- calculating $w_2$ expressed in $RF_0$ as sum of product between $\dot{q_i}$ and unit-norm vectors $z_i$ expressed in frame $RF_0$. This is taken from the angular part of the geometric Jacobian.
+		- uniformly distributed mass and cylindric form: $I_{2x} \neq I_{2y}$ and $I_{2y} = I_{2z}$. I guess because in $y$ and $z$ direction the cylinder is symmetrical, while on the $x$ direction is built different.
+	- adaptive control law, minimum dimension of the adaptive controller equal to the minimum number of dynamic coefficients
+- ex 2: **TODO**
+
+
 ## July 2016 (2016-07)
 - ex 1: 2R planar:
 	- find $M$ with absolute coordinates
