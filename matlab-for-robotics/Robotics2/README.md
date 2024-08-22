@@ -145,7 +145,7 @@
 ## April 2020 (2020-04)
 - ex 7: PPR planar
 	- dynamic model
-	- linar parametrization
+	- linear parametrization
 
 ## April 2021 (2020-04)
 - ex 1: 2R planar
