@@ -129,15 +129,34 @@
 	- **TODO**
 
 
+## September 2016 (2016-09)
+- ex 1: RPR planar:
+	- dynamic model
+	- equilibrium configuration $g(q) = 0$
+- ex 2: two-mass and a non-linear spring system
+	- dynamic model: $U = U_{gravity} + U_{elastic}
+	- equilibrium position
+	- cardano's formula for singe real solution of depressed cubic equation
+
+
 ## October 2016 (2016-10)
 - ex 1: RP planar:
 	- dynamic model with uniform mass distribution
 	- equilibrium configuration under $u = 0$, i.e. $q$ s.t. $g(q) = 0$
+- ex 2: 3-masses-2-springs
+	- dynamic model using Lagrange
+	- equilibrium states: $\ddot{q} = 0$
+		- unforced state u = 0 $\to \dot{q} = 0$
+		- forced state with constant input force $\bar{u}$ $\to \dot{q} equal for all masses$
+	- prove with Lyapunov/linearity of the system that the proportional controller $u = k_p(q_d - q_1)$ asymptotically stabilizes the system to a unique equilibrium state (I GUESS IT'S $(q_d, 0)$) **TODO: TO UNDERSTAND BETTER**
 
 
 ## March 2017 (2017-03)
 - ex 1: 3R spatial robot: determine $M(q)$ using moving frames
 	- minimal number of dynamic coefficients
+- ex 2: two-mass and a non-linar spring system
+	- dynamic model (Lagrangian approach)
+	- equilibrium position
 
 
 ## September 2017 (2017-09)
