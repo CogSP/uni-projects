@@ -152,11 +152,25 @@
 
 
 ## March 2017 (2017-03)
-- ex 1: 3R spatial robot: determine $M(q)$ using moving frames
+- ex 1: 3R spatial robot
+	- determine $M(q)$ using moving frames
+		- **TODO**: check if the calculations are okay
 	- minimal number of dynamic coefficients
-- ex 2: two-mass and a non-linar spring system
-	- dynamic model (Lagrangian approach)
-	- equilibrium position
+- ex 2: Jacobian weighted pseudoinverse
+	- prove the general form, valid when the Jacobian loses rank too
+	- **TODO**
+- ex 3: 4R planar:
+	- SNS method to find  $\dot{q}$ with minimum norm that respects the limits on the joints
+	- **TODO**: understand we didn't had to scale, but when do we need it? When after applying the algorithm and saturating joints one by one we find at the last iteration that the last joint overcome the bounds?
+- ex 4: 3R planar:
+	- Reduced Gradient (RG)
+		- choose the minor with largest determinant
+	- Task Augmentation: second link endpoint on a circle
+		- algorithmic singularities
+- ex 5: 2R planar
+	- calibration: find the regressor matrix
+	- **TODO**: understand how you can find $\delta a$ and $\delta \theta$, are they the unknowns? Maybe the calibration algorithm aims at finding them.
+
 
 
 ## September 2017 (2017-09)
