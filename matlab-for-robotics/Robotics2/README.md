@@ -172,6 +172,39 @@
 	- **TODO**: understand how you can find $\delta a$ and $\delta \theta$, are they the unknowns? Maybe the calibration algorithm aims at finding them.
 
 
+## May 2017 (2017-05)
+- Ex 1: given the lagrangian model of a n-joints manipulator
+	- list all feedback control laws for $\tau$ that allows regulation to $q_d$
+	- when PD achieve and does not achieve asymptotic stabilization
+	- **TODO**: there are some problems if you ask me:
+		- First: it is saying that the PD controller achieves asymptotic stabilization also in the presence of gravity (?), but on the slides it is written that $g(q) = 0$ is a condition, and I think for each $q$, not only $q_d$.	
+		- Second: it is saying that these are only sufficient condition, not necessary in general, where is this written?
+- Ex 2: visual servoing
+	- from polar to cartesian coordinates
+	- decoupled effects on $u$ and $v$
+	- DLS control law when the point P gets close to the optical axis $\rho \to 0$, i.e. trespassing a singularity
+- Ex 3: PRP planar
+	- find $g(q) = Y_{g} a_{g}$
+		- note that $g_0$ is not part of the dynamic coefficient
+	- adaptive control
+		- when both $a_M$ and $a_G$ are unknown
+		- when $a_M$ is known
+- ex 4: polishing task frame and natural and artificial constraints
+	- point-wise area of contact means momentum $M = 0$
+
+## June 2017 (2017-06)
+- ex 1: 3R planar
+	- differential inversion scheme at jerk level $\dddot{q}$ to follow desired trajectory $p_d(t)$, minimizing norm
+	- modify command law $\dddot{q}$ s.t. $e$, $\dot{e}$, $\ddot{e}$ converges to zero
+		- Hurwitz polynomial $k(s) = s^3 + k_2 s^2 + k_1 s + k_0$
+- ex 2: 3R planar
+	- PD with gravity compensation: largest value of $k_p$ s.t. $\tau(0) \leq T_{max}$
+	- Transformation from $q$ to $\theta$ and Principle of Virtual Work (Power actually, since $\tau q = \tau_{\theta} \theta$
+- ex 3: PRP planar
+	- dynamic model
+	- find a factorization $c = C\dot{q}$ s.t. $\dot{M} - 2C$ is skew-symmetric
+	- find $\alpha$ and $\beta$ s.t. $\Vert \nabla g(q) \Vert \leq \alpha + \beta |q_3|$
+
 
 ## September 2017 (2017-09)
 - ex 1: RP planar
