@@ -205,6 +205,18 @@
 	- find a factorization $c = C\dot{q}$ s.t. $\dot{M} - 2C$ is skew-symmetric
 	- find $\alpha$ and $\beta$ s.t. $\Vert \nabla g(q) \Vert \leq \alpha + \beta |q_3|$
 
+## July 2017 (2017-07)
+- ex 1: RPP cylindrical spatial
+	- dynamic model and DH frames
+- ex 2: PP planar
+	- reduced dynamics: linear surface $y = mx + q$
+	- $u = (\ u1 \ \ u2\ )$ s.t. $\dot{v} = 0$ and $\lambda = 0$
+		- system of 2 equations: dynamic model and $\lamdba$ equation
+- ex 3: 3R planar
+	- equilibrium in contact with a rigid obstacle: $\tau$ has a component $\tau_e = J(q_e)^{T}K_{p}(p_d - p(q)) = -\tau_c$ that compensate for the contact force of the object
+	- momentum-based residual **TO UNDERSTAND**
+	- **last question**
+
 
 ## September 2017 (2017-09)
 - ex 1: RP planar
