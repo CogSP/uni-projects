@@ -225,6 +225,29 @@
 	- $\ddot{q}_0$ s.t. robot at rest, i.e. $\dot{q}_0 = 0$ and $u = (\tau, F)$
 	- $\Vert\ddot{p_0}\Vert^2$ and $q_{min}^{\*}$ and $q_{max}^{\*}$, given bounds on $\tau$, $F$ and $q_2$ 	
 		- how $min\Vert\ddot{p}_0\Vert^2$ and $max\Vert\ddot{p}_0\Vert^2$ change if $\frac{I_1}{I_2}$ changes
+- ex 2: state diagram in collision-aware tasks
+	- $x_d(t) = (\ p_d(t) \ \phi_d(t)\ )$ cartesian linearization law
+	- redundancy for cartesian task
+
+## January 2018 (2018-01)
+- ex 1: RP planar
+	- $y_d(t)$ task	
+		- minimize $\Vert \dot{q} \Vert^2$ with pseudoinverse: problem is inconsistency of measurement unit
+		- weighted norm
+		- inertia matrix weighted norm, minimize kinetic energy
+- ex 2: Boulton-Watt governor
+	- nonlinear feedback law $\tau_{\Omega}$
+- ex 3: **TODO**
+
+
+
+## March 2018 (2018-03)
+- ex 1: automated crane
+	- dynamic model
+	- linear parametrization of the model with dynamic coefficients
+	- linear approximation of the nonlinear model for small variation around $x_0 = (\ q_1\ q_2\ \dot{q}_1\ \dot{q}_2\ ) = **0**$
+	- nonlinear state feedback law $F = F(**x**, a = \ddot{q}_1)$
+- ex 2: **TODO**
 
 
 ## April 2018 (2018-04)
