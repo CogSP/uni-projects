@@ -1,0 +1,146 @@
+% Input
+
+clear all
+clc
+ 
+% TO CHANGE BASED ON THE NUMBER OF JOINTS
+syms m1 m2 m3 real
+syms q_dot_1 q_dot_2 q_dot_3 real 
+syms dc1 dc2 dc3 real
+syms q1 q2 q3 q_ddot_1 q_ddot_2 q_ddot_3 real
+syms I1 I2 I3 real
+syms w1 w2 w3 real
+syms g0 real
+syms l1 l2 l3 real
+syms alpha real % the plane (x0, y0) is rotated by alpha
+
+% TO CHANGE BASED ON THE NUMBER OF JOINTS
+q_dot = [q_dot_1; q_dot_2; q_dot_3];  
+
+% Insert on which direction is the gravity term g0
+% 1 for x
+% 2 for y
+% 3 for z
+g0_direction = 1 % TO ADD
+g0_sign = -1 % -1 if it's against the axis
+
+T = (1/2)*(m1*q_dot_1^2 + m2*q_dot_1^2 + I2*q_dot_2^2 + m3*(q_dot_1^2 + (q3 - dc3)^2*q_dot_2^2 + q_dot_3^2) + I3*q_dot_2^2)
+
+
+% TO CHANGE BASED ON THE NUMBER OF JOINTS
+N = 3
+
+
+%%%%%%%%%%%%%%%%%%%%%%%% M, c and g calculation %%%%%%%%%%%%%%%%%%%%%%%%
+for i=1:N
+    for j=1:N
+        M(i,j) = diff(diff(T, q_dot(i)), q_dot(j));
+    end
+end
+
+M = simplify(M, steps=100)
+
+q = [q1; q2; q3]
+for k=1:N
+    J = jacobian(M(:,k), [q1, q2, q3]);
+    C = (1/2)*(J + J' - diff(M, q(k)));
+    S(k,:) = q_dot'*C;
+    c(k) = q_dot'*C*q_dot;
+end
+
+c = simplify(c, steps=100)'
+
+S = simplify(S, steps=100)
+
+calculation of M_dot and M_dot - 2S skew-symmetric
+syms p_x_dot_dot p_y_dot_dot real
+
+
+q = [q1; q2; q3];
+q_dot = [q_dot_1; q_dot_2; q_dot_3];
+q_ddot = [q_ddot_1; q_ddot_2; q_ddot_3]
+
+dim = size(M);
+M_dot = sym(zeros(dim(1), dim(2)));
+for i = 1:dim(2)
+    M_dot = M_dot + diff(M, q(i)) * q_dot(i);
+end
+M_dot = simplify(M_dot, steps = 10)
+
+skew_symmetric = simplify(M_dot - 2*S, steps=100)
+
+
+Gravity Calculation
+% Gravity Vector calculation
+
+% TO CHANGE BASED ON THE NUMBER OF JOINTS
+
+
+U1 = - g0_sign*m1*g0*0
+U2 = - g0_sign*m2*g0*0
+U3 = - g0_sign*m3*g0*(cos(q2)*(q3 - dc3))
+
+
+U = U1 + U2 + U3
+
+for k=1:N
+    g(k) = diff(U, q(k));
+end
+
+g = simplify(g, steps=100)'
+
+dynamic model
+syms u1 u2 u3 f_v1 f_v2 f_v3 real
+
+u = [u1; u2; u3] % TO CHANGE BASED ON THE NUMBER OF JOINTS
+
+F = [f_v1, 0, 0;
+     0, f_v2, 0;
+     0, 0, f_v3];
+
+eqn = M*q_ddot + S*q_dot + g + F*q_dot 
+eqn = expand(eqn)
+
+eqn_collected = sym(zeros(size(eqn)));
+
+% Definisci i fattori comuni che vuoi raccogliere
+common_factors = [q_ddot_1, q_ddot_2];
+
+% Cicla attraverso ogni elemento della matrice
+for i = 1:size(eqn, 1)
+    for j = 1:size(eqn, 2)
+        % Raccogli i fattori comuni nell'elemento corrente
+        temp_expr = eqn(i, j);
+        for k = 1:length(common_factors)
+            temp_expr = collect(temp_expr, common_factors(k));
+        end
+        eqn_collected(i, j) = temp_expr
+    end
+end
+
+dynamic coefficients
+syms a [1 7] real
+
+%a1 = m1 + m2 + m3
+%a2 = I2 + I3 + m3*dc3^2
+%a3 = m3
+%a4 = m3*dc3
+%a5 = f_v1
+%a6 = f_v2
+%a7 = f_v3
+
+
+eqn_coeff = subs(eqn_collected, m1 + m2 + m3, a(1))
+eqn_coeff = subs(eqn_coeff, I2 + I3 + m3*dc3^2, a(2))
+eqn_coeff = subs(eqn_coeff, m3*dc3, a(4))
+
+eqn_coeff = subs(eqn_coeff, m3, a(3))
+eqn_coeff = subs(eqn_coeff, f_v1, a(5))
+eqn_coeff = subs(eqn_coeff, f_v2, a(6))
+eqn_coeff = subs(eqn_coeff, f_v3, a(7))
+
+
+
+regressor matrix Y
+Y = simplify(jacobian(eqn_coeff, a'), steps=100)
+

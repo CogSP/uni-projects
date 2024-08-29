@@ -240,6 +240,12 @@
 - ex 3: **TODO**
 
 
+## February 2018 (2018-02)
+- ex 1: $\eta = \Vert e \Vert$ task and its Jacobian $J_{\eta}$ expressed w.r.t to visual servoing $J = J_p J_m$
+- ex 2: PRP cylindrical spatial mounted on a vertical wall
+	- adaptive control law
+- ex 3: **TODO**
+
 
 ## March 2018 (2018-03)
 - ex 1: automated crane
@@ -258,6 +264,9 @@
 	- find $S_1(q, \dot{q})$ and $S_2(q, \dot{q})$ s.t. $\dot{B} - 2S_1$ is skew-symmetric and with $S_2$ not
 	- cubic trajectory for $q_2$ and kept steady $q_1$
 		- $\tau(0)$ has same value on both component: since there is **inertial coupling** (values $m_ij \neq 0$ outside of the principal diagonal), $\tau_1(0)$ need to compensate the movement of the second joint due to $\tau_2(0)$
+- ex 3: **TODO** a theoretical proof
+- ex 4: PPR planar
+	- pseudoinverse and weighted pseudoinverse
 
 
 ## April 2019 (2019-04)
