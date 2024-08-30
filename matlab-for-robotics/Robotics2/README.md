@@ -244,7 +244,8 @@
 - ex 1: $\eta = \Vert e \Vert$ task and its Jacobian $J_{\eta}$ expressed w.r.t to visual servoing $J = J_p J_m$
 - ex 2: PRP cylindrical spatial mounted on a vertical wall
 	- adaptive control law
-- ex 3: **TODO**
+- ex 3: iterative learning with pendulum equation
+	- proof used to find the number of iteration needed to have $\epsilon < 0.01$
 
 
 ## March 2018 (2018-03)
@@ -268,11 +269,49 @@
 - ex 4: PPR planar
 	- pseudoinverse and weighted pseudoinverse
 
+## June 2018 (2018-06)
+- ex 1: RP planar
+	- dynamic model
+	- $S_1$ s.t. $\dot{M} - 2S_1$ is skew-symmetric
+	- residuals **TODO: THIS DEFINITION IS DIFFERENT FROM THE ONE ON THE SLIDES**  
+	- i-th collision: $det(J_{Ki}) = 0$ and $J_{Ki}^T*F_{Ki} = 0$
+- ex 2: adaptive control law for $i_m$ of actuated pendulum
+	- **known** length l means that is outside of the dynamic coefficients
+- ex 3: mass-spring-damper system
+	- class of control laws: $F = \alpha * k_f * (F_d - F_c) + \beta * F_d$
+	- equilibrium point and asymptotic stability proven with Lyapunov
+	- robustness w.r.t. to $m$, $d$ and $k_s$ 
+	- what happens when %F_c = 0$, do we reach a steady state ($\ddot{x} = 0)? Yes, steady state velocity $\dot{x} = F / c$
+
+## July 2018 (2018-07)
+- ex 1: 2R robot with motors mounted on the axes of the joints
+	- Inertia Matrix $M(q)$ with $q = (\ \theta^T \ \theta_m^T \ )$
+- ex 2: SNS method for acceleration $q_ddot$
+	- SNS algorithm solution has the least possible norm
+- ex 3: visual servoing scheme
+	- average interaction matrix $\bar{J}$, that is different from the interaction matrix of the average features parameters $(\ \bar{u} \ \bar{v}\ )$ and $\bar{Z}$
+- ex 4: reduced dybamic model after partition $q = (\ q_a \ q_b \ )$
+
 
 ## April 2019 (2019-04)
+- ex 1: which inertia matrix is associated to a 2-dof robot
+	- Inertia Matrix must be symmetric and positive definite
+	- $M_A$ isn't since it has $q_1$ coordinates in the inertia matrix: DH coordinate $q_1$ is chosen arbitrarily so an intrinsic property of the manipulator structure (as the inertia matrix) can't depend on it
+	- $M_B$ is the inertia matrix of a 2-dof parallelogram structure
+	- $M_C$ has negative determinant: is not positive definite
+	- $M_D$ is the inertia matrix of a 2P robot: you can tell by the fact that we don't have any inertia term $I_i$ in the matrix $M_D$
 - ex 2: PRP planar
 	- dynamic model
 	- linear parametrization $Y(q, \dot{q}, \ddot{q})a = u$
+- ex 3: nR planar
+	- generic expression of $g(q)$
+	- equilibrium configurations ($g(q_e) = 0$)
+	- condition on the center of mass ($d_{ci}$) s.t. ($g(q) = 0 \forall q$)
+- ex 4: given $M(q)$ find $S$ s.t. $\dot{M} - 2S$ is skew-symmetric
+	- $S' \neq S$ s.t. $\dot{M} - 2S'$ is skew-symmetric: $S' = S + S_0$ with $S_0$ s.t. $\dot{q} \cross \dot{q} = S_0 * \dot{q}$
+- ex 5: 2R planar Jacobian with uni-dimensional task $\Vert p(q) \Vert$
+	- inertia-weighted pseudoinverse to minimize the kinetic energy
+- ex 6: SNS method for acceleration $q_ddot$
 
 
 ## June 2019 (2019-06)
