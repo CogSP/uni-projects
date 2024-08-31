@@ -317,8 +317,32 @@
 ## June 2019 (2019-06)
 - ex 1: 6R spatial (Kawasaki S030)
 	- find $g(q)$: use DH or guess that $g_1 = g_4 = g_5 = g_6 = 0$
-	- linear parametrization
 	- $q_e$ s.t. $g(q_e) = 0$
+- ex 2: check if $M(q)$ can be a 3-dof serial robot inertia matrix and which condition
+	- necessary condition: positive diagonal elements
+	- necessary and sufficient condition: Sylvester criterion
+- ex 3: with Singular Value Decomposition (SVD) show
+	- $\dot{x}_d$ and $\dot{x}$ make a relative angle that is smaller than $pi/2$. That means that $\dot{x}_d \dot \dot{x} \geq 0$
+	- $\dot{q}_A has no task error while $\dot{q}_B$ has $\dot{e} = \dot{x}_d - \dot{x} \neq 0$
+- ex 4: feedback linearization control law in the Cartesian space
+	- since $K_p$ and $K_d$ are diagonal, we want a decoupled dynamics. The simple cartesian PD regulation law is not ok
+	- transient behaviour of the error $e(t) \to 0$ using the Laplace domain **TODO**
+- ex 5: cube sliding along a path on a flat surface
+	- natural and artificial constraint
+	- how many control loops? Three on the force $(\ F_z, \ M_x, \ M_y\ )$ and three on the motion $(\ w_z, \ v_x, \ v_y\ )$
+	- how many DoF needed? 6-dof
+	- The SCARA satisfy four control specification (three revolute, one prismatic acting orthogonally, so $F_z = F_{z,d}$). If the joint axes are normal to the plane of motion of the cube we have $M_x = M_y = 0$ so everything is satisfied. 
+	- The 3R planar satisfies $v_x$, $v_y$ and $w_z$ but can't satisfy the rest.
+
+
+## July 2019 (2019-07)
+- ex 1: 3R planar task priority (TP)
+	- drawing for region of compatibility (not understood)
+- ex 2: RP planar collision
+	- impact force $F_c$ normal to the second link
+- ex 3: actuated pendulum bang-coast-bang
+	- minimum time $T$ s.t. $\tau \leq \tau_{max}$
+
 
 ## April 2020 (2020-04)
 - ex 7: PPR planar
