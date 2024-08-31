@@ -211,7 +211,7 @@
 - ex 2: PP planar
 	- reduced dynamics: linear surface $y = mx + q$
 	- $u = (\ u1 \ \ u2\ )$ s.t. $\dot{v} = 0$ and $\lambda = 0$
-		- system of 2 equations: dynamic model and $\lamdba$ equation
+		- system of 2 equations: dynamic model and $\lambda$ equation
 - ex 3: 3R planar
 	- equilibrium in contact with a rigid obstacle: $\tau$ has a component $\tau_e = J(q_e)^{T}K_{p}(p_d - p(q)) = -\tau_c$ that compensate for the contact force of the object
 	- momentum-based residual **TO UNDERSTAND**
@@ -308,7 +308,7 @@
 	- equilibrium configurations ($g(q_e) = 0$)
 	- condition on the center of mass ($d_{ci}$) s.t. ($g(q) = 0 \forall q$)
 - ex 4: given $M(q)$ find $S$ s.t. $\dot{M} - 2S$ is skew-symmetric
-	- $S' \neq S$ s.t. $\dot{M} - 2S'$ is skew-symmetric: $S' = S + S_0$ with $S_0$ s.t. $\dot{q} \cross \dot{q} = S_0 * \dot{q}$
+	- $S' \neq S$ s.t. $\dot{M} - 2S'$ is skew-symmetric: $S' = S + S_0$ with $S_0$ s.t. $\dot{q} \times \dot{q} = S_0 * \dot{q}$
 - ex 5: 2R planar Jacobian with uni-dimensional task $\Vert p(q) \Vert$
 	- inertia-weighted pseudoinverse to minimize the kinetic energy
 - ex 6: SNS method for acceleration $q_ddot$
@@ -322,7 +322,7 @@
 	- necessary condition: positive diagonal elements
 	- necessary and sufficient condition: Sylvester criterion
 - ex 3: with Singular Value Decomposition (SVD) show
-	- $\dot{x}_d$ and $\dot{x}$ make a relative angle that is smaller than $pi/2$. That means that $\dot{x}_d \dot \dot{x} \geq 0$
+	- $\dot{x}_d$ and $\dot{x}$ make a relative angle that is smaller than $pi/2$. That means that $\dot{x}_d \cdot \dot{x} \geq 0$
 	- $\dot{q}_A has no task error while $\dot{q}_B$ has $\dot{e} = \dot{x}_d - \dot{x} \neq 0$
 - ex 4: feedback linearization control law in the Cartesian space
 	- since $K_p$ and $K_d$ are diagonal, we want a decoupled dynamics. The simple cartesian PD regulation law is not ok
