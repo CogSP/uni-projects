@@ -303,7 +303,7 @@
 - ex 2: PRP planar
 	- dynamic model
 	- linear parametrization $Y(q, \dot{q}, \ddot{q})a = u$
-- ex 3: nR planar
+- ex 3: nR planar, with $q$ absolute coordinates
 	- generic expression of $g(q)$
 	- equilibrium configurations ($g(q_e) = 0$)
 	- condition on the center of mass ($d_{ci}$) s.t. ($g(q) = 0 \forall q$)
@@ -359,6 +359,7 @@
 - ex 3: 3R spatial:
 	-  compute M
 
+
 ## April 2023 (2023-04)
 - ex 3: 4P planar:
 	- compute M
@@ -366,3 +367,21 @@
 	- pseudoinverse $J^{\verb|#|}$ to minimize $\Vert\dot{q}\Vert$
 - ex 4: RPR spatial
 	- compute M
+
+## June 2023 (2023-06)
+- ex 1: 4R planar
+	- inertia matrix with absolute coordinates and DH
+	- from absolute to DH coordinates: $\theta_i = q_i - q_{i-1}$, or equivalently $q_i = theta_1 + … + theta_i$
+	- $\tilde{M(\theta)} = T^T M(\theta) T$
+	- angular velocity of link $i$ w.r.t absolute coordinates is just $\dot{q}_i$, while w.r.t DH coordinates is $\dot{theta}_1 + … + \dot{theta}_i$
+	- nR robot generic expression of $T_i$ and so of $\Vert v_{ci} \Vert$
+- ex 2: two tasks
+	- execute just one, both simultaneously with and without priority
+	- norm of the error is lower in the case without priority
+- ex 3: PRR planar, PD + gravity compensation
+	- $g(q)$: note that $q_3$ doesn't change $P_{c3}$
+	- $K_{P,m} > \alpha$, actually since $g(q)$ first term is constant and third is zero we have that $K_{P,2} > \alpha$ while the others just need to be positive **CHECK WHY IS THAT**
+- ex 4: 2R with payload and a vertical guide
+	- $h(q) = p_x = 0$
+	- Choose $D(q)$ s.t. with $A(q)$ forms the Jacobian $\implies$ determinant is simpler
+	- $\tau$ control law using $\dot{v}_d$ found from quintic trajectory
