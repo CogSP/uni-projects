@@ -6,6 +6,9 @@
 	- $c(q, \dot{q})$
 	- $g(q)$
 - moving_frames_algorithm: find the dynamic model for spatial robot 
+- fist_second_time_derivative_jacobian: computes the first and second time derivative of a Jacobian matrix
+- get_minors: get all the minors of a matrix, useful to find the determinant by setting all minors to 0
+- multiple_task: by inputting two tasks, if finds the extended jacobian an try to solve the problem, computing also the error
 
 ## June 2010 (2010-06)
 - RP Robot: dynamic model, redundancy (one-dimensional task) -> pseudoinverse
@@ -391,6 +394,7 @@
 	- find $M(q)$
 - ex 2: two tasks: cirle with the e.e. and keep second link horizontal
 	- augmented jacobian
+	- find determinant with minors method
 	- find the first point $P_s$ on the circular path where there is an algorithmic singularity
 	- although there is a singularity, there is no error on the tasks, since $\dot{r}_d \in$ Range of $J_A(q_s)$
 - ex 3: natural and artificial constraint of a cylinder moving along a path in contact with a planar surface
