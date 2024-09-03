@@ -343,11 +343,45 @@
 - ex 3: actuated pendulum bang-coast-bang
 	- minimum time $T$ s.t. $\tau \leq \tau_{max}$
 
+## September 2019 (2019-09)
+- ex 1: control law $\tau$ that satisfies $\frac{dT}{dt} = - \gamma T
+	- we find that $\tau = - \frac{\gamma}{2} M \dot{q}$
+- ex 2: RP planar rest-to-rest along a circular path
+	- bang-coast-bang
+- ex 3: elastic impact between two masses $m_1$ and $m_2$, with $v_{i,2} = 0$
+	- what happens when $m_1 > m_2$, $m_1 = m_2$, $m_1 < m_2$, $m_2 \to 0$, $m_1 \to \inf$
 
 ## April 2020 (2020-04)
+- ex 1: when and why choose a two-stage calibration procedure
+	- when some parameters have larger error
+- ex 2: calibration of a n-dof serial manipulator, find regressor matrix
+	- usage of taylor series 
+- ex 3: $\dot{q} = $J^{\verb|#|}$ \dot{x}$ solution to minimize norm and $\dot{q} = $J_W^{\verb|#|}$ \dot{x}$ with different weights (same weights is equal to having no weights)
+	- both solutions return the correct cartesian velocity, but $\Vert \dot{q} \Vert$ is minimum in the first case 
+- ex 4: Task Priority method: e.e. position and last link upwards
+- ex 5: total energy E and Lagrangian L are the same when $U = 0$ and $\dot{E} = \dot{q}^T(t) u(t)$
+- ex 6: 2R polar robot, find $S'$ and $S''$ for skew-symmetry
 - ex 7: PPR planar
 	- dynamic model
 	- linear parametrization
+- ex 8: transformation $f(q)$ from DH to $p = (\ x \ y \ \alpha \ )$
+- ex 9: single link (pendulum) rest-to-rest swing-up maneuver with bang-bang acceleration
+	- torque limit not satisfied: time scaling: inertial torque scales with $k^2$
+- ex 10: Newton-Euler routine
+	- compute kinetic energy by just one call and one scalar product
+
+
+## June 2020 (2020-06)
+- ex 1: 3R planar SNS algorithm on velocity
+- ex 2: conditions on elements of $M$ and $g$ in order to have the dynamic model of a 2-dof robot
+	- since $g_1$ is zero, the first joint is an horizontal prismatic joint
+	- find $q_ddot$ from dynamic equations
+- ex 3: planar RP robot, find $\alpha < K_{p,m}$ having limitation on joint $d \leq q_2 \leq L$
+ - ex 4: PP cartesian planar with payload $m_p$
+	- viscous friction at joints	
+	- adaptive control law
+- ex 5: natural and artificial constraints of a robot closing a door
+- ex 6: TO COMPLETE TODAY, 3/09
 
 
 ## April 2021 (2020-04)
