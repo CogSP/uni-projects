@@ -351,6 +351,7 @@
 - ex 3: elastic impact between two masses $m_1$ and $m_2$, with $v_{i,2} = 0$
 	- what happens when $m_1 > m_2$, $m_1 = m_2$, $m_1 < m_2$, $m_2 \to 0$, $m_1 \to \inf$
 
+
 ## April 2020 (2020-04)
 - ex 1: when and why choose a two-stage calibration procedure
 	- when some parameters have larger error
@@ -381,10 +382,30 @@
 	- viscous friction at joints	
 	- adaptive control law
 - ex 5: natural and artificial constraints of a robot closing a door
-- ex 6: TO COMPLETE TODAY, 3/09
+- ex 6: 2R planar, collisions with $F_{c,i}$
+	- energy-based method vs momentum-based method to find if the collisions are detected and in which link
 
 
-## April 2021 (2020-04)
+## July 2020 (2020-07)
+- ex 1: PRRR (3R mounted on a rail)
+	- find $M(q)$
+- ex 2: two tasks: cirle with the e.e. and keep second link horizontal
+	- augmented jacobian
+	- find the first point $P_s$ on the circular path where there is an algorithmic singularity
+	- although there is a singularity, there is no error on the tasks, since $\dot{r}_d \in$ Range of $J_A(q_s)$
+- ex 3: natural and artificial constraint of a cylinder moving along a path in contact with a planar surface
+	- $x_t$ direction of the path
+- ex 4: 2R planar
+	- uniform time scaling factor
+	- computation of torque after scaling
+- ex 5: feedback control laws for regulation
+	- global **exponential** stabilization of $(\ q, \ \dot{q} \ ) = (\ \dot{q} \ 0 \ )$ having $e(t) = e(0)(1 + 5t)^{-5t}$. Obtained with Feedback Linearization $u = M a + c + g$ with $a$ simple PD. To get $K_p$ and $K_d$ you insert the given $e(t)$ in $\ddot{e} + K_D\dot{e} + K_P e = 0
+	- global **asymptotic** stabilization of of $(\ q, \ \dot{q} \ ) = (\ \dot{q} \ 0 \ )$ **not knowing the robot inertia matrix**. Obtained with PD + gravity compensation on $u$. 
+	- **exponential** stabilization of the e.e. $p = p_d$ with $\dot{p} = 0$. Obtained with feedback linearization in the Cartesian Space
+	- Basically if you need exponential stabilization you need feedback linearization, and if you don't have information on the inertia matrix you need PD on $u$, not $\ddot{q}$.
+
+
+## April 2021 (2021-04)
 - ex 1: 2R planar
 	- dynamic model
 	- linear parametrization
@@ -409,7 +430,7 @@
 	- $\tilde{M(\theta)} = T^T M(\theta) T$
 	- angular velocity of link $i$ w.r.t absolute coordinates is just $\dot{q}_i$, while w.r.t DH coordinates is $\dot{theta}_1 + … + \dot{theta}_i$
 	- nR robot generic expression of $T_i$ and so of $\Vert v_{ci} \Vert$
-- ex 2: two tasks
+- ex 2: two tasks, Task Priority
 	- execute just one, both simultaneously with and without priority
 	- norm of the error is lower in the case without priority
 - ex 3: PRR planar, PD + gravity compensation
