@@ -420,12 +420,17 @@
 
 
 ## April 2023 (2023-04)
+- ex 1: SNS on acceleration with bounds both on velocity and acceleration
+	- update of $\ddot{q}(t)$ done every $T_c$
+	- $\ddot{Q}_min$ and $\ddot{Q}_max$ set
 - ex 3: 4P planar:
 	- compute M
 	- inertia-weighted pseudoinverse $J_M^{\verb|#|}$ to minimize T
 	- pseudoinverse $J^{\verb|#|}$ to minimize $\Vert\dot{q}\Vert$
 - ex 4: RPR spatial
 	- compute M
+
+
 
 ## June 2023 (2023-06)
 - ex 1: 4R planar
@@ -444,6 +449,8 @@
 	- $h(q) = p_x = 0$
 	- Choose $D(q)$ s.t. with $A(q)$ forms the Jacobian $\implies$ determinant is simpler
 	- $\tau$ control law using $\dot{v}_d$ found from quintic trajectory
+
+
 
 ## April 2024 (2024-04)
 - ex 1: 3R planar with obstacle (clearance)
@@ -466,3 +473,42 @@
 	- When $\dot{q} \neq 0$, we have that $\dot{E} = \dot{q}^T u(t_0)$. Since $| \tau_i | \leq T_i |$, the maximum instantaneous decrease of E is $\tau_{0,i} = - T_i * sign(q_i) \forall joint i$, if joint I is in motion, while the joint that are not moving we put $\tau = 0$.
 	- When $\dot{q} = 0$, we induce a decrease with $\ddot{E} = \ddot{q}^T*\tau + \dot{q}^T \dot{\tau} = \ddot{q}^T \tau$ and since $M\ddot{q} + g = \tau$ we have that $\ddot{E} = \tau^T M^{-1}\tau - g^T * M^{-1} \tau. To find the maximum instantaneous decrease of E we compute $\nabla_{\tau} \ddot{E} = 0$, finding the corresponding $\tau_0$ 
 	- You can extend this reasoning for higher order time derivatives of E: for instance, if we have $g(q) = 0$
+
+
+## June 2024 (2024-06)
+- ex 1: moving frames algorithm
+	- from DH draw the robot
+- ex 2: 4R planar Projected Gradient (PG)
+	- task of pointing an object in the plane
+	- **TO RECHECK**
+- ex 3: 2n equations of n-joints robot and n motor equations
+	- **TODO** 
+- ex 4: PR planar
+	- residuals
+	- $\lim_{t \to \inf} r_1(t) = 2$
+
+
+
+## July 2024 (2024-07)
+- ex 1: PRR spatial moving frame algorithm	
+	- put the last frame on CoM 3, not on the e.e. to simplify the $M(q)$
+	- a 3-DoF robot has 30 parameters: 3 for each $dc_i$, 3 $m_i$ and 9-3 for each $I_i$ since is a symmetric matrix (so we just need diagonal and three elements
+- ex 2: 2R planar
+	- Projected Gradient but with $\ddot{q}_{PG}$, given $\ddot{r}_d(t)$ and cost H to minimize
+	- Important note: since you want to find $\ddot{q}$ s.t. it minimizes H, namely the error between $\ddot{q}$ and $\dot{q}_0 = - K_v \dot{q}$, you can use directly $\dot{q}_0 =  - K_v \dot{q} in the calculation of $\ddot{q}_{PG}$ instead of $\nabla H$. Indeed, we don't need to follow the gradient of H since we have $\ddot{q}_0$ directly.
+	- Note that as the damping is the derivative term, the $K_s$ spring is the $K_p$. So why are we using $K_p$ if the spring is present? Because we want a **specific** position $q_d$, while the spring is giving us something that is not exactly our position. The same holds for the derivative term: in the case we want to have specific desired error dynamics that do not match the one of the damping effect, we would have needed the $K_d$ to add
+- ex 3: two masses, a pulley, damped elastic spring and viscous friction on the motion
+	- dynamic model: with newton or lagrangian approach
+	- simplest control law to regulate $q_d$
+		- in steady state we have $\bar{\tau}$, $\bar{q}$ and $\bar{\theta}(q_d)$, where $\bar{\theta}$ was expressed in function of q since the problem requires a $q_d$. The condition on $\bar{\tau}$ and $\bar{\theta}$ must be satisfied by the controller
+		- since there is are damping and viscous friction, you don't need the derivative term: the simplest feedback law is just $\tau = \tau_d + K_p(\theta_d - \theta)$, where \tau_d was find in the previous point $(\bar{\theta})$ and $\theta_d$ depends on $q_d$
+		- verify asymptotic stability with Lyapunov and by local approximate linearization
+		- inverse dynamic problem (find $\tau$ from $q$) having set D = 0
+			- rewrite the dynamic model substituting $\theta$ with $q$. At the end you will have $\theta =$ something that depends only on $q$ and not on $\theta$ anymore.
+
+- ex 4: Pendubot (underactuated 2R, so just one joint providing torque $\tau$)
+	- find all forced equilibria $(\bar{q}, 0)$, basically $g(q) = 0$
+		- we found $\bar{q}$ and corresponding $\bar{\tau}$ needed
+		- PD with gravity compensation is hard since the robot is underactuated: we locally asymptotically stabilizes around $(\bar{q}, 0)$ with linearization of the dynamic model
+			- Controllability Matrix
+	
