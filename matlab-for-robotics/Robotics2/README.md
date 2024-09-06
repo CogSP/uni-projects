@@ -293,7 +293,7 @@
 	- SNS algorithm solution has the least possible norm
 - ex 3: visual servoing scheme
 	- average interaction matrix $\bar{J}$, that is different from the interaction matrix of the average features parameters $(\ \bar{u} \ \bar{v}\ )$ and $\bar{Z}$
-- ex 4: reduced dybamic model after partition $q = (\ q_a \ q_b \ )$
+- ex 4: reduced dynamic model after partition $q = (\ q_a \ q_b \ )$
 
 
 ## April 2019 (2019-04)
@@ -430,7 +430,28 @@
 	- arm of human-like size and weight ($a_3 = I_2 + m_2 d_{c2}^2 \geq 1$) 
 	- Feedback linearization control $u_{FBL}$ vs Lyapunov-based $U_{GLB}$ and $\delta u$
 	- which between $u_{FBL}$ and $U_{GLB}$ uses the larger instantaneous torque
+
+
+
+
+
+
+
+## January 2021 (2021-01)
+- ex 1: 3R robot Projected Gradient using $H(q) = U_g(q)$
+	- since it's a control law we need to recover from possible error: $\dot{q} = $J^{\verb|#|}(\dot{r} - K_p e) + P \nabla U$
+- ex 2: 
+
+
+
+
+
 	
+
+
+
+
+
 
 
 ## April 2021 (2021-04)
