@@ -407,6 +407,30 @@
 	- global **asymptotic** stabilization of of $(\ q, \ \dot{q} \ ) = (\ \dot{q} \ 0 \ )$ **not knowing the robot inertia matrix**. Obtained with PD + gravity compensation on $u$. 
 	- **exponential** stabilization of the e.e. $p = p_d$ with $\dot{p} = 0$. Obtained with feedback linearization in the Cartesian Space
 	- Basically if you need exponential stabilization you need feedback linearization, and if you don't have information on the inertia matrix you need PD on $u$, not $\ddot{q}$.
+	- principle of polynomial identity to find $K_p$ and $K_d$
+
+
+## September 2020 (2020-09)
+- ex 1: sensor-based obstacle avoidance
+	- clearance function $H(q) = min \Vert a(q) - b \Vert$ where the point $b$ of the obstacle is made by the proximity sensor on the end-effector
+	- Projected Gradient: switching control law on $\dot{q}$ that when $H(q) \geq \epsilon$ gives priority to $\dot{r}$ trying to maximize $H(q)$, while $H(q) \leq \epsilon$ we focus on avoid the obstacle
+		- Note that we have a control $K_p$ on the robot when executing the task $\dot{r}$ since the phase of obstacle avoidance ($H(q) \leq \epsilon$) can introduce an error on $\dot{r}$ exiting the task path
+- ex 2: sensor-based
+	- barycentre of the triangle
+	- **Important Note**: Jacobian of the barycentre of the point is different from the Jacobian of the barycentre
+	- null space of the jacobian ($\dot{b} = 0$)
+- ex 3: RP robot
+	- cartesian inertia matrix $M_p = J^{-T} M J^-1$
+	- cartesian dynamic equation to find $\ddot{p} = M_p^{-1} F$. Since for the given value $M_p^{-1}$ is diagonal and with the same values for each element of the diagonal, we have that $\ddot{p} = \alpha F \implies$ \ddot{p}$ has the same direction of $F$ 
+- ex 4: 3R planar constrained, guide on vertical direction at a distance k
+	- find $A(q)$, $D(q)$, $E(q)$, $F(q)$
+	- find reduced inertia matrix
+- ex 5: 2R robot 
+	- known, symbolic form of the inertia matrix of the 2R robot with dynamic coefficient
+	- arm of human-like size and weight ($a_3 = I_2 + m_2 d_{c2}^2 \geq 1$) 
+	- Feedback linearization control $u_{FBL}$ vs Lyapunov-based $U_{GLB}$ and $\delta u$
+	- which between $u_{FBL}$ and $U_{GLB}$ uses the larger instantaneous torque
+	
 
 
 ## April 2021 (2021-04)
