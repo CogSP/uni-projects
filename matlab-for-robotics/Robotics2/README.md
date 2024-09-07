@@ -433,31 +433,56 @@
 
 
 
-
-
-
-
 ## January 2021 (2021-01)
 - ex 1: 3R robot Projected Gradient using $H(q) = U_g(q)$
 	- since it's a control law we need to recover from possible error: $\dot{q} = $J^{\verb|#|}(\dot{r} - K_p e) + P \nabla U$
-- ex 2: 
-
-
-
-
-
+- ex 2: 3R robot, now torque controlled
+	- control law to keep $P_d$ and minimize $U(q)$ as in the previous exercise
+	- Feedback linearization law $\tau = M(q)a + c + g$ where $\ddot{q}= a$ and a is found from $\ddot{r} = J * \ddot{q} + \dot{J} * \dot{q}$ adding the null-space term
+- ex 3: 2R spatial polar robot
+	- dynamic model
+	- viscous friction
+- ex 4: 2R spatial polar robot
+	- equilibrium with minimum torque $\tau$
+		- from the dynamic model we find $\bar{\tau}_2$, then we check the solution with $\bar{\tau}_1 = 0$ since it certainly has the minimum norm
+	- minimum number of dynamic coefficient
+		- trigonometric substitution $s_2^2 = 1 - c_2^2$: assuming $I_{2,xx} \neq I_{2,yy} = I_{2,zz}$, the number of parameters with or without this substitution are the same. However, if $I_{2,yy} \neq I_{2,zz}$ we will have 1 coefficient more without the substitution.
+- ex 5: PPR planar, momentum-based residuals
+	- detect collision: if the force is in the null space it can't be detected
+	- isolate colliding link
+	- identify colliding force $F_c$: for instance, if $\tau_i = (\ F_x \ 0)$ it means that only the intensity $F_x$ of the force can be identified
+	- determine location of collision point: if $\tau_i = J_i^T*F_i$ depends on $\rho_i$ we can localize the point of collision
 	
 
-
-
-
-
+## February 2021 (2021-02)
+- ex 1: RRPR planar 
+	- find M, g and their dynamic coefficients
+	- note that $q_2$ is not a DH coordinate
+- ex 2: two PP cartesian planar robot cooperating to move a payload in a path and minimizing $H = \Vert \tau_A \Vert ^2 + \Vert \tau_B \Vert ^2$
+	- torque limits $\implies$ bang-bang profile
+- ex 3: 3R planar torque control task rejecting position and velocity error
+	- self-motion keeping $P_in$ but getting to $q_3 = -\frac{pi}{2}$
+	- joint motion $\ddot{q} = a$ on the linearization law on $\tau$ will move $q_3$, adding a PD for errors
+	- joint space decomposition approach
+	- **TO RECHECK, IT IS NOT COMPLETELY CLEAR**
+- ex 4: damper, mass, damper and spring
+	- dynamic model
+	- regulation control law using Laplace domain
 
 
 ## April 2021 (2021-04)
 - ex 1: 2R planar
-	- dynamic model
+	- dynamic model having $rc_i$ given, w.r.t to $RF_i$
 	- linear parametrization
+- ex 2: 3R planar with absolute coordinates, task of keeping P on a vertical line at constant speed and second link horizontal
+	- find first algorithmic singularity $q_s$
+		- $q_3 = q_1$ and $p_x = c_1 + c_2 + c_3 = c_2 + 2c_1 = constant$, since the second link is horizontal $2c_1 = constant$ from which we can find $q_1 = q_3$, the first singularity encountered
+	- $\dot{q}_{PS}$, $\dot{q}_{DLS}$, $\dot{q}_{TP}$ and compare their errors
+- ex 3: PR robot 
+	- dynamic model
+	- rest-to-rest circular path $p(s)$ in minimum time with bound on torques: bang-bang
+
+
 
 ## April 2022 (2022-04)
 - ex 3: 3R spatial:
