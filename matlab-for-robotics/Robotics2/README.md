@@ -404,7 +404,7 @@
 	- computation of torque after scaling
 - ex 5: feedback control laws for regulation
 	- global **exponential** stabilization of $(\ q, \ \dot{q} \ ) = (\ \dot{q} \ 0 \ )$ having $e(t) = e(0)(1 + 5t)^{-5t}$. Obtained with Feedback Linearization $u = M a + c + g$ with $a$ simple PD. To get $K_p$ and $K_d$ you insert the given $e(t)$ in $\ddot{e} + K_D\dot{e} + K_P e = 0
-	- global **asymptotic** stabilization of of $(\ q, \ \dot{q} \ ) = (\ \dot{q} \ 0 \ )$ **not knowing the robot inertia matrix**. Obtained with PD + gravity compensation on $u$. 
+	- global **asymptotic** stabilization of of $(\ q, \ \dot{q} \ ) = (\ q_d \ 0 \ )$ **not knowing the robot inertia matrix**. Obtained with PD + gravity compensation on $u$. 
 	- **exponential** stabilization of the e.e. $p = p_d$ with $\dot{p} = 0$. Obtained with feedback linearization in the Cartesian Space
 	- Basically if you need exponential stabilization you need feedback linearization, and if you don't have information on the inertia matrix you need PD on $u$, not $\ddot{q}$.
 	- principle of polynomial identity to find $K_p$ and $K_d$
@@ -478,7 +478,7 @@
 	- find first algorithmic singularity $q_s$
 		- $q_3 = q_1$ and $p_x = c_1 + c_2 + c_3 = c_2 + 2c_1 = constant$, since the second link is horizontal $2c_1 = constant$ from which we can find $q_1 = q_3$, the first singularity encountered
 	- $\dot{q}_{PS}$, $\dot{q}_{DLS}$, $\dot{q}_{TP}$ and compare their errors
-- ex 3: PR robot 
+- ex 3: PR planar
 	- dynamic model
 	- rest-to-rest circular path $p(s)$ in minimum time with bound on torques: bang-bang
 
@@ -489,16 +489,64 @@
 	-  compute M
 
 
+## September 2022 (2022-09)
+- ex 1: 3R **with equal link** has to be in $p = 0$ minimizing joint range function $H(q)$
+	- Projected Gradient
+	- **TODO**: it seems that the only family of solutions are $(\ q_1 \ \frac{2pi}{3} \ \frac{2pi}{3}\ )$ and $(\ q_1 \ \ - frac{2pi}{3} \ \ - frac{2pi}{3}\ )$ so basically equilateral triangles orientated with $q_1$. But when I do the inverse kinematics I don't have these types of solution but (2pi/3, 2pi/3, 4.01something)
+	- show that the robot, starting from $q(0)$ defined with the equilateral triangles above, converges to $\bar{q}$ s.t. $\Nabla H(\bar{q}) \neq 0$ but $\dot{q} = 0$
+- ex 2: RP planar robot
+	- rest-to-rest cartesian trajectory from $P_i$ to $P_f$ with bang-coast-bang acceleration profile
+	- **TODO**: it seems that using $u = M(\ddot{y} + PD) + g$ with $\ddot{y} =$ bang-bang trajectory is not the proper solution, why?
+- ex 3: two masses and a pulley
+	- case (a) we measure position only of the first mass ($\theta$) $\implies$ the only dynamic equation is $(M + B)\ddot{\theta} - M g_0$
+	- case (b) we measure both position ($\theta$ and $q$) and we have a spring
+	- **TODO**
+
+
+
+## October 2022 (2022-10)
+- RP robot
+	- dynamic model
+	- linear parametrization
+	- regulation control law knowing only some parameters: you don't know the entire dynamic so you need to do the classic PD on $u(q)$ but you can find $\alpha$ s.t. there is global asymptotic stabilization with those known parameters
+	- all parameters are known: so now you can use the dynamic. Don't use regulation since it give you "a given time T" so he want a rest-to-rest cubic in time T
+	- **asymmetric** bang-bang: bang-bang since there is no constraint on $\dot{q}$
+
+
+
+## February 2023 (2023-02)
+- ex 1: 3R planar torque controlled. These are just three cases of Linear Quadratic (LQ) optimization
+	- $\tau_A$ that minimizes $H_A = frac{1}{2} \Vert \ddot{q} \Vert ^2$ is just the pseudoinverse considering $\ddot{q} = J^{\verb|#|}(\ddot{r} - \dot{J}\dot{q})$ = J^{\verb|#|}\ddot{r}$ at rest
+	- $\tau_B$ that minimizes $H_A = frac{1}{2} \Vert \ddot{q} \Vert ^2$ but using absolute coordinates. Weighted matrix with W = $T^T T$
+	- $\tau_C$ that minimizes $H_A = frac{1}{2} \ddot{q}^T M(q) \ddot{q}$ is inertia weighted matrix
+- ex 2: single link under gravity (pendulum)
+	- rest-to-rest swing-up maneuver with a cubic under torque bound $u_{max}$
+	- find the minimum time $T*$
+		- differently from ex 6 of 2023-04, here the gravity term depends on $\theta$, since $u = I\ddot{\theta} + mg_0dsin(\theta) = u_{inertia}(\theta) + u_{gravity}(\theta)$, while in 2023-04 we have isolated $\ddot{\theta}$ since $g$ was a constant
+		- $u_{inertia}$ as in the other exercise, is linear and maximum in $t = 0$ and $t = T$, while $u_{gravity}$ is sinusoidal and maximum at the midpoint $T/2$, when $sin(\theta) = 1$. The superposition of the two torques will have a maximum in the first half of the motion, where both terms are positive
+		- note also that the faster is the trajectory (i.e. the smaller T), the more $\ddot{\theta}$ will grow, and the more $u_{inertia}$ will dominate $u_{gravity}$. So when T is small enough, you can neglect $u_{gravity}$ and find $T$
+	- minimum uniform time scaling factor, compute at time $t = 0$ since it's the time at which we have the overcome of the $u_max$
+
+
 ## April 2023 (2023-04)
 - ex 1: SNS on acceleration with bounds both on velocity and acceleration
 	- update of $\ddot{q}(t)$ done every $T_c$
 	- $\ddot{Q}_min$ and $\ddot{Q}_max$ set
+- ex 2: having DH of a 3R planar, find $r_{c,i}$ for each CoM s.t. $g(q)$ is a certain vector
+	- since $g(q)$ has $g_1 = g_2 = 0$ we need $r_{cy,2} = r_{cy,3} = 0$
+	- find general $g(q)$ for a 3R and find the relationship
 - ex 3: 4P planar:
 	- compute M
 	- inertia-weighted pseudoinverse $J_M^{\verb|#|}$ to minimize T
 	- pseudoinverse $J^{\verb|#|}$ to minimize $\Vert\dot{q}\Vert$
 - ex 4: RPR spatial
 	- compute M
+- ex 5: given $M$ find $c$ and three different factorization of $S$ s.t. the first two creates a skew-symmetric matrix and the third doesn't
+	- first S is the standard factorization, then the second is obtained adding a skew-symmetric matrix with the component of $\dot{q}$. The last, invalid one, is obtained changing a bit the added skew-symmetric matrix on the previous one
+	- find the unique regressor matrix 
+- ex 6: PR spatial
+	- rest-to-rest cubic trajectory for both joints, find $T^*$ having bounds on torques
+
 
 
 
