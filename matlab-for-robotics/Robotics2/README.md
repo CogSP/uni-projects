@@ -526,6 +526,15 @@
 		- $u_{inertia}$ as in the other exercise, is linear and maximum in $t = 0$ and $t = T$, while $u_{gravity}$ is sinusoidal and maximum at the midpoint $T/2$, when $sin(\theta) = 1$. The superposition of the two torques will have a maximum in the first half of the motion, where both terms are positive
 		- note also that the faster is the trajectory (i.e. the smaller T), the more $\ddot{\theta}$ will grow, and the more $u_{inertia}$ will dominate $u_{gravity}$. So when T is small enough, you can neglect $u_{gravity}$ and find $T$
 	- minimum uniform time scaling factor, compute at time $t = 0$ since it's the time at which we have the overcome of the $u_max$
+- ex 3: two masses and a spring in between
+	- dynamic model
+	- force control laws decentralized: $F_i$ depends only on $q_i$
+	- find unique equilibrium $\bar{q}$ at steady state $(\ q \ \dot{q} \ ) = (\ \bar{q} \ 0 \ )$ for the closed-loop system under the control law
+	- prove global asymptotic stbaility of the equilibrium state by Lyapunov/LaSalle
+	- since $\bar{q}$ is not $q_d$, we modify the control law to enforce $\bar{q} = q_d$
+		- straightforward: cancel the effect of elasticity adding $K e_p$ in the control laws. This would fully decouple the behavior of the two masses but we will not have the decentralization, since now $F_i$ depends also on $q_j$
+		- to keep the decentralization we can use a PID, since it removes the constant steady-state error 
+		- another solution is to use a feedforward term $F_{i, ffw}$
 
 
 ## April 2023 (2023-04)
@@ -613,7 +622,7 @@
 	- a 3-DoF robot has 30 parameters: 3 for each $dc_i$, 3 $m_i$ and 9-3 for each $I_i$ since is a symmetric matrix (so we just need diagonal and three elements
 - ex 2: 2R planar
 	- Projected Gradient but with $\ddot{q}_{PG}$, given $\ddot{r}_d(t)$ and cost H to minimize
-	- Important note: since you want to find $\ddot{q}$ s.t. it minimizes H, namely the error between $\ddot{q}$ and $\dot{q}_0 = - K_v \dot{q}$, you can use directly $\dot{q}_0 =  - K_v \dot{q} in the calculation of $\ddot{q}_{PG}$ instead of $\nabla H$. Indeed, we don't need to follow the gradient of H since we have $\ddot{q}_0$ directly.
+	- Important note: since you want to find $\ddot{q}$ s.t. it minimizes H, namely the error between $\ddot{q}$ and $\dot{q}_0 = - K_v \dot{q}$, you can use directly $\dot{q}_0 =  - K_v \dot{q} in the calculation of $\ddot{q}_{PG}$ instead of $\Nabla H$. Indeed, we don't need to follow the gradient of H since we have $\ddot{q}_0$ directly.
 	- Note that as the damping is the derivative term, the $K_s$ spring is the $K_p$. So why are we using $K_p$ if the spring is present? Because we want a **specific** position $q_d$, while the spring is giving us something that is not exactly our position. The same holds for the derivative term: in the case we want to have specific desired error dynamics that do not match the one of the damping effect, we would have needed the $K_d$ to add
 - ex 3: two masses, a pulley, damped elastic spring and viscous friction on the motion
 	- dynamic model: with newton or lagrangian approach
