@@ -100,7 +100,7 @@
 	- linear parametrization $g(q) = Y_G(q)a_G$
 	- $d_i$ s.t. $g(q) = 0 \forall q$, i.e. $a_G = 0$
 - ex 3: 4R planar
-	- PG to execute $r(t)$ while increasing $-H_{range}(q)$
+	- Projected Gradient (PG) to execute $r(t)$ while increasing $H_{range}(q)$
 
 
 ## June 2016 - Final Test with Midterm (2016-06-midterm)
@@ -370,7 +370,7 @@
 	- linear parametrization
 - ex 8: transformation $f(q)$ from DH to $p = (\ x \ y \ \alpha \ )$
 - ex 9: single link (pendulum) rest-to-rest swing-up maneuver with bang-bang acceleration
-	- torque limit not satisfied: time scaling: inertial torque scales with $k^2$
+	- torque limit not satisfied: time scaling, inertial torque scales with $k^2$
 - ex 10: Newton-Euler routine
 	- compute kinetic energy by just one call and one scalar product
 
@@ -483,8 +483,94 @@
 	- rest-to-rest circular path $p(s)$ in minimum time with bound on torques: bang-bang
 
 
+## June 2021 (2021-06)
+- ex 1: prove that the weighted pseudoinverse can be computed as $J_W^{\verb|#|} = W^{-\frac{1}{2}}pinv(JW^{-\frac{1}{2}})
+- ex 2: single link mounted on a passive elastic support
+	- Lagrangian dynamic model
+	- input torque $\tau_0 > 0$ when the robot is at rest: will the robot move CW or CCW? Will the spring compress or extend?
+		- find $\ddot{q}_1$ from the first equation and substitute it in the second equation, finding $\tau$ depending only on $\ddot{q}_2$
+	- control law $\tau$ commanding $q_2$, classical PD knowing the model
+		- dynamic of an undamped mass suspended on a spring
+- ex 3: draw the 3-dof robot given $M$ and $g$: it's a cartesian 3P robot with a portal structure
+- ex 4: 3R planar with absolute coordinates
+	- robot has motors producing torques $u = (u_1, u_2, u_3)$ working on DH coordinates $\theta$. Provide torques on absolute coordinates $u_q = (u_{q1}, u_{q2}, u_{q3})$
+- ex 5: 2R planar circular path trajectory
+	- critically damped
+
+
+## July 2021 (2021-07)
+- ex 1: 3R planar, controlled by $u = \ddot{q}$ with bound $U_{max,i}$
+	- is it possible to define $u_0 = \ddot{q}_0$ s.t. $\ddot{p}_0 = 0$? 
+		- we know for sure that $\ddot{p} = J*u + \dot{J}\dot{q} = J*u + h$, and so when $\ddot{p} = 0$ we have $J*u = -h$
+		- **if $h \in R(J)$** we have that $u$ will be a feasible command giving us $\ddot{p}$, so we just need to check the bounds $U_{max,i}$. In the case the bounds are not satisfied we can apply SNS. **Note**: since there is only one degree of redundancy, we can solve the problem with SNS only if at most 1 joint is out of the bounds
+			- Note that **if $h \in R(J)$** can be true also in a singularity, since the range of the jacobian may be reduced but not empty
+		- **if $h \notin R(J)$ we have that $u$ is unfeasible, so we can't return $\ddot{p} = 0$ but a result with the minimum norm using the pseudoinverse
+- ex 2: incipiend block fault
+- ex 3: RPR planar 
+	- adaptive trajectory tracking control law with partly unknown dynamic model
+	- proof of the asymptotic stability of the trajectory tracking error
+
+
+## September 2021 (2021-09)
+- ex 1: 3R planar, controlled by $u = \ddot{q}$ with bound $U_{max,i}$
+	- which feasible $u_0$ to stop as fast as possible the cartesian motion while keeping the velocity $\dot{p}$ aligned with $\dot{p}_0$
+		- $\ddot{p}$ = -\lambda \dot{p}$ choosing largest $\lamdba$ s.t. $u_0$ is inside the bounds $implies$ linear program (LP)
+- ex 2: 3R planar, provide eigenvalues of the $2 \times 2$ cartesian matrix $M_p$
+	- note that since the jacobian is non-square, you can't use $M_p = J^{-T} M J^{-1}$ but you need to use $M_p = (J M^{-1} J^T)^{-1}$, always assuming that the jacobian is full rank
+- ex 3: cartesian 2P planar
+	- design impedance control law s.t. both eigenvalues are negative and coincident
+	- dynamic model in contact with an environment $M\ddot{q} + g = \tau + F$
+	- decoupled impedance model $M_d \ddot{e} + D_d \dot{e} + K_d e = F$
+	- cartesian robot means $p = (q_1, q_2)'$
+	- no force/torque sensor: $M_d \to M$, so we have that $\tau = $M\ddot{q} + g - F = M\ddot{q} + g - M \ddot{e} + D_d \dot{e} + K_d e = M\ddot{p}_d + g - D_d\dot{e} - K_d e
+	- using Laplace you can impose $\lambda < 0$
+
+
+## January 2022 (2022-01)
+- ex 1: RPR planar with payload $m_p$ with inertia $I_p$
+	- weighted inertia pseudoinverse
+	- circular obstacle $O_{obs}$ of radius $r$ in position $P_{obs}$. We use Projected Gradient (PG) with clearance
+		- $b$ in the clearance is $b = p_obs + r \frac{a(q) - p_{obs}}{\Vert a(q) - p_obs \Vert}$ since the obstacle is circular
+- ex 2: dynamic model of an $nR$ robot
+	- define joint control law continuous w.r.t. time that brings the robot in T seconds to an equilibrium state: cubic joint trajectory 
+	- minimum factor $k$ for uniform time scaling
+		- since the control $u$ and its bounds are directly on $\ddot{q}$ we have the ratio between the acceleration $\ddot{q}$ that overcomed the bounds and the bounds itself. When $u$ is on the torque of the dynamic model the formula is different, since it consider $u_{inertia}$ and $u_{gravity}$
+- ex 3: PR planar move in a line between A and B with a cubic profile in T
+	- no constraint force generated during motion ($\lambda = 0$)
+	- reduced dynamic model and its control law
+	- inverse constrained dynamic control law: find $\tau$ from the reduced dynamic model
+		- formula of $\ddot{q}$ using $F$, $\dot{v}$, $E$, etc.
+
+
+## February 2022-02 (2022-02)
+- ex 1: RPR planar
+	- linear parametrization $g(q) = G(q)a_G$
+	- control law $\tau$ driven by Cartesian error $\implies$ Cartesian Control Law: a simple PD on cartesian coordinates. You get $\tau = J^T K_p e_p - K_d \dot{q} + g$
+	- find configuration $q_s$ s.t. $e_p = p_d - f(q_s) \neq 0$ but the robot doesn't move under the action of previous control law $\tau$: put $\tau = g$ to compensate the gravity and $\dot{q} = 0$, now you have $J^T K_p e_p = 0$, so $K_p e_p \in N(J^T)$ will give you $q_s$ 
+- ex 2: 4R planar
+	- e.e. trajectory $p_d(t)$ while minimizing $H = \frac{1}{2} \Vert \ddot{q} + K_d \dot{q} \Vert ^2$. Projected Gradient (PG) with preferred acceleration $K_d \dot{q}$
+	- singularities with minors method
+	- augmented task with $\omega_{z,d}$
+- ex 3: 2R planar constrained along a vertical segment between A and B
+	- only one motor: underactuated robot, second link is passive
+	- reduced dynamic
+	- if the robot is in equilibrium in A what is the applied torque $\tau_0$
+		- inverse kinematics of the 2R to find $q_A$
+		- inverse constrained dynamic model to find $\tau$ given the reduced dynamic model
+	- rest-to-rest from A to B with a sinusoidal acceleration, find $\tau_d$
+		- since it's a reduce dynamic exercise, the motion is on $v$ and its derivatives. Precisely, we have $\dot{v} = \Delta sin(\omega t)$, integrating and adding constants $C$ in order to get a rest-to-rest velocity and a position $p_y$ starting from A and ending in B, we find the value of $\Delta$, precisely by imposing $p_y(T) = B$
+		- after having found $v$ and $\dot{v}$ you can find $\tau_d$ with the inverse constrained dynamic model as before
+
 
 ## April 2022 (2022-04)
+- ex 1: calibration of the two links of a 2R
+	- you have the results of some expertiments: $q_i \to p_i$
+	- compute $\hat{p} = p_{experiment} - J $\delta l$
+	- now you have $\delta p$ and you can pseudoinvert, getting $\delta l = \Phi^{\verb|#|} \delta p
+	- result is $l = \hat{l} + \delta l
+	- there are all zeros and equal rows in the regressor matrix, due to singularities of $\Phi$. These rows can be eliminated
+
+
 - ex 3: 3R spatial:
 	-  compute M
 
@@ -493,7 +579,7 @@
 - ex 1: 3R **with equal link** has to be in $p = 0$ minimizing joint range function $H(q)$
 	- Projected Gradient
 	- **TODO**: it seems that the only family of solutions are $(\ q_1 \ \frac{2pi}{3} \ \frac{2pi}{3}\ )$ and $(\ q_1 \ \ - frac{2pi}{3} \ \ - frac{2pi}{3}\ )$ so basically equilateral triangles orientated with $q_1$. But when I do the inverse kinematics I don't have these types of solution but (2pi/3, 2pi/3, 4.01something)
-	- show that the robot, starting from $q(0)$ defined with the equilateral triangles above, converges to $\bar{q}$ s.t. $\Nabla H(\bar{q}) \neq 0$ but $\dot{q} = 0$
+	- show that the robot, starting from $q(0)$ defined with the equilateral triangles above, converges to $\bar{q}$ s.t. $\nabla H(\bar{q}) \neq 0$ but $\dot{q} = 0$
 - ex 2: RP planar robot
 	- rest-to-rest cartesian trajectory from $P_i$ to $P_f$ with bang-coast-bang acceleration profile
 	- **TODO**: it seems that using $u = M(\ddot{y} + PD) + g$ with $\ddot{y} =$ bang-bang trajectory is not the proper solution, why?
@@ -511,6 +597,20 @@
 	- regulation control law knowing only some parameters: you don't know the entire dynamic so you need to do the classic PD on $u(q)$ but you can find $\alpha$ s.t. there is global asymptotic stabilization with those known parameters
 	- all parameters are known: so now you can use the dynamic. Don't use regulation since it give you "a given time T" so he want a rest-to-rest cubic in time T
 	- **asymmetric** bang-bang: bang-bang since there is no constraint on $\dot{q}$
+
+
+## January 2023 (2023-01)
+- ex 1: 2R planar
+	- dynamic model
+	- PD control law: minimum values of $K_p$ and $K_d$
+		- note that since there is viscous friction at both joints you can put $K_d = 0$
+	- adaptive control law
+	- bang-bang rest-to-rest motion: neglect gravity since we are in an horizontal plane now
+- ex 2: 2P cartesian planar, hybrid force-velocity control law
+	- dynamic model of then 2P
+	- rotation from $RF0$ to $RF_{task}$, dividing $v$ and $f$ in tangential and normal
+	- compliant environment with stiffness $K_n$ ($v_n$ with deformation $\delta_n$) and frictionless ($f_t = 0$)
+	- control law **TODO**
 
 
 
@@ -581,7 +681,7 @@
 
 ## April 2024 (2024-04)
 - ex 1: 3R planar with obstacle (clearance)
-	- PG: impose $v_e$ at .e.e while maximizing $H_{dist}$ that is distance from an obstacle
+	- Projected Gradient PG: impose $v_e$ at .e.e while maximizing $H_{dist}$ that is distance from an obstacle
 		- distance from the obstacle is norm between the closest robot point and closest circle point, then consider that you can rewrite it with $C$ and $r$
 	- TP: two tasks, the first is the previous the second is velocity of the closest point $v_m$
 		- case B: using $v_m$ equals to a velocity along the direction of the gradient of the clearance
@@ -622,7 +722,7 @@
 	- a 3-DoF robot has 30 parameters: 3 for each $dc_i$, 3 $m_i$ and 9-3 for each $I_i$ since is a symmetric matrix (so we just need diagonal and three elements
 - ex 2: 2R planar
 	- Projected Gradient but with $\ddot{q}_{PG}$, given $\ddot{r}_d(t)$ and cost H to minimize
-	- Important note: since you want to find $\ddot{q}$ s.t. it minimizes H, namely the error between $\ddot{q}$ and $\dot{q}_0 = - K_v \dot{q}$, you can use directly $\dot{q}_0 =  - K_v \dot{q} in the calculation of $\ddot{q}_{PG}$ instead of $\Nabla H$. Indeed, we don't need to follow the gradient of H since we have $\ddot{q}_0$ directly.
+	- Important note: since you want to find $\ddot{q}$ s.t. it minimizes H, namely the error between $\ddot{q}$ and $\dot{q}_0 = - K_v \dot{q}$, you can use directly $\dot{q}_0 =  - K_v \dot{q} in the calculation of $\ddot{q}_{PG}$ instead of $\nabla H$. Indeed, we don't need to follow the gradient of H since we have $\ddot{q}_0$ directly.
 	- Note that as the damping is the derivative term, the $K_s$ spring is the $K_p$. So why are we using $K_p$ if the spring is present? Because we want a **specific** position $q_d$, while the spring is giving us something that is not exactly our position. The same holds for the derivative term: in the case we want to have specific desired error dynamics that do not match the one of the damping effect, we would have needed the $K_d$ to add
 - ex 3: two masses, a pulley, damped elastic spring and viscous friction on the motion
 	- dynamic model: with newton or lagrangian approach
