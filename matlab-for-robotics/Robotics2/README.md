@@ -569,10 +569,21 @@
 	- now you have $\delta p$ and you can pseudoinvert, getting $\delta l = \Phi^{\verb|#|} \delta p
 	- result is $l = \hat{l} + \delta l
 	- there are all zeros and equal rows in the regressor matrix, due to singularities of $\Phi$. These rows can be eliminated
+- ex 2: $\ddot{q}(t) = \ddot{q}_k$ for $t \in [t_k, t_k + T_c]$, thus $\dot{q}_{k+1} = \dot{q}_k + T_c \ddot{q}_k$
+	- at time $t_k$, provide $\ddot{q}_k$ s.t. $\ddot{r}_{d,k}$ and minimize $H = \frac{1}{2} \Vert \dot{q}_{k+1} \Vert ^2 = \frac{1}{2} \Vert \dot{q}_{k} + T_c \ddot{q}_{k} \Vert ^2$. This is solved with Projected Gradient (PG) using preferred acceleration $\ddot{q}_k = - \frac{\dot{q}_{k}}{T_c}$, since it make the $H$ goes to zero. 
+- ex 3: 3R spatial, moving frames algorithm:
+	- compute M
+	- note that $r_{ci, i}$ are defined with $L_i - dc_i$ since $dc_i starts from the position of the $i-1$-th joint
+- ex 4: projected gradient (PG) on $\dot{q}$ with $H_{range}$ for keeping the joint ranges on the midranges. The solution is then $\dot{q} = \dot{q}_r + \dot{q}_n$
+	- e.e. task scaling $\dot{q} = k\dot{q}_r + \dot{q}_n$ to find $k$
+	- applying directly SNS on the entire $\dot{q}$ would not be correct since the solution $\dot{q}$ contains a null-space term that does not scale with $\dot{r}$ 
+- ex 5: PR planar, Projected Gradient (PG) with two typical dynamic objectives $H$
+	- with $H_A = \frac{1}{2} \Vert \tau \Vert ^2$, that is the torque norm
+	- with $H_B = \frac{1}{2} \Vert \tau \Vert_{M^{-2}} ^2$, that is the squared inverse inertia weighted torque norm
+- ex 6: PR planar 
+	- gravity term $g(q)$
+	- $\alpha$ upper bound of $\Vert \Nabla g(q) \Vert$
 
-
-- ex 3: 3R spatial:
-	-  compute M
 
 
 ## September 2022 (2022-09)
@@ -717,7 +728,7 @@
 
 
 ## July 2024 (2024-07)
-- ex 1: PRR spatial moving frame algorithm	
+- ex 1: PRR spatial moving frames algorithm	
 	- put the last frame on CoM 3, not on the e.e. to simplify the $M(q)$
 	- a 3-DoF robot has 30 parameters: 3 for each $dc_i$, 3 $m_i$ and 9-3 for each $I_i$ since is a symmetric matrix (so we just need diagonal and three elements
 - ex 2: 2R planar
