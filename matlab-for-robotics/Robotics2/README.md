@@ -586,6 +586,51 @@
 
 
 
+## June 2022 (2022-06)
+- ex 1: PR planar
+	- adaptive control law for smooth trajectory $q_d(t)$ having matrix $$ M(q) = 
+\begin{bmatrix}
+A & Bcos(q2) \\
+Bcos(q2) & C \\
+\end{bmatrix}
+$$
+		- use $A$, $B$ and $C$ as dynamic parameters
+- ex 2: macro-micro planar 4R
+	- two tasks, the one of the macro robot and the one of the micro robot. So you can create the extended jacobian $J_E$ and find its algorithmic singularities
+	- Task Priority (TP)
+- ex 3: robot with n elastic joints interacting with the environment, has a link dynamics and a motor dynamics
+$$
+\begin{cases}
+M(q)\ddot{q} + S\dot{q} + g = \tau_J + J^{T}F \\
+B\ddot{\theta} + \tau_J = \tau
+\end{cases}
+$$
+	- **TODO** TO UNDERSTAND WELL
+- ex 4: one-link (pendulum) actuated and under gravity, with input torque bounds $\tau_{max}$
+	- rest-to-rest motion from $\theta(0) = -\frac{pi}{2}$ and $\theta(T) = \frac{pi}{2}$ with bang-bang acceleration $\implies$ find minimum time T
+
+
+
+
+
+
+## July 2022 (2022-07)
+- ex 1: 3R spatial from $q$ to $p$ coordinates
+	- find the transformation $J$ and compute $M_p$ and $c_p$
+- ex 2: dynamic model partitioned in the part related to the first joint $q_1$, to whicfh is imposed an holonomic constraint $h(q) = q_1 - k$ and all the rest
+	- reduced dynamics
+	- two requests:
+		- $\lambda = 0$: inverse formula to find $\tau_1$ s.t. $\lambda = 0$
+		- regulation on $q_{2,d}$: inverse formula on the reduced dynamic (that depends only on $\tau_2$) in order to find $\tau_2$ and substitute a PD to $\ddot{q}_2$
+- ex 3: **TODO**
+
+
+
+
+
+
+
+
 ## September 2022 (2022-09)
 - ex 1: 3R **with equal link** has to be in $p = 0$ minimizing joint range function $H(q)$
 	- Projected Gradient
