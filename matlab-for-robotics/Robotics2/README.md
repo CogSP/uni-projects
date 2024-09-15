@@ -514,7 +514,7 @@
 ## September 2021 (2021-09)
 - ex 1: 3R planar, controlled by $u = \ddot{q}$ with bound $U_{max,i}$
 	- which feasible $u_0$ to stop as fast as possible the cartesian motion while keeping the velocity $\dot{p}$ aligned with $\dot{p}_0$
-		- $\ddot{p}$ = -\lambda \dot{p}$ choosing largest $\lamdba$ s.t. $u_0$ is inside the bounds $implies$ linear program (LP)
+		- $\ddot{p}$ = -\lambda \dot{p}$ choosing largest $\lambda$ s.t. $u_0$ is inside the bounds $implies$ linear program (LP)
 - ex 2: 3R planar, provide eigenvalues of the $2 \times 2$ cartesian matrix $M_p$
 	- note that since the jacobian is non-square, you can't use $M_p = J^{-T} M J^{-1}$ but you need to use $M_p = (J M^{-1} J^T)^{-1}$, always assuming that the jacobian is full rank
 - ex 3: cartesian 2P planar
