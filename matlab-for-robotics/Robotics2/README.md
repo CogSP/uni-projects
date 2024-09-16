@@ -89,8 +89,16 @@
 	- add the presence of gravity (nothing fancy about it)
 
 
+
 ## October 2014 (2014-10)
-- **TODO** stuff about collision
+- ex 1: PRR planar
+	- dynamic model subject to collision forces
+	- residual formula
+	- how the presence of prismatic and revolute joints can change the detection of collisions and contact forces
+- ex 2: PRR planar
+	- static condition, torques bounds $implies$ find maximum norm of a contact force $F$ that can be applied in any planar direction $\alpha$
+	- note that a generic contact force can be parametrized as $F = \Vert F \Vert (\ cos(\alpha) \ sin(\alpha) \ )$
+
 
 
 ## April 2016 (2016-04)
@@ -613,7 +621,6 @@ $$
 	- when an external constant force $F = \bar{F}$ is applied from the environment, find the expression of $x_E$, $u_E$ and $\tau_E$
 - ex 4: one-link (pendulum) actuated and under gravity, with input torque bounds $\tau_{max}$
 	- rest-to-rest motion from $\theta(0) = -\frac{pi}{2}$ and $\theta(T) = \frac{pi}{2}$ with bang-bang acceleration $\implies$ find minimum time T
-
 
 
 
