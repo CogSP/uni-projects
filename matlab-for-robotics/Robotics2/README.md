@@ -9,6 +9,8 @@
 - fist_second_time_derivative_jacobian: computes the first and second time derivative of a Jacobian matrix
 - get_minors: get all the minors of a matrix, useful to find the determinant by setting all minors to 0
 - multiple_task: by inputting two tasks, if finds the extended jacobian an try to solve the problem, computing also the error
+- bang-coast-bang-time-formulas: how to find $T*$ and $T_s$ in bang-coast-bang trajectories
+
 
 ## June 2010 (2010-06)
 - RP Robot: dynamic model, redundancy (one-dimensional task) -> pseudoinverse
@@ -615,8 +617,6 @@ $$
 
 
 
-
-
 ## July 2022 (2022-07)
 - ex 1: 3R spatial from $q$ to $p$ coordinates
 	- find the transformation $J$ and compute $M_p$ and $c_p$
@@ -625,13 +625,12 @@ $$
 	- two requests:
 		- $\lambda = 0$: inverse formula to find $\tau_1$ s.t. $\lambda = 0$
 		- regulation on $q_{2,d}$: inverse formula on the reduced dynamic (that depends only on $\tau_2$) in order to find $\tau_2$ and substitute a PD to $\ddot{q}_2$
-- ex 3: 
+- ex 3: PP planar
+	- dynamic model
+	- trajectory from $P_s$ to $P_g$ having bounds only on the forces $U_max$ $implies$ bang-bang trajectory on both joints since there are no bounds on the velocity $\dot{q}$. Indeed, the dynamic model of the robot has no dependence on $\dot{q}$, but only on $\ddot{q}$, so only bounds on $A_max$.
+	- formulas to find $T*$ and $T_s$
 	- **IMPORTANT NOTE**: the bounds are **asymmetric** since we have to make $U_max$ negative, not the entire expression $\ddot{q}$, so if we have another addend that doesn't depend on $U_max$ it will not be made negative and the bounds will be asymmetric, as in this case
-
-
-
-
-
+	- is the cartesian path from $P_s$ to $P_g$ a linear path? No, indeed you can see that $\frac{\dot{y}}{\dot{x}} = \frac{\dot{q}_2}{\dot{q}_1} = k$ is a line until $T_{s,x}$, then you have two different curvilinear parts.
 
 
 
