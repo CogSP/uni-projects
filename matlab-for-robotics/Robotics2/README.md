@@ -605,7 +605,10 @@ M(q)\ddot{q} + S\dot{q} + g = \tau_J + J^{T}F \\
 B\ddot{\theta} + \tau_J = \tau
 \end{cases}
 $$
-	- **TODO** TO UNDERSTAND WELL
+	- design control law $\tau$ s.t. a desired motor dynamics holds: just extract $\ddot{\theta}$ from this dynamic and plug it in the motor equation
+	- design link dynamics s.t. the desired impedance model holds: just plug the F from the desired impedance model in the classical cartesian dynamic model (first equation), getting the value of $u = \tau_J$ for which everything holds
+	- then you can plug the value of $u$ in the $\tau$ contro law, getting the final control law that depends only on $q$, $\dot{q}$, $\theta$, $\dot{\theta}$
+	- when an external constant force $F = \bar{F}$ is applied from the environment, find the expression of $x_E$, $u_E$ and $\tau_E$
 - ex 4: one-link (pendulum) actuated and under gravity, with input torque bounds $\tau_{max}$
 	- rest-to-rest motion from $\theta(0) = -\frac{pi}{2}$ and $\theta(T) = \frac{pi}{2}$ with bang-bang acceleration $\implies$ find minimum time T
 
@@ -622,7 +625,8 @@ $$
 	- two requests:
 		- $\lambda = 0$: inverse formula to find $\tau_1$ s.t. $\lambda = 0$
 		- regulation on $q_{2,d}$: inverse formula on the reduced dynamic (that depends only on $\tau_2$) in order to find $\tau_2$ and substitute a PD to $\ddot{q}_2$
-- ex 3: **TODO**
+- ex 3: 
+	- **IMPORTANT NOTE**: the bounds are **asymmetric** since we have to make $U_max$ negative, not the entire expression $\ddot{q}$, so if we have another addend that doesn't depend on $U_max$ it will not be made negative and the bounds will be asymmetric, as in this case
 
 
 
