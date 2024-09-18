@@ -652,7 +652,7 @@
 ## September 2022 (2022-09)
 - ex 1: 3R **with equal link** has to be in $p = 0$ minimizing joint range function $H(q)$
 	- Projected Gradient
-	- wrapToPi to bring the angle back to [-$\pi$, $\pi$]
+	- wrapToPi to bring the angle back to [- $\pi$ , $\pi$]
 	- family of solutions that make the robot an equilateral triangles orientated with $q_1$
 	- show that the robot, starting from $q(0)$ defined with the equilateral triangles above, converges to $\bar{q}$ s.t. $\nabla H(\bar{q}) \neq 0$ but $\dot{q} = 0$
 - ex 2: RP planar robot
@@ -715,7 +715,7 @@
 ## April 2023 (2023-04)
 - ex 1: SNS on acceleration with bounds both on velocity and acceleration
 	- update of $\ddot{q}(t)$ done every $T_c$
-	- $\ddot{Q}_{min}$ and $\ddot{Q}_{max}$ set
+	- $\ddot{Q}\_{min}$ and $\ddot{Q}\_{max}$ set
 - ex 2: having DH of a 3R planar, find $r_{c,i}$ for each CoM s.t. $g(q)$ is a certain vector
 	- since $g(q)$ has $g_1 = g_2 = 0$ we need $r_{cy,2} = r_{cy,3} = 0$
 	- find general $g(q)$ for a 3R and find the relationship
@@ -746,7 +746,7 @@
 	- norm of the error is lower in the case without priority
 - ex 3: PRR planar, PD + gravity compensation
 	- $g(q)$: note that $q_3$ doesn't change $P_{c3}$
-	- $K_{P,m} > \alpha$, actually since $g(q)$ first term is constant and third is zero we have that $K_{P,2} > \alpha$ while the others just need to be positive **CHECK WHY IS THAT**
+	- $K_{P,m} > \alpha$, actually since $g(q)$ first term is constant and third is zero we have that $K_{P,2} > \alpha$ while the others just need to be positive 
 - ex 4: 2R with payload and a vertical guide
 	- $h(q) = p_x = 0$
 	- Choose $D(q)$ s.t. with $A(q)$ forms the Jacobian $\implies$ determinant is simpler
@@ -767,7 +767,7 @@
 	- find $\tau_d$ plugging $q_d(t)$ in $Y(q, \dot{q}, \ddot{q}) = \tau$
 	- unforced ($\tau = 0$) equilibrium state at $(q_e \ 0)$ so at rest $\implies$ when $g(q) = 0$
 	- mechanical parameters s.t. $g(q) = 0 \forall q$
-	- force $F_e$ applied to the tip of the second link in the horizontal plane $(\ y_0 \ z_0 \ )$, at rest and unforced $\implies M \ddot{q} = J_e^T F_e = \tau_e implies \ddot{q} = M^{-1} J_e^T F_e$ and so $\ddot{p}_e = J_e \ddot{q} = J_e M^{-1} J_e^T F_e$, where $ M_p = J_e M^{-1} J_e^T $ is the inverse of the inertia matrix at the e.e. level, but rescricted to the 2D horizontal plane of interest.
+	- force $F_e$ applied to the tip of the second link in the horizontal plane $(\ y_0 \ z_0 \ )$, at rest and unforced $\implies M \ddot{q} = J_e^T F_e = \tau_e \implies \ddot{q} = M^{-1} J_e^T F_e$ and so $\ddot{p}_e = J_e \ddot{q} = J_e M^{-1} J_e^T F_e$, where $M_p = J_e M^{-1} J_e^T$ is the inverse of the inertia matrix at the e.e. level, but rescricted to the 2D horizontal plane of interest.
 		- Note: if $M_p = J_e M^{-1} J_e^T$ were diagonal, $\ddot{p}$ would have been in the same direction of $F_e$
 - ex 3: Newton-Euler for a 6R
 	- free space vs subject to known active wrench
