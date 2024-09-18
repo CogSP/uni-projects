@@ -610,7 +610,7 @@
 	- with $H_B = \frac{1}{2} \Vert \tau \Vert_{M^{-2}} ^2$, that is the squared inverse inertia weighted torque norm
 - ex 6: PR planar 
 	- gravity term $g(q)$
-	- $\alpha$ upper bound of $\Vert \Nabla g(q) \Vert$
+	- $\alpha$ upper bound of $\Vert \nabla g(q) \Vert$
 
 
 
@@ -777,8 +777,8 @@ $$
 	- find $\tau_d$ plugging $q_d(t)$ in $Y(q, \dot{q}, \ddot{q}) = \tau$
 	- unforced ($\tau = 0$) equilibrium state at $(q_e \ 0)$ so at rest $\implies$ when $g(q) = 0$
 	- mechanical parameters s.t. $g(q) = 0 \forall q$
-	- force $F_e$ applied to the tip of the second link in the horizontal plane $(\ y_0 \ z_0 \ ), at rest and unforced $\implies M \ddot{q} = J_e^T F_e = \tau_e implies \ddot{q} = M^{-1} J_e^T F_e$ and so $\ddot{p}_e = J_e \ddot{q} = J_e M^{-1} J_e^T F_e$, where $ M_p = J_e M^{-1} J_e^T $ is the inverse of the inertia matrix at the e.e. level, but rescricted to the 2D horizontal plane of interest.
-		- Note: if $M_p = J_e M^{-1} J_e^T $ were diagonal, $\ddot{p}$ would have been in the same direction of $F_e$ **TO VERIFY**
+	- force $F_e$ applied to the tip of the second link in the horizontal plane $(\ y_0 \ z_0 \ )$, at rest and unforced $\implies M \ddot{q} = J_e^T F_e = \tau_e implies \ddot{q} = M^{-1} J_e^T F_e$ and so $\ddot{p}_e = J_e \ddot{q} = J_e M^{-1} J_e^T F_e$, where $ M_p = J_e M^{-1} J_e^T $ is the inverse of the inertia matrix at the e.e. level, but rescricted to the 2D horizontal plane of interest.
+		- Note: if $M_p = J_e M^{-1} J_e^T$ were diagonal, $\ddot{p}$ would have been in the same direction of $F_e$
 - ex 3: Newton-Euler for a 6R
 	- free space vs subject to known active wrench
 - ex 4: robot with torque limit $| \tau_i | \leq T_i \geq 5 * max_q | g_i |$ (i.e. the robot can sustain at least its own weight under gravity, with a conservative margin factor of 5). 
