@@ -15,14 +15,15 @@
 ## June 2010 (2010-06)
 - RP Robot: dynamic model, redundancy (one-dimensional task) -> pseudoinverse
 	- weight matrix $W$ to compare $\tau$ revolute joint torque and prismatic joint force
-	- null space method to not build up joint velocities (TODO: check if this is actually the null space method)
+	- null space method to not build up joint velocities 
+
 
 ## July 2010 (2010-07)
 - mass/spring/damper scheme
 	- differential equations of motion $F = ma$
 	- Contact force control problem $F = k_f(F_d - F_c)$, determine $x_E$ and $e(x_e) = F_d - F_{c,e}$
 	- Control action to remove the error
-	- **TODO**: exponential stability with root locus analysis and Routh criterion 
+	- exponential stability with root locus analysis and Routh criterion 
 
 ## September 2010 (2010-09)
 - RPR planar:
@@ -69,14 +70,16 @@
 ## January 2013 (2013-01)
 - ex 1: 3R planar, two tasks
 	- algorithmic singularities
-	- task-priority strategy: **TODO**, the $\dot{q}$ formula used looks different from the one on the slides, are they equivalent?
-- ex 2: RP robot move on a vertical line: **TODO** UNDERSTAND WHAT THIS IS ABOUT
-	- constrained robot dynamics adding $A^T\lambda$
+	- task-priority strategy
+- ex 2: RP robot move on a vertical line
+	- constrained dynamics, using the dynamically consistent projection matrix
+
 
 
 ## February 2013 (2013-02)
-- RP robot move on a vertical line: **TODO** SAME AS 2013-01 EX 1
-	- this time the robot dynamics is **reduced** and not **constrained**: is it because we have a single first-order differential equation instead of a second order?
+- RP robot move on a vertical line
+	- this time the robot dynamics requested is **reduced** , not **constrained** 
+
 
 
 ## July 2013 (2013-07)
@@ -84,7 +87,7 @@
 	- identify which link is subject to $F_i$ thanks to $\tau_i = J_{c,i}F_i$: if from $\tau_i$ starts a 0 values sequence it means that the force is applied at link $i-1$
 		- when $F_i$ is applied with $l_{c,i} = 0$ it is attributed to the previous link, i.e. $l_{c,i-1} = l_{i-1}$
 	- knowing $l_{c,i}$ and $\tau_i$ find $F_i$: you can do if both $F_{i,x}$ and $F_{i,y}$ are present in $\tau_i = J_{c,i}F_i$. 
-		- **TODO**: understand why in scenario 2, even if $J_2$ is not full rank, there seems to be a way of find $F_i$ at least partially
+		- Note that when $J_2$ is not full rank, you can't estimate $F_x$ since it has $sin(q_2)$ at the denominator (and $sin(q_2) = 0 in the singularity), but $F_y$ can still be estimated
 	- estimate $F_i$ without $l_{c,i}$: possible for third link
 	- add the presence of gravity (nothing fancy about it)
 
@@ -118,8 +121,9 @@
 	- reduced dynamic model: $A$ constant
 	- input to keep static equilibrium, i.e. $\dot{v} = 0$
 		- note that $\lambda(0)$ should be zero if the constraint $h(q) = 0$ is **virtual**, i.e. is not imposed by mechanism but enforced through control action. $\lambda(0)$ should vanish since there can be no real constraint forces generated (so in this case we should find the condition on $u(0)$ that leads to $\lambda(0) = 0$).
-	- **TODO**: simulation with $u(t)$, I don't know where to find this thing in the theory
-	- compute the reduce dynamic for $\dot{v} = \dot{v}_d$ and $\lambda = 0$
+	- simulation to find $\dot{v}_k$ and $\ddot{q}_k$ using the reduced dynamic model and arbitrary input torque $u(t)$ repeating the passages at every sampling instant $t_k = kT$
+	- compute the reduced dynamic for $\dot{v} = \dot{v}_d$ and $\lambda = 0$
+
 
 ## June 2016 (2016-06)
 - ex 1: 2R polar robot
@@ -127,7 +131,7 @@
 		- calculating $w_2$ expressed in $RF_0$ as sum of product between $\dot{q_i}$ and unit-norm vectors $z_i$ expressed in frame $RF_0$. This is taken from the angular part of the geometric Jacobian.
 		- uniformly distributed mass and cylindric form: $I_{2x} \neq I_{2y}$ and $I_{2y} = I_{2z}$. I guess because in $y$ and $z$ direction the cylinder is symmetrical, while on the $x$ direction is built different.
 	- adaptive control law, minimum dimension of the adaptive controller equal to the minimum number of dynamic coefficients
-- ex 2: **TODO**
+
 
 
 ## July 2016 (2016-07)
@@ -139,7 +143,10 @@
 	- natural vs virtual constraint
 	- if there is no clearance you can put all virtual constraint to zero besides $v_z = v_{z,d} > 0$. Otherwise, if a firm contact needs to be maintained with one side of the hole you can choose $F_{x,d}$ and/or $F_{y,d}$
 - ex 3: peg-in-hole compliant behaviour
-	- **TODO**
+	- the compliant behaviour of the hole is modelled by a spring
+	- design two controllers for $u$ s..t contact force $F_c$ is regulated ($F_d$):
+		- compliance control law
+		- force control law 
 
 
 ## September 2016 (2016-09)
@@ -161,20 +168,18 @@
 	- equilibrium states: $\ddot{q} = 0$
 		- unforced state u = 0 $\to \dot{q} = 0$
 		- forced state with constant input force $\bar{u}$ $\to \dot{q} equal for all masses$
-	- prove with Lyapunov/linearity of the system that the proportional controller $u = k_p(q_d - q_1)$ asymptotically stabilizes the system to a unique equilibrium state (I GUESS IT'S $(q_d, 0)$) **TODO: TO UNDERSTAND BETTER**
+	- prove with Lyapunov/linearity of the system that the proportional controller $u = k_p(q_d - q_1)$ asymptotically stabilizes the system to a unique equilibrium state 
+
 
 
 ## March 2017 (2017-03)
 - ex 1: 3R spatial robot
 	- determine $M(q)$ using moving frames
-		- **TODO**: check if the calculations are okay
 	- minimal number of dynamic coefficients
 - ex 2: Jacobian weighted pseudoinverse
 	- prove the general form, valid when the Jacobian loses rank too
-	- **TODO**
 - ex 3: 4R planar:
 	- SNS method to find  $\dot{q}$ with minimum norm that respects the limits on the joints
-	- **TODO**: understand we didn't had to scale, but when do we need it? When after applying the algorithm and saturating joints one by one we find at the last iteration that the last joint overcome the bounds?
 - ex 4: 3R planar:
 	- Reduced Gradient (RG)
 		- choose the minor with largest determinant
@@ -182,16 +187,19 @@
 		- algorithmic singularities
 - ex 5: 2R planar
 	- calibration: find the regressor matrix
-	- **TODO**: understand how you can find $\delta a$ and $\delta \theta$, are they the unknowns? Maybe the calibration algorithm aims at finding them.
+
 
 
 ## May 2017 (2017-05)
 - Ex 1: given the lagrangian model of a n-joints manipulator
 	- list all feedback control laws for $\tau$ that allows regulation to $q_d$
 	- when PD achieve and does not achieve asymptotic stabilization
-	- **TODO**: there are some problems if you ask me:
-		- First: it is saying that the PD controller achieves asymptotic stabilization also in the presence of gravity (?), but on the slides it is written that $g(q) = 0$ is a condition, and I think for each $q$, not only $q_d$.	
-		- Second: it is saying that these are only sufficient condition, not necessary in general, where is this written?
+	- note: the PD without gravity compensation achieves asymptotic stabilization of ($q_d$, $0$) if all these **SUFFICIENT BUT NOT NECESSARY** conditions are met:
+		- $g(q_d) = 0$
+		- $K_P$ symmetric and positive definite and $K_{P,m} > \alpha$
+		- $K_D$ symmetric and positive definite
+
+
 - Ex 2: visual servoing
 	- from polar to cartesian coordinates
 	- decoupled effects on $u$ and $v$
@@ -227,8 +235,7 @@
 		- system of 2 equations: dynamic model and $\lambda$ equation
 - ex 3: 3R planar
 	- equilibrium in contact with a rigid obstacle: $\tau$ has a component $\tau_e = J(q_e)^{T}K_{p}(p_d - p(q)) = -\tau_c$ that compensate for the contact force of the object
-	- momentum-based residual **TO UNDERSTAND**
-	- **last question**
+	- momentum-based residual for collision detection/isolation 
 
 
 ## September 2017 (2017-09)
@@ -242,6 +249,7 @@
 	- $x_d(t) = (\ p_d(t) \ \phi_d(t)\ )$ cartesian linearization law
 	- redundancy for cartesian task
 
+
 ## January 2018 (2018-01)
 - ex 1: RP planar
 	- $y_d(t)$ task	
@@ -250,7 +258,10 @@
 		- inertia matrix weighted norm, minimize kinetic energy
 - ex 2: Boulton-Watt governor
 	- nonlinear feedback law $\tau_{\Omega}$
-- ex 3: **TODO**
+- ex 3: mass subject to a commanded force $f$ and a contact force $f_c$
+	- impedance control law
+		- complex poles with natural frequency $\omega_n$ and critical dumping ration $\xi$
+	- force control law
 
 
 ## February 2018 (2018-02)
@@ -261,13 +272,21 @@
 	- proof used to find the number of iteration needed to have $\epsilon < 0.01$
 
 
+
 ## March 2018 (2018-03)
 - ex 1: automated crane
 	- dynamic model
 	- linear parametrization of the model with dynamic coefficients
 	- linear approximation of the nonlinear model for small variation around $x_0 = (\ q_1\ q_2\ \dot{q}_1\ \dot{q}_2\ ) = **0**$
 	- nonlinear state feedback law $F = F(**x**, a = \ddot{q}_1)$
-- ex 2: **TODO**
+- ex 2: PPR planar: stiff and frictionless linear surface tilted by $\alpha > 0$ w.r.t. vertical axis $\implies$ path to follow having the starting point $P_s$ and the tangential velocity $V_t = V_t(t_0) + A_t(t - t_0)$, applying a force $F_n > 0$
+	- dynamic model with contact force applied by the environment to the e.e.
+	- since $\phi$ is not specified, we have 1 degree of redundancy so we have infinite solutions $q$, depending on the choice of $\phi$ ($\beta$ in the solution)
+	- find the state $(\ q\ , \ \dot{q} \ )$ in $t = 0$
+	- note that the tangential speed $V_t$ is a scalar, the vector $\dot{p}$ can be expressed as $V_t (\ -sin(\alpha) \ cos(\alpha) \ )$ where the signs of $sin$ and $cos$ depends on the movement w.r.t. $x$ and $y$ axis
+	- find $\tau$ from the dynamic model, having $q$, $\dot{q}$, $\ddot{q}$ expressed with the desired values of $p_x$, $p_y$ and the parametric $\phi$
+		- the simplest solution has $\phi$ fixed, so $\dot{\phi} = 0$ and $\ddot{\phi} = 0$
+ 
 
 
 ## April 2018 (2018-04)
@@ -278,7 +297,7 @@
 	- find $S_1(q, \dot{q})$ and $S_2(q, \dot{q})$ s.t. $\dot{B} - 2S_1$ is skew-symmetric and with $S_2$ not
 	- cubic trajectory for $q_2$ and kept steady $q_1$
 		- $\tau(0)$ has same value on both component: since there is **inertial coupling** (values $m_ij \neq 0$ outside of the principal diagonal), $\tau_1(0)$ need to compensate the movement of the second joint due to $\tau_2(0)$
-- ex 3: **TODO** a theoretical proof
+- ex 3: Hamiltonian of the system $H = T + U$, prove that the dynamic equations of the robot can be written in the Hamiltonian Form
 - ex 4: PPR planar
 	- pseudoinverse and weighted pseudoinverse
 
@@ -286,7 +305,7 @@
 - ex 1: RP planar
 	- dynamic model
 	- $S_1$ s.t. $\dot{M} - 2S_1$ is skew-symmetric
-	- residuals **TODO: THIS DEFINITION IS DIFFERENT FROM THE ONE ON THE SLIDES**  
+	- residuals 
 	- i-th collision: $det(J_{Ki}) = 0$ and $J_{Ki}^T*F_{Ki} = 0$
 - ex 2: adaptive control law for $i_m$ of actuated pendulum
 	- **known** length l means that is outside of the dynamic coefficients
@@ -339,7 +358,7 @@
 	- $\dot{q}_A has no task error while $\dot{q}_B$ has $\dot{e} = \dot{x}_d - \dot{x} \neq 0$
 - ex 4: feedback linearization control law in the Cartesian space
 	- since $K_p$ and $K_d$ are diagonal, we want a decoupled dynamics. The simple cartesian PD regulation law is not ok
-	- transient behaviour of the error $e(t) \to 0$ using the Laplace domain **TODO**
+	- transient behaviour of the error $e(t) \to 0$ using the Laplace domain
 - ex 5: cube sliding along a path on a flat surface
 	- natural and artificial constraint
 	- how many control loops? Three on the force $(\ F_z, \ M_x, \ M_y\ )$ and three on the motion $(\ w_z, \ v_x, \ v_y\ )$
@@ -474,7 +493,6 @@
 	- self-motion keeping $P_in$ but getting to $q_3 = -\frac{pi}{2}$
 	- joint motion $\ddot{q} = a$ on the linearization law on $\tau$ will move $q_3$, adding a PD for errors
 	- joint space decomposition approach
-	- **TO RECHECK, IT IS NOT COMPLETELY CLEAR**
 - ex 4: damper, mass, damper and spring
 	- dynamic model
 	- regulation control law using Laplace domain
@@ -644,15 +662,17 @@ $$
 ## September 2022 (2022-09)
 - ex 1: 3R **with equal link** has to be in $p = 0$ minimizing joint range function $H(q)$
 	- Projected Gradient
-	- **TODO**: it seems that the only family of solutions are $(\ q_1 \ \frac{2pi}{3} \ \frac{2pi}{3}\ )$ and $(\ q_1 \ \ - frac{2pi}{3} \ \ - frac{2pi}{3}\ )$ so basically equilateral triangles orientated with $q_1$. But when I do the inverse kinematics I don't have these types of solution but (2pi/3, 2pi/3, 4.01something)
+	- wrapToPi to bring the angle back to [-pi, pi]
+	- family of solutions that make the robot an equilateral triangles orientated with $q_1$
 	- show that the robot, starting from $q(0)$ defined with the equilateral triangles above, converges to $\bar{q}$ s.t. $\nabla H(\bar{q}) \neq 0$ but $\dot{q} = 0$
 - ex 2: RP planar robot
+	- task space: $t$ and $n$ so the error are $e_t$ and $e_n$ and we want decoupled dynamics w.r.t to those two errors.
 	- rest-to-rest cartesian trajectory from $P_i$ to $P_f$ with bang-coast-bang acceleration profile
-	- **TODO**: it seems that using $u = M(\ddot{y} + PD) + g$ with $\ddot{y} =$ bang-bang trajectory is not the proper solution, why?
+	- the control law takes into account the rotation matrix $R(\alpha) = ( \ t \ n \ )$
 - ex 3: two masses and a pulley
+	- PID control law
 	- case (a) we measure position only of the first mass ($\theta$) $\implies$ the only dynamic equation is $(M + B)\ddot{\theta} - M g_0$
 	- case (b) we measure both position ($\theta$ and $q$) and we have a spring
-	- **TODO**
 
 
 
@@ -676,7 +696,6 @@ $$
 	- dynamic model of then 2P
 	- rotation from $RF0$ to $RF_{task}$, dividing $v$ and $f$ in tangential and normal
 	- compliant environment with stiffness $K_n$ ($v_n$ with deformation $\delta_n$) and frictionless ($f_t = 0$)
-	- control law **TODO**
 
 
 
@@ -752,7 +771,7 @@ $$
 	- TP: two tasks, the first is the previous the second is velocity of the closest point $v_m$
 		- case B: using $v_m$ equals to a velocity along the direction of the gradient of the clearance
 - ex 2: 2R spatial
-	- non-diagonal inertia since is not on the axis of joint **TO CHECK IF IT'S TRUE**
+	- non-diagonal inertia since is not on the axis of joint
 	- derive dynamic model
 	- dynamic coefficient
 	- find $\tau_d$ plugging $q_d(t)$ in $Y(q, \dot{q}, \ddot{q}) = \tau$
@@ -773,9 +792,9 @@ $$
 	- from DH draw the robot
 - ex 2: 4R planar Projected Gradient (PG)
 	- task of pointing an object in the plane
-	- **TO RECHECK**
 - ex 3: 2n equations of n-joints robot and n motor equations
-	- **TODO** 
+	- PD control law on the motor variables
+	- prove that $(q, \theta, \dot{q}, \dot{\theta})$ = $(\theta_d, \theta_d, 0, 0)$ is the only globally asymptotically stable equilibrium
 - ex 4: PR planar
 	- residuals
 	- $\lim_{t \to \inf} r_1(t) = 2$
