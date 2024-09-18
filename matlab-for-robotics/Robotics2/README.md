@@ -787,7 +787,7 @@
 	- prove that $(q, \theta, \dot{q}, \dot{\theta})$ = $(\theta_d, \theta_d, 0, 0)$ is the only globally asymptotically stable equilibrium
 - ex 4: PR planar
 	- residuals
-	- $\lim_{t \to \inf} r_1(t) = 2$
+	- $\lim_{t \to \infty} r_1(t) = 2$
 
 
 
@@ -797,13 +797,13 @@
 	- a 3-DoF robot has 30 parameters: 3 for each $dc_i$, 3 $m_i$ and 9-3 for each $I_i$ since is a symmetric matrix (so we just need diagonal and three elements
 - ex 2: 2R planar
 	- Projected Gradient but with $\ddot{q}_{PG}$, given $\ddot{r}_d(t)$ and cost H to minimize
-	- Important note: since you want to find $\ddot{q}$ s.t. it minimizes H, namely the error between $\ddot{q}$ and $\dot{q}_0 = - K_v \dot{q}$, you can use directly $\dot{q}_0 =  - K_v \dot{q} in the calculation of $\ddot{q}_{PG}$ instead of $\nabla H$. Indeed, we don't need to follow the gradient of H since we have $\ddot{q}_0$ directly.
+	- Important note: since you want to find $\ddot{q}$ s.t. it minimizes H, namely the error between $\ddot{q}$ and $\dot{q}_0 = - K_v \dot{q}$, you can use directly $\dot{q}_0 = - K_v \dot{q}$ in the calculation of $\ddot{q}_{PG}$ instead of $\nabla H$. Indeed, we don't need to follow the gradient of H since we have $\ddot{q}_0$ directly.
 	- Note that as the damping is the derivative term, the $K_s$ spring is the $K_p$. So why are we using $K_p$ if the spring is present? Because we want a **specific** position $q_d$, while the spring is giving us something that is not exactly our position. The same holds for the derivative term: in the case we want to have specific desired error dynamics that do not match the one of the damping effect, we would have needed the $K_d$ to add
 - ex 3: two masses, a pulley, damped elastic spring and viscous friction on the motion
 	- dynamic model: with newton or lagrangian approach
 	- simplest control law to regulate $q_d$
 		- in steady state we have $\bar{\tau}$, $\bar{q}$ and $\bar{\theta}(q_d)$, where $\bar{\theta}$ was expressed in function of q since the problem requires a $q_d$. The condition on $\bar{\tau}$ and $\bar{\theta}$ must be satisfied by the controller
-		- since there is are damping and viscous friction, you don't need the derivative term: the simplest feedback law is just $\tau = \tau_d + K_p(\theta_d - \theta)$, where \tau_d was find in the previous point $(\bar{\theta})$ and $\theta_d$ depends on $q_d$
+		- since there is are damping and viscous friction, you don't need the derivative term: the simplest feedback law is just $\tau = \tau_d + K_p(\theta_d - \theta)$, where $\tau_d$ was find in the previous point $(\bar{\theta})$ and $\theta_d$ depends on $q_d$
 		- verify asymptotic stability with Lyapunov and by local approximate linearization
 		- inverse dynamic problem (find $\tau$ from $q$) having set D = 0
 			- rewrite the dynamic model substituting $\theta$ with $q$. At the end you will have $\theta =$ something that depends only on $q$ and not on $\theta$ anymore.
