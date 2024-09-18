@@ -797,7 +797,7 @@
 	- a 3-DoF robot has 30 parameters: 3 for each $dc_i$, 3 $m_i$ and 9-3 for each $I_i$ since is a symmetric matrix (so we just need diagonal and three elements
 - ex 2: 2R planar
 	- Projected Gradient but with $\ddot{q}_{PG}$, given $\ddot{r}_d(t)$ and cost H to minimize
-	- Important note: since you want to find $\ddot{q}$ s.t. it minimizes H, namely the error between $\ddot{q}$ and $\dot{q}_0 = - K_v \dot{q}$, you can use directly $\dot{q}_0 = - K_v \dot{q}$ in the calculation of $\ddot{q}_{PG}$ instead of $\nabla H$. Indeed, we don't need to follow the gradient of H since we have $\ddot{q}_0$ directly.
+	- Important note: since you want to find $\ddot{q}$ s.t. it minimizes H, namely the error between $\ddot{q}$ and $\dot{q}_0 = - K_v \dot{q}$, you can use directly $\dot{q}\_0 = - K_v \dot{q}$ in the calculation of $\ddot{q}\_{PG}$ instead of $\nabla H$. Indeed, we don't need to follow the gradient of H since we have $\ddot{q}_0$ directly.
 	- Note that as the damping is the derivative term, the $K_s$ spring is the $K_p$. So why are we using $K_p$ if the spring is present? Because we want a **specific** position $q_d$, while the spring is giving us something that is not exactly our position. The same holds for the derivative term: in the case we want to have specific desired error dynamics that do not match the one of the damping effect, we would have needed the $K_d$ to add
 - ex 3: two masses, a pulley, damped elastic spring and viscous friction on the motion
 	- dynamic model: with newton or lagrangian approach
