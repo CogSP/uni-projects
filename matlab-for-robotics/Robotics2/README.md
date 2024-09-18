@@ -772,8 +772,8 @@
 - ex 3: Newton-Euler for a 6R
 	- free space vs subject to known active wrench
 - ex 4: robot with torque limit $| \tau_i | \leq T_i \geq 5 max_q | g_i |$ (i.e. the robot can sustain at least its own weight under gravity, with a conservative margin factor of 5). 
-	- When $\dot{q} \neq 0$, we have that $\dot{E} = \dot{q}^T u(t_0)$. Since $| \tau_i | \leq T_i |$, the maximum instantaneous decrease of E is $\tau_{0,i} = - T_i  sign(q_i) \forall joint i$, if joint I is in motion, while the joint that are not moving we put $\tau = 0$.
-	- When $\dot{q} = 0$, we induce a decrease with $\ddot{E} = \ddot{q}^T \tau + \dot{q}^T \dot{\tau} = \ddot{q}^T \tau$ and since $M\ddot{q} + g = \tau$ we have that $\ddot{E} = \tau^T M^{-1}\tau - g^T  M^{-1} \tau. To find the maximum instantaneous decrease of E we compute $\nabla_{\tau} \ddot{E} = 0$, finding the corresponding $\tau_0$ 
+	- When $\dot{q} \neq 0$, we have that $\dot{E} = \dot{q}^T u(t_0)$. Since $| \tau_i | \leq T_i |$, the maximum instantaneous decrease of E is $\tau_{0,i} = - T_i  sign(q_i)$ $\forall$ joint i, if joint I is in motion, while the joint that are not moving we put $\tau = 0$.
+	- When $\dot{q} = 0$, we induce a decrease with $\ddot{E} = \ddot{q}^T \tau + \dot{q}^T \dot{\tau} = \ddot{q}^T \tau$ and since $M\ddot{q} + g = \tau$ we have that $\ddot{E} = \tau^T M^{-1}\tau - g^T  M^{-1} \tau$. To find the maximum instantaneous decrease of E we compute $\nabla_{\tau} \ddot{E} = 0$, finding the corresponding $\tau_0$ 
 	- You can extend this reasoning for higher order time derivatives of E: for instance, if we have $g(q) = 0$
 
 
