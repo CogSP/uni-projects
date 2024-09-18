@@ -601,7 +601,7 @@
 	- at time $t_k$, provide $\ddot{q}\_k$ s.t. $\ddot{r}\_{d,k}$ and minimize $H = \frac{1}{2} \Vert \dot{q}\_{k+1} \Vert ^2 = \frac{1}{2} \Vert \dot{q}\_{k} + T_c \ddot{q}\_{k} \Vert ^2$. This is solved with Projected Gradient (PG) using preferred acceleration $\ddot{q}\_{k} = - \frac{\dot{q}_{k}}{T_c}$, since it make the $H$ goes to zero. 
 - ex 3: 3R spatial, moving frames algorithm:
 	- compute M
-	- note that $r_{ci, i}$ are defined with $L_i - dc_i$ since $dc_i starts from the position of the $i-1$-th joint
+	- note that $r_{ci, i}$ are defined with $L_i - dc_i$ since $dc_i$ starts from the position of the $i-1$-th joint
 - ex 4: projected gradient (PG) on $\dot{q}$ with $H_{range}$ for keeping the joint ranges on the midranges. The solution is then $\dot{q} = \dot{q}_r + \dot{q}_n$
 	- e.e. task scaling $\dot{q} = k\dot{q}_r + \dot{q}_n$ to find $k$
 	- applying directly SNS on the entire $\dot{q}$ would not be correct since the solution $\dot{q}$ contains a null-space term that does not scale with $\dot{r}$ 
@@ -623,18 +623,12 @@
 	- two tasks, the one of the macro robot and the one of the micro robot. So you can create the extended jacobian $J_E$ and find its algorithmic singularities
 	- Task Priority (TP)
 - ex 3: robot with n elastic joints interacting with the environment, has a link dynamics and a motor dynamics
-$$
-\begin{cases}
-M(q)\ddot{q} + S\dot{q} + g = \tau_J + J^{T}F \\
-B\ddot{\theta} + \tau_J = \tau
-\end{cases}
-$$
 	- design control law $\tau$ s.t. a desired motor dynamics holds: just extract $\ddot{\theta}$ from this dynamic and plug it in the motor equation
 	- design link dynamics s.t. the desired impedance model holds: just plug the F from the desired impedance model in the classical cartesian dynamic model (first equation), getting the value of $u = \tau_J$ for which everything holds
 	- then you can plug the value of $u$ in the $\tau$ contro law, getting the final control law that depends only on $q$, $\dot{q}$, $\theta$, $\dot{\theta}$
 	- when an external constant force $F = \bar{F}$ is applied from the environment, find the expression of $x_E$, $u_E$ and $\tau_E$
 - ex 4: one-link (pendulum) actuated and under gravity, with input torque bounds $\tau_{max}$
-	- rest-to-rest motion from $\theta(0) = -\frac{pi}{2}$ and $\theta(T) = \frac{pi}{2}$ with bang-bang acceleration $\implies$ find minimum time T
+	- rest-to-rest motion from $\theta(0) = -\frac{\pi}{2}$ and $\theta(T) = \frac{\pi}{2}$ with bang-bang acceleration $\implies$ find minimum time $T^*$
 
 
 
@@ -648,10 +642,10 @@ $$
 		- regulation on $q_{2,d}$: inverse formula on the reduced dynamic (that depends only on $\tau_2$) in order to find $\tau_2$ and substitute a PD to $\ddot{q}_2$
 - ex 3: PP planar
 	- dynamic model
-	- trajectory from $P_s$ to $P_g$ having bounds only on the forces $U_max$ $implies$ bang-bang trajectory on both joints since there are no bounds on the velocity $\dot{q}$. Indeed, the dynamic model of the robot has no dependence on $\dot{q}$, but only on $\ddot{q}$, so only bounds on $A_max$.
+	- trajectory from $P_s$ to $P_g$ having bounds only on the forces $U_{max}$ $implies$ bang-bang trajectory on both joints since there are no bounds on the velocity $\dot{q}$. Indeed, the dynamic model of the robot has no dependence on $\dot{q}$, but only on $\ddot{q}$, so only bounds on $A_{max}$.
 	- formulas to find $T^*$ and $T_s$
-	- **IMPORTANT NOTE**: the bounds are **asymmetric** since we have to make $U_max$ negative, not the entire expression $\ddot{q}$, so if we have another addend that doesn't depend on $U_max$ it will not be made negative and the bounds will be asymmetric, as in this case
-	- is the cartesian path from $P_s$ to $P_g$ a linear path? No, indeed you can see that $\frac{\dot{y}}{\dot{x}} = \frac{\dot{q}_2}{\dot{q}_1} = k$ is a line until $T_{s,x}$, then you have two different curvilinear parts.
+	- **IMPORTANT NOTE**: the bounds are **asymmetric** since we have to make $U_{max}$ negative, not the entire expression $\ddot{q}$, so if we have another addend that doesn't depend on $U_{max}$ it will not be made negative and the bounds will be asymmetric, as in this case
+	- is the cartesian path from $P_s$ to $P_g$ a linear path? No, indeed you can see that $\frac{\dot{y}}{\dot{x}} = \frac{\dot{q}\_2}{\dot{q}\_1} = k$ is a line until $T\_{s,x}$, then you have two different curvilinear parts.
 
 
 
@@ -706,7 +700,7 @@ $$
 		- differently from ex 6 of 2023-04, here the gravity term depends on $\theta$, since $u = I\ddot{\theta} + mg_0dsin(\theta) = u_{inertia}(\theta) + u_{gravity}(\theta)$, while in 2023-04 we have isolated $\ddot{\theta}$ since $g$ was a constant
 		- $u_{inertia}$ as in the other exercise, is linear and maximum in $t = 0$ and $t = T$, while $u_{gravity}$ is sinusoidal and maximum at the midpoint $T/2$, when $sin(\theta) = 1$. The superposition of the two torques will have a maximum in the first half of the motion, where both terms are positive
 		- note also that the faster is the trajectory (i.e. the smaller T), the more $\ddot{\theta}$ will grow, and the more $u_{inertia}$ will dominate $u_{gravity}$. So when T is small enough, you can neglect $u_{gravity}$ and find $T$
-	- minimum uniform time scaling factor, compute at time $t = 0$ since it's the time at which we have the overcome of the $u_max$
+	- minimum uniform time scaling factor, compute at time $t = 0$ since it's the time at which we have the overcome of the $u_{max}$
 - ex 3: two masses and a spring in between
 	- dynamic model
 	- force control laws decentralized: $F_i$ depends only on $q_i$
@@ -721,7 +715,7 @@ $$
 ## April 2023 (2023-04)
 - ex 1: SNS on acceleration with bounds both on velocity and acceleration
 	- update of $\ddot{q}(t)$ done every $T_c$
-	- $\ddot{Q}_min$ and $\ddot{Q}_max$ set
+	- $\ddot{Q}_{min}$ and $\ddot{Q}_{max}$ set
 - ex 2: having DH of a 3R planar, find $r_{c,i}$ for each CoM s.t. $g(q)$ is a certain vector
 	- since $g(q)$ has $g_1 = g_2 = 0$ we need $r_{cy,2} = r_{cy,3} = 0$
 	- find general $g(q)$ for a 3R and find the relationship
