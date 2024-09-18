@@ -652,13 +652,13 @@
 ## September 2022 (2022-09)
 - ex 1: 3R **with equal link** has to be in $p = 0$ minimizing joint range function $H(q)$
 	- Projected Gradient
-	- wrapToPi to bring the angle back to [-pi, pi]
+	- wrapToPi to bring the angle back to [-$\pi$, $\pi$]
 	- family of solutions that make the robot an equilateral triangles orientated with $q_1$
 	- show that the robot, starting from $q(0)$ defined with the equilateral triangles above, converges to $\bar{q}$ s.t. $\nabla H(\bar{q}) \neq 0$ but $\dot{q} = 0$
 - ex 2: RP planar robot
 	- task space: $t$ and $n$ so the error are $e_t$ and $e_n$ and we want decoupled dynamics w.r.t to those two errors.
 	- rest-to-rest cartesian trajectory from $P_i$ to $P_f$ with bang-coast-bang acceleration profile
-	- the control law takes into account the rotation matrix $R(\alpha) = ( \ t \ n \ )$
+	- the control law takes into account the rotation matrix $R(\alpha) = ( \ t \ \ n \ )$
 - ex 3: two masses and a pulley
 	- PID control law
 	- case (a) we measure position only of the first mass ($\theta$) $\implies$ the only dynamic equation is $(M + B)\ddot{\theta} - M g_0$
@@ -691,9 +691,9 @@
 
 ## February 2023 (2023-02)
 - ex 1: 3R planar torque controlled. These are just three cases of Linear Quadratic (LQ) optimization
-	- $\tau_A$ that minimizes $H_A = frac{1}{2} \Vert \ddot{q} \Vert ^2$ is just the pseudoinverse considering $\ddot{q} = J^{\verb|#|}(\ddot{r} - \dot{J}\dot{q})$ = J^{\verb|#|}\ddot{r}$ at rest
-	- $\tau_B$ that minimizes $H_A = frac{1}{2} \Vert \ddot{q} \Vert ^2$ but using absolute coordinates. Weighted matrix with W = $T^T T$
-	- $\tau_C$ that minimizes $H_A = frac{1}{2} \ddot{q}^T M(q) \ddot{q}$ is inertia weighted matrix
+	- $\tau_A$ that minimizes $H_A = \frac{1}{2} \Vert \ddot{q} \Vert ^2$ is just the pseudoinverse considering $\ddot{q} = J^{\verb|#|}(\ddot{r} - \dot{J}\dot{q}) = J^{\verb|#|}\ddot{r}$ at rest
+	- $\tau_B$ that minimizes $H_A = \frac{1}{2} \Vert \ddot{q} \Vert ^2$ but using absolute coordinates. Weighted matrix with W = $T^T T$
+	- $\tau_C$ that minimizes $H_A = \frac{1}{2} \ddot{q}^T M(q) \ddot{q}$ is inertia weighted matrix
 - ex 2: single link under gravity (pendulum)
 	- rest-to-rest swing-up maneuver with a cubic under torque bound $u_{max}$
 	- find the minimum time $T^*$
