@@ -1,0 +1,39 @@
+Control Law
+
+#################### MOTION CONTROL #################### 
+
+- now we assume that the robot control commands velocities
+
+- If you want to regulate the position of a joint (q_d = cost) you can use a PD, if a damping it's already present, just use P
+
+- In the case in which the desired velocity is not zero, you will need a PID controller
+
+- task space control law
+
+#########################
+
+- now we assume that the robot control commands torques or forces, not velocities as in the previous. The robot dynamics must be taken into account not
+
+- PID in tau is the same as the one in theta
+
+- the PID above requires an error to accumulate to start move, if we have a good dynamic model of the robot there is no need to wait for the error, so we use a feedforward formula tau, based on estimation (or perfect knowledge) of M, c and h. Feedforward has no mechanism to recover from error, so we have a compute torque control
+
+- there is also task space computed torque control 
+
+
+#################### FORCE CONTROL #################### 
+
+- goal: desired e.e. wrench to the environment
+
+- tau = M + c + g + J^T F
+
+- Typically the robot is stationary or slow so we have tau = g + J^T F -> if we want to compensate for the gravity and apply Fd the force control is just tau = g + J^T F
+
+- we can add the feedback term if there is error (like modelling error in the gravity compensation). Derivative term is not used in force control
+
+
+
+#################### HYBRID MOTION/FORCE CONTROL #################### 
+
+- doing things like opening a door, for which you need both tau for forces and for velocities
+
