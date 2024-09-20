@@ -37,3 +37,5 @@ This repo contains some of the university projects I have done until now.
 
    - POX_apps: a simulated mobile software defined network with applications in a POX controller 
    - p4_distributed_consensus: a distributed consensus protocol implemented in the P4 language
+
+- ** yolo-v8-car-detection**: made for the [Computer Vision](https://corsidilaurea.uniroma1.it/it/view-course-details/2024/30431/20220331104432/a0056e2a-0997-4b24-b1f9-3eb695b11e7a/45cd24a7-4946-44db-8abd-0417b098a4b8/d684157d-a1cd-4609-b9cf-2b4b8ca450dc/f31822fc-383f-4504-95c6-26c7411cb537?guid_cv=45cd24a7-4946-44db-8abd-0417b098a4b8&current_erogata=a0056e2a-0997-4b24-b1f9-3eb695b11e7a) exam, it features a reimplementation of the YOLOv8 architecture, incorporating some innovative adjustments.
