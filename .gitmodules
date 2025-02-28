@@ -1,0 +1,9 @@
+[submodule "CoEvoNet"]
+	path = CoEvoNet
+	url = https://github.com/CogSP/CoEvoNet.git
+[submodule "fridge-scanner-app"]
+	path = fridge-scanner-app
+	url = https://github.com/CogSP/fridge-scanner-app.git
+[submodule "DCOL-trajectory-optimization"]
+	path = DCOL-trajectory-optimization
+	url = https://github.com/CogSP/DCOL-trajectory-optimization.git
