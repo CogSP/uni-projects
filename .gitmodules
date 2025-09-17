@@ -7,3 +7,7 @@
 [submodule "DCOL-trajectory-optimization"]
 	path = DCOL-trajectory-optimization
 	url = https://github.com/CogSP/DCOL-trajectory-optimization.git
+[submodule "computer-graphics-sandbox"]
+	path = computer-graphics-sandbox
+	url = https://github.com/CogSP/computer-graphics-sandbox.git
+	branch = main
