@@ -45,3 +45,5 @@ This repo contains some of the university projects I have done until now.
 - **DCOL-trajectory optimization**: made for the ["Autonomous and Mobile Robotics"](https://corsidilaurea.uniroma1.it/en/view-course-details/2024/30431/20220331104432/a0056e2a-0997-4b24-b1f9-3eb695b11e7a/45cd24a7-4946-44db-8abd-0417b098a4b8/5ddf9e97-59cd-4735-aa73-0736509b42ad/b415ad40-dfd4-4761-9c2c-1f814df5f0cf?guid_cv=45cd24a7-4946-44db-8abd-0417b098a4b8&current_erogata=a0056e2a-0997-4b24-b1f9-3eb695b11e7a) exam, it features a differentiable collision detection system, used in the context of trajectory optimization.
 
 - **fridge-scanner-app**: made for the ["Mobile Application and Cloud Computing"](https://corsidilaurea.uniroma1.it/en/view-course-details/2021/30430/20210916103754/d0d41e8f-68d0-47e4-8ec2-1179259a2a30/df40caa0-3655-498a-9462-607851b615b2/ebc2faa2-f8de-483f-94f4-19fbfa794a0e/b23a91fd-d67b-4175-84c0-14166410c9d3) exam, it's an Android application designed to help users manage fridge inventory.
+
+- **campus-pepper**: made for the ["Elective in Artificial Intelligence 2"](https://sites.google.com/a/dis.uniroma1.it/elective-ai) exam, it's a friendly Campus Pepper assistant
