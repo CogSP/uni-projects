@@ -1,0 +1,12 @@
+IMAGE
+<*, *, *, *>:  img/calendar.png
+----
+TEXT
+<*, *, it, *>: Le tue prossime lezioni prenotate:
+• Mer — 19:50–21:20 in A2 (computer_vision)
+• Mer — 19:51–21:21 in A2 (computer_vision)
+• Ven — 09:00–10:30 in A6 (computer_vision)
+<*, *, *, *>: Your next booked lectures: computer vision in A2 at 10:30
+----
+BUTTONS
+guide_next

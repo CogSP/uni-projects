@@ -1,0 +1,15 @@
+TEXT
+<*, *, it, *>: Buongiorno Prof. Giorgi.
+<*, *, *, *>: Good Morning, Prof. Giorgi.
+----
+BUTTONS
+my_schedule
+<*,*,it,*>: Il mio orario
+<*,*,*,*>:  My Schedule
+guide_next
+<*,*,it,*>: Portami alla prossima lezione
+<*,*,*,*>:  Guide me to next lecture
+find_room
+<*,*,it,*>: Controlla aula
+<*,*,*,*>:  Check room
+----

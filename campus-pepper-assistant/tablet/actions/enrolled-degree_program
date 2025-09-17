@@ -1,0 +1,7 @@
+IMAGE
+<*, *, *, *>:  img/registration_success.png
+----
+TEXT
+<*, *, it, *>: Perfetto! Ti stai iscrivendo al corso: computer engineering
+<*, *, *, *>: Great! You are enrolling in: computer engineering
+----

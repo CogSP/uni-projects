@@ -1,0 +1,11 @@
+IMAGE
+<*, *, *, *>:  img/calendar.png
+----
+TEXT
+<*, *, *, *>: Prof. Giorgi, your upcoming lectures are: Mon, 11:00-12:30 in B2 (robotics 1), Tue 14:00-15:30 in A2 (robotics 1)
+----
+BUTTONS
+guide_prof
+<*,*,it,*>: Portami li
+<*,*,*,*>:  Guide me there
+----

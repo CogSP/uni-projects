@@ -1,0 +1,7 @@
+IMAGE
+<*, *, *, *>:  img/showtimes-error.jpeg
+----
+TEXT
+<*, *, it, *>: Non ho trovato lezioni in programma.
+<*, *, *, *>: I couldn't find any scheduled lectures.
+----

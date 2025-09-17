@@ -1,0 +1,7 @@
+IMAGE
+<*, *, *, *>:  img/showtimes-error.jpeg
+----
+TEXT
+<*, *, it, *>: Spiacente, non riesco a recuperare l'orario ora.
+<*, *, *, *>: Sorry, I can’t get your schedule right now.
+----

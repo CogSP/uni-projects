@@ -1,0 +1,9 @@
+TEXT
+<*, *, it, *>: Disponibilita' per 'computer_vision':
+<*, *, *, *>: Availability for the chosen course:
+----
+BUTTONS
+slot_0
+<*,*,it,*>: Free visitor seats: 10
+<*,*,*,*>:  Free visitor seats: 10
+----

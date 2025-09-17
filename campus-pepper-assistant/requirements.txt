@@ -1,0 +1,8 @@
+tensorflow==1.14.0
+protobuf==3.6.1
+grpcio==1.23.0
+keras-applications==1.0.8
+keras-preprocessing==1.1.0
+mock==3.0.5
+enum34==1.1.10
+wrapt==1.11.2

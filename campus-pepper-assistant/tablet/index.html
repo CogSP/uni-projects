@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Welcome</title>
+  <script src="websocket.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(-45deg, #ffffff, #ffffff, #ffffff, #ffffff);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #2c3e50;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    #status {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 16px 24px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #c0392b;
+    }
+
+    #status::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: #c0392b;
+      margin-right: 10px;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.5; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .container {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      text-align: center;
+      backdrop-filter: blur(6px);
+    }
+
+    
+    /* enlarge the displayed image */
+    img#image_default {
+      max-width: 92vw;     /* use most of the page width */
+      max-height: 70vh;    /* and most of the page height */
+      height: auto;        /* keep aspect ratio */
+      width: auto;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      margin-bottom: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    img#image_default:hover {
+      transform: scale(1.2);
+    }
+
+    img:hover {
+      transform: scale(1.2);
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      font-weight: 400;
+      margin-bottom: 25px;
+      color: #1a1a1a;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    #buttons {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    input[type="button"] {
+      background: #e0e0e0;
+      border: none;
+      border-radius: 14px;
+      color: #2c3e50;
+      padding: 16px 32px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 8px 8px 15px #bebebe,
+                  -8px -8px 15px #ffffff;
+    }
+
+    input[type="button"]:hover {
+      box-shadow: inset 5px 5px 12px #c1c1c1,
+                  inset -5px -5px 12px #ffffff;
+      background-color: #f0f0f0;
+      transform: translateY(-2px);
+    }
+
+    @media screen and (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      img {
+        max-height: 200px;
+      }
+
+      input[type="button"] {
+        font-size: 1rem;
+        padding: 12px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- status -->
+  <div id="status">
+    <span>NOT CONNECTED</span>
+  </div>
+
+  <div class="container">
+
+    <!-- image -->
+    <div>
+      <img id="image_default" src="img/campus.png" alt="No image"/>
+    </div>
+
+    <!-- title -->
+    <h1 id="text_default">Welcome to DIAG!</h1>
+
+    <!-- buttons -->
+    <div id="buttons">
+      <!-- Example button:
+      <input type="button" id="hello" value="Hello" onclick="hello()">
+      -->
+    </div>
+
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+    var ip = window.location.hostname || '127.0.0.1';
+    var port = 9100;
+
+    console.log("Trying connection...");
+    wsrobot_init(ip, port);
+
+    function hello() {
+      console.log("running interaction...");
+      codews.send("im.robot.say('hello')\n");
+    }
+  </script>
+</body>
+</html>

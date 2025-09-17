@@ -1,0 +1,24 @@
+TEXT
+<*, *, it, *>: ****
+<*, *, *, *>: Some courses you could like are: 
+----
+BUTTONS
+course_4
+<*,*,it,*>: neural_networks
+<*,*,*,*>:  neural_networks
+course_5
+<*,*,it,*>: machine_learning
+<*,*,*,*>:  machine_learning
+course_2
+<*,*,it,*>: artificial_intelligence_foundations
+<*,*,*,*>:  artificial_intelligence_foundations
+course_3
+<*,*,it,*>: natural_language_processing
+<*,*,*,*>:  natural_language_processing
+course_0
+<*,*,it,*>: computer_vision
+<*,*,*,*>:  computer_vision
+course_1
+<*,*,it,*>: reinforcement_learning
+<*,*,*,*>:  reinforcement_learning
+----

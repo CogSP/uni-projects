@@ -1,0 +1,76 @@
+first_name,last_name,interest
+Luca,Bianchi,mathematics
+Giulia,Rossi,programming
+Marco,Verdi,robots
+Sara,Conti,economy
+Paolo,Greco,circuits
+Elisa,Moretti,data
+Davide,Ferrari,networks
+Marta,Esposito,cpu
+Alessio,Ricci,ai
+Chiara,Galli,cybersecurity
+Giorgio,Barbieri,hackers
+Ilaria,Fontana,linux
+Stefano,Colombo,web
+Francesca,De Angelis,internet
+Valentina,Pellegrini,cloud
+Riccardo,Mancini,nlp
+Federica,Lombardi,privacy
+Matteo,Gatti,big data
+Antonio,De Luca,drones
+Beatrice,Farina,cars
+Nicola,Serra,automatics
+Alberto,Marini,robotics
+Eleonora,Riva,applied_mathematics
+Simone,Piras,artificial intelligence
+Andrea,Palumbo,distributed systems
+Laura,Romani,mathematics
+Claudio,Russo,physics
+Michela,Villa,chemistry
+Danilo,Martini,linear_algebra
+Silvia,Beretta,probability_statistics
+Fabio,Caruso,computer_science_fundamentals
+Elena,Fiore,applied_economics
+Tommaso,Parisi,business_management
+Caterina,Grimaldi,operations_research
+Vincenzo,Testa,technology_processes
+Cristina,Serafini,industrial_plants
+Franco,Pugliese,electrical_engineering
+Lucia,D’Amico,telecommunications
+Alessandro,Riva,computer_architecture
+Patrizia,De Santis,artificial_intelligence_foundations
+Sandro,Leone,computer_security
+Anna,Basile,operating_systems
+Carlo,Valenti,web_technologies
+Martina,Longo,machine_learning
+Mauro,Bianco,robotics_1
+Clara,Monti,robotics_2
+Filippo,Bruno,computer_vision
+Teresa,Caprioli,robot_programming
+Rosa,Amato,mobile_robotics
+Diego,Carli,neural_networks
+Sofia,Landi,natural_language_processing
+Gabriele,Ferri,medical_robotics
+Angela,De Angelis,reinforcement_learning
+Federico,Bellini,probabilistic_robotics
+Pietro,Ruggieri,nonlinear_systems_and_control
+Lorenzo,Greco,optimal_control
+Chiara,Marchetti,filtering
+Mario,Palumbo,multivariable_feedback_control
+Stefania,Rizzi,digital_control_systems
+Massimo,Pagani,process_automation
+Gabriella,Sala,robust_control
+Cristian,Bertelli,control_of_communication_and_energy_networks
+Gianni,Coppola,vehicle_system_dynamics
+Paola,Cattaneo,data_mining
+Enrico,Orlando,statistical_learning
+Adriana,Fabbri,signal_processing
+Samuele,Gentile,optimization
+Eleonora,Martelli,cloud_computing
+Francesco,Rizzo,applied_economics
+Serena,Morelli,data_privacy
+Matilde,Giordano,advanced_programming
+Daniele,Silvestri,algorithm_design
+Giada,Costa,internet_of_things
+Claudio,Vitali,computational_complexity
+Elisa,Ferri,malware_analysis

@@ -1,0 +1,311 @@
+topic: ~campus_assistant()
+language: enu
+
+# Concepts you’ll match
+concept: (greetings) ["hi" "hello" "hey" "good morning" "good afternoon"]
+concept: (goodbye)  ["bye" "goodbye" "see you"]
+concept: (myname) ["my name is" "i'm" "i am" "call me" "they call me" "you can call me" "i go by"]
+concept: (ask_where) ["where is" "how do i get to" "directions to" "take me to"]
+concept: (room_code) [A1 A204 B213 A215 "B1-CIS" ALCOR BiBi ROCOCO RoboticsLab]
+concept: (role_groups) ["new student" "visitor"]
+concept: (ask_recommendation) ["recommend" "watch" "recommendations" "recommendation" "see" "tips" "tip"]
+concept: (acceptance) ["yes" "yeah" "yep" "ok" "sure" "of course" "sounds good" "alright" "yes thanks" "yes, I'm interested" "yes, please" "yes please"]
+concept: (refusal) ["no" "nope" "nah" "not now" "maybe later" "i'm good" "no thanks" "No, thanks" "No need for it, thanks"]
+concept: (degree) ["computer science" "data science" "management" "management engineering" "computer engineering" "cyber security" "cybesecurity"]
+concept: (update_inter) ["update my interests" "update" "interests" "change" "info" "details" "profile"]
+concept: (topics_of_interest) ["mathematics" "electronics" "AI" "artificial intelligence" "robotics" "programming" "data science" "machine learning" "economics" "literature"]
+concept: (ask_prof_schedule_next) ["my schedule" "when do i teach" "what time is my lecture" "where is my lecture" "next lecture" "when is my next class" "dove insegno" "quando insegno" "prossima lezione"]
+concept: (ask_prof_schedule_today) ["today schedule" "today's lecture" "oggi" "lezione di oggi"]
+
+
+# Greeting -> ask name
+u: (~greetings)
+  Hello! Welcome to DIAG.
+  ^gotoReactivate(get_name)
+
+# --- Restart --- 
+proposal: %restart
+    u1: (~greetings) 
+      ^gotoReactivate(get_name)
+
+# Get name
+proposal: %get_name  
+    What's your name?
+    u1: ({~myname} _*)
+      $campus/person_name = $1
+      $campus/function = greet_person
+      u2: ("e:campus/person_identity_check $campus/person_identity_check==true") 
+        Welcome back! 
+        Your next booked lecture is computer_vision in A2 and it starts in less than an hour. 
+        Would you like me to guide you to the room?
+        u3: (~acceptance)
+          $campus/target_location = $campus/next_lecture_room
+          $campus/function = guide_to_location
+          ^gotoReactivate(on_guidance_complete)
+        u3: (~refusal)
+          No problem.
+          Want to use the tablet to chat?
+          u4: (~acceptance)
+            ^gotoReactivate(use_tablet)
+          u4: (~refusal)
+            Alright, how can I help you today?
+            ^gotoReactivate(main_hub)
+                  
+      u2: ("e:campus/person_identity_check $campus/person_identity_check==professor")
+        Nice to see you, $campus/person_honorific .
+        ^gotoReactivate(main_hub)
+
+      u2: ("e:campus/person_identity_check $campus/person_identity_check==false") 
+        Nice to meet you! I would like to know a bit more about you.
+        ^gotoReactivate(get_role)
+
+
+# --- Get Role Group ---
+proposal: %get_role
+    Are you a new student enrolling or a visitor?
+
+    u1: ({*} _~role_groups {*})
+        Got it, $1 
+        $campus/person_role=$1
+        $campus/function = register_person
+        ^gotoReactivate(get_topic)
+
+    u1: (*)
+        Hmm, I didn’t catch that. Mind trying again?.
+        ^stayInScope
+        
+
+# Ask topic depending on role
+proposal: %get_topic
+    u1: ("e:campus/person_registered $campus/person_registered==newstudent")
+        What degree program are you enrolling in?
+        u2: ({*} _~degree {*})
+            $campus/degree_program = $1
+            $campus/function=register_enrollment
+            Okay, noted.
+            ^gotoReactivate(main_hub)
+
+    u1: ("e:campus/person_registered $campus/person_registered==visitor")
+        Nice. What topic are you interested in? for instance mathematics, electronics, AI
+        u2: ({*} _~topics_of_interest {*})
+            $campus/topic = $1
+            $campus/function=register_interest
+            Got it.
+            ^gotoReactivate(main_hub)
+
+# Main hub: rooms / labs / directions / tablet
+proposal: %main_hub
+  You can ask me for a room, lab, lecture hours, for directions, guidance, or you can use the tablet.
+
+  # “Where is …” + a code or label
+  u1: ({~ask_where} _~room_code{*})
+    $campus/room_query = $1
+    $campus/function = find_room_by_code
+    u2: (e:campus/find_room_result)
+      $campus/find_room_result
+      $campus/direction_request = $campus/room_query
+      $campus/function = show_directions
+
+      # wait for the direction/map event from backend
+      u3: ("e:campus/direction_indication $campus/direction_indication==true")
+        Would you like me to guide you there?
+        u4: (~acceptance)
+          Great, follow me.
+          $campus/target_location = $campus/room_query
+          $campus/function = guide_to_location
+          u5: (e:campus/guidance_complete)
+            Arrived. Anything else?
+            ^gotoReactivate(main_hub)
+        u4: (~refusal)
+          Okay. Something else?
+          ^gotoReactivate(main_hub)
+    u2: (e:campus/find_room_result $campus/find_room_result==0)
+      Sorry, I couldn’t find that room. Are you sure is in the DIAG building?
+      ^stayInScope
+
+  u1: ({*} _~ask_recommendation {*}) 
+      I'd be happy to give you some suggestions.
+      ^gotoReactivate(offer_recommendation)
+
+  u1: ({*} _~update_inter {*}) 
+      Of course. Let's update your interests.
+      ^gotoReactivate(update_interests)
+
+  u1: (~goodbye)
+    Bye!
+    $campus/function = restart
+    u2: (e:campus/restart)
+      ^gotoReactivate(restart)
+
+  # Professor asks for their own teaching schedule (requires identified person + professor role)
+  u1: ({*} _~ask_prof_schedule_today {*})
+    Okay, checking your schedule for today.
+    $campus/prof_schedule_scope = "today"
+    $campus/function = prof_schedule
+    u2: (e:campus/prof_schedule_ready $campus/prof_schedule_ready==true)
+      $campus/prof_schedule_text
+      Would you like me to guide you to the first room?
+      u3: (~acceptance)
+        $campus/function = guide_to_location
+        ^gotoReactivate(on_guidance_complete)
+      u3: (~refusal)
+        ^gotoReactivate(main_hub)
+
+  u1: ({*} _~ask_prof_schedule_next {*})
+    Okay, checking your next scheduled lecture.
+    $campus/prof_schedule_scope = "upcoming"
+    $campus/function = prof_schedule
+    Your schedule for today is:
+    Robotics 1 in A1 at 14:00
+    Artificial Intelligence in B213 at 16:00
+    Should I guide you there?
+    u3: (~acceptance)
+      $campus/function = guide_to_location
+      ^gotoReactivate(on_guidance_complete)
+    u3: (~refusal)
+      ^gotoReactivate(main_hub)
+
+
+  u1: (e:campus/prof_schedule $campus/prof_schedule==true)
+    Okay, checking your schedule for today.
+    Your schedule for today is: 
+    Robotics 1 in A1 at 14:00, 
+    Artificial Intelligence in B213 at 16:00 
+    Would you like me to guide you to the first room?
+    u3: (~acceptance)
+      $campus/function = guide_to_location
+      ^gotoReactivate(on_guidance_complete)
+    u3: (~refusal)
+      ^gotoReactivate(main_hub)
+
+
+# --- Offer course Recommendation ---
+proposal: %offer_recommendation
+    $campus/function=recommend_courses
+    u1: (e:campus/courses_suggestions)
+        ^gotoReactivate(choose_course_from_recommendations)
+
+proposal: %postbooking
+    Your next lecture is Tuesday at 10:00 in room A2.
+    $campus/direction_request = "A2"
+    If you want, I can show you the directions to the room on the tablet
+    u2: (~acceptance)
+      $campus/function = show_directions
+      u3: ("e:campus/direction_indication $campus/direction_indication==true")
+        Would you like me to guide you there?
+        u4: (~acceptance)
+          Great, follow me.
+          $campus/target_location = $campus/direction_request
+          $campus/function = guide_to_location
+          u5: (e:campus/guidance_complete)
+            Arrived. Anything else?
+            ^gotoReactivate(main_hub)
+        u4: (~refusal)
+          Okay. Something else?
+          ^gotoReactivate(main_hub)
+    u2: (~refusal)
+      Okay. Something else?
+      ^gotoReactivate(main_hub)
+
+# --- Choose a Course given a Recommendation ---
+proposal: %choose_course_from_recommendations
+    So, I found some courses you might like based on your profile:
+    $campus/courses_suggestions 
+    ; do any of these sound good? Just tell me which one you’d like to know more about.
+
+    u1: (~refusal)
+        No problem! Let me know if you need anything else.
+        ^gotoReactivate(main_hub)
+
+    u1: (_*)
+        $campus/selected_course=$1
+        Okay! Let me give you more information about the course.
+        $campus/function=get_description
+        u2: ("e:campus/description_success $campus/description_success==true")
+            $campus/description 
+            Are you interested in this course?
+            u3: (~acceptance)
+                Great!
+                If you want, I can check if there are available slots for you to enroll or when the next lecture is.
+                u4: (~acceptance)
+                    $campus/function=check_availability
+                    u5: (e:campus/availability)
+                        $campus/availability
+                        Do you want to book a slot?
+                        u6: (~acceptance)
+                            $campus/function=book_slot
+                            u7: (e:campus/booking_success)
+                                Great! you are booked. 
+                                ^gotoReactivate(postbooking)
+                            u7: (e:campus/booking_failed)
+                                Sorry, I couldn't book a slot right now. Try again later.
+                                ^gotoReactivate(main_hub)
+
+                    u5: (e:campus/availability_failed)
+                        Sorry, I couldn't check the availability right now. Try again later.
+                        ^gotoReactivate(main_hub)
+                u4: (~refusal)
+                    Ok! Let me know if you need anything else.
+                    ^gotoReactivate(main_hub)
+
+            u3: (~refusal)
+                Ok!
+                ^gotoReactivate(main_hub)
+
+            u3: (*)
+                Sorry, didn't understand, Are you interested in this course ?
+                ^stayInScope
+
+        u2: (e:campus/description_failed)
+            $campus/description_failed .
+            ^previousProposal
+
+
+proposal: %on_guidance_complete
+    u1: (e:campus/guidance_complete)
+      Arrived. Anything else?
+      ^gotoReactivate(main_hub)
+    u1: (e:campus/guidance_failed)
+        Sorry, I couldn't guide you there. Let me know if you need help with something else.
+        ^gotoReactivate(main_hub)
+
+
+proposal: %use_tablet
+    u1: (~acceptance)
+        ^gotoReactivate(tablet_main_hub)
+    u1: (~refusal)
+        ^gotoReactivate(check_feedback)
+
+
+
+proposal: %update_interests
+    What topics are you interested in?  
+    u1: ({*} _~topics_of_interest {*})
+        Ok, updated. I will tailor my recommendations accordingly.
+        $campus/topics_interests=$1
+        $campus/function=update_interests
+        ^gotoReactivate(main_hub)
+        
+    u1: (*)
+        Sorry, I didn't recognize that genre. Retry.
+        ^stayInScope
+
+
+proposal: %tablet_main_hub
+    How can I help you? You can ask for courses recommendations, directions, informations... 
+
+    $campus/tablet = tablet_main_hub
+    u1: (e:campus/tablet_main_hub $campus/tablet_main_hub == tablet_recommendations)
+        ^gotoReactivate(tablet_recommendations)
+
+    u1: (e:campus/tablet_main_hub $campus/tablet_main_hub == tablet_directions)
+        ^gotoReactivate(tablet_directions)
+
+    u1: (e:campus/tablet_main_hub $campus/tablet_main_hub == tablet_restart)
+        ^gotoReactivate(tablet_restart)
+
+
+# Fallback
+u: (*)
+  Sorry, I didn’t get that. Try “where is B213?” or “directions to ROCOCO”.
+  ^stayInScope

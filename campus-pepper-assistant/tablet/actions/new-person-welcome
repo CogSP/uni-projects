@@ -1,0 +1,15 @@
+IMAGE
+<*, *, *, *>:  img/campus.png
+----
+TEXT
+<*, *, it, *>: Benvenuto al DIAG! Vorrei sapere alcune cose per migliorare la tua esperienza qui.
+<*, *, *, *>: Welcome to DIAG! I would like to know few things to improve your experience here.
+----
+BUTTONS
+register_visitor
+<*,*,it,*>: Sono un visitatore
+<*,*,*,*>:  I'm a visitor
+register_student
+<*,*,it,*>: Sono uno studente
+<*,*,*,*>:  I'm a student
+----
