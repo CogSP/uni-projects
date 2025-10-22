@@ -11,3 +11,6 @@
 	path = computer-graphics-sandbox
 	url = https://github.com/CogSP/computer-graphics-sandbox.git
 	branch = main
+[submodule "DMAP-localizer"]
+	path = DMAP-localizer
+	url = https://github.com/CogSP/DMAP-localizer.git
